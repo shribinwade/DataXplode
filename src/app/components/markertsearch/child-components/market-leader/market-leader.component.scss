@@ -1,0 +1,128 @@
+.example-table-container {
+    position: relative;
+    min-height: 400px;
+    max-height: 700px;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #ddd;
+  }
+
+.example-container {
+    height: 600px;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    
+  }  
+
+  .mat-column-index {
+    width: 10px;
+    border-right: 1px solid currentColor;
+    
+  
+  }  
+  .mat-column-name {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-column-company {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-column-segment {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-column-marketShare {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  
+  .mat-column-MarketGrouthRate {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-column-bcgValue {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-column-type {
+    
+    border-right: 1px solid currentColor;
+  
+  } 
+  .mat-header-cell {
+
+  }
+  .mat-sort-header{
+   
+
+  }
+  .mat-mdc-header-cell {
+   
+  }
+  .mat-mdc-header-row{
+   text-align: center;     
+   background-color: rgb(63, 63, 131);
+   color: white;
+   font-weight: bold;
+   word-spacing: 2px;
+  }
+
+.high{
+  background-color: #98FB98;
+  color:black;
+  // background-color: #86e49d;
+  // color: white;
+}
+.low{
+  background-color: #CE2029;
+  color: white;
+  // background-color: #d893a3;
+  // color: white;
+}
+.star {
+  
+   background-color: #0047AB; /* White */
+  color: white;
+  // background-color: #6fcaea; /* White */
+  // color: white;
+}
+
+.question-mark{
+  background-color: #FFDB58;
+  color: white;
+  // background-color: #ebc474;
+  // color: white;
+}
+.dog{
+  background-color: #E34234;
+  color: white;
+  // background-color: #d893a3;
+  // color: white;
+}
+.cash_cow{
+  background-color: #50C878;
+  color: white;
+  // background-color: #86e49d;
+  // color: white;
+  
+}
+.filters{
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+// r1c1: 97FFFD, r1c2 FFE59A, r1c3 E2EFD9
+// r2c1: FCA48D, r2c3 D9E2F3
+// r3c1: 72FDD6, r3c2 F3B1F9, r3c3 FBE4D5
+// Colors:
+// #97FFFD, #FFE59A, #E2EFD9
+// #FCA48D, #D9E2F3
+// #72FDD6, #F3B1F9, #FBE4D5

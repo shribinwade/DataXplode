@@ -1,0 +1,24 @@
+<h4 mat-dialog-title>Bullet Points:</h4>
+<mat-dialog-content >
+   
+   
+      <div *ngIf="bulletPoint.length > 0">
+        <div *ngFor="let bullet of bulletPoint">
+          
+          <ul>
+            <ng-container *ngFor="let bullet of bullet">
+              <li *ngIf="bullet.key; else plainText">
+                <strong>{{ bullet.key }}:</strong> {{ bullet.value }}
+              </li>
+              <ng-template #plainText>
+                <li>{{ bullet }}</li>
+              </ng-template>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+</mat-dialog-content>
+               
+<mat-dialog-actions>
+  <button class="btn btn-danger" (click)=closepopup()>Close</button>
+</mat-dialog-actions>

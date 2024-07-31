@@ -1,0 +1,84 @@
+<div class="analyzerPage" style="width: 100%; height: 100%; position: relative;">
+    <div *ngIf="loadingService.isLoading | async" class="loader-container">
+        <mat-progress-bar mode="determinate"></mat-progress-bar>
+        <mat-spinner style="top: 46%; left: 46%"></mat-spinner>
+      </div>
+
+<div class="container" style="width: 100%; height: max-content;   ">
+    
+    <div class="row" >
+        <div class="col-sm-8 " >
+
+            <div style="margin-top: 10%;">
+                <h3>Product Input Form</h3>
+            </div>
+            <div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, vitae!</p>
+            </div>
+            <div style="margin-top: 100px;">
+                <form [formGroup]="marketSearchForm"  (ngSubmit)="handleSubmit()">
+                    <div class="mb-3">
+
+
+                        <div class="row mt-3">
+                            <div class="col-sm-3"><label for="forkeyword" class="form-label p-2">Keyword</label></div>
+                            <div class="col-sm-9"><input type="text" class="form-control" formControlName="keyword"  id="forkeyword" ></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-3"><label for="forkeyword" class="form-label p-2">Product Name</label></div>
+                            <div class="col-sm-9"><input type="text" class="form-control" formControlName="product_name"  id="forkeyword" ></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-3"><label for="forkeyword" class="form-label p-2">Product Description</label></div>
+                            <div class="col-sm-9">  <textarea class="form-control" formControlName="product_description" aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-3"><label for="forkeyword" class="form-label p-2">Brand</label></div>
+                            <div class="col-sm-9"><input type="text" class="form-control" formControlName="brand"  id="forkeyword" ></div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-sm-3"><label for="forkeyword" class="form-label p-2">Features</label></div>
+                            <div class="col-sm-9">
+                                <div  class="form-control" appearance="fill"> 
+                      
+                                    <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                                      <mat-chip-row style="background-color: rgb(39, 86, 255); "  *ngFor="let fruit of features"
+                                                    (removed)="remove(fruit)"
+                                                    [editable]="true"
+                                                    (edited)="edit(fruit, $event)"
+                                                    [aria-description]="'press enter to edit ' + fruit.feature">
+                                       <p style="color: white; text-align: center; margin-top: 8px;">{{fruit.feature}}</p> 
+                                        <button matChipRemove [attr.aria-label]="'remove ' + fruit.feature">
+                                          <mat-icon>cancel</mat-icon>
+                                        </button>
+                                      </mat-chip-row>
+                                      <input  class="form-control" style="border: none;" placeholder="Enter features, press Enter to add"
+                                             [matChipInputFor]="chipGrid"
+                                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                             [matChipInputAddOnBlur]="addOnBlur"
+                                             (matChipInputTokenEnd)="add($event)"/>
+                                    </mat-chip-grid>
+                                </div> 
+                            
+                            </div>
+                        </div>
+                        
+
+                       
+                      
+                      <!-- <div  class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                  
+                    <button type="submit"  class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+
+        </div>
+        <div class="col-sm-4 " style=" "></div>
+      </div>
+
+</div>
+
+</div>

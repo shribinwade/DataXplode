@@ -1,0 +1,404 @@
+<div class="header">
+  <span
+    ><button class="btn btn-sm text-center">
+      <span><i class="fa fa-arrow-left fa-1x"></i></span>
+    </button>
+    <h1 style="text-align: center; margin-top: -10px">
+      <!-- {{ productSiteName }} -->
+      <img src="{{ siteImgSrc }}" width="150px" alt="logo" class="img-fluid" />
+    </h1>
+  </span>
+</div>
+
+
+<div class="text-center mt-0 m-2">
+  
+    <div class="content">
+      <div class="row" style="padding: 2%;">
+        <!-- Filters on the left -->
+        <div class="col-md-4 d-flex align-items-center">
+          <h4 style="margin: 5px;">Keyword Search</h4>
+          <!-- <p style="font-size: large; margin-top: 0; margin-right: 15px">
+            Filters
+          </p>
+          <mat-form-field style="width: 10rem" appearance="fill" class="m-2">
+            <mat-label>Sort Order</mat-label>
+            <mat-select (selectionChange)="changeSortOrder($event.value)">
+              <mat-option value="ratingLowToHigh"
+                >Rating: Low to High</mat-option
+              >
+              <mat-option value="ratingHighToLow"
+                >Rating: High to Low</mat-option
+              >
+              <mat-option value="priceLowToHigh">Price: Low to High</mat-option>
+              <mat-option value="priceHighToLow">Price: High to Low</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Rating</mat-label>
+            <mat-select (change)="applyFilter($event)">
+              <mat-option *ngFor="let rating of ratings" [value]="rating">
+                <p *ngIf="rating == 4; else elseBlock">{{ rating }} & Up</p>
+                <ng-template #elseBlock>
+                  {{ rating }}
+                </ng-template>
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        </div>
+        <!-- Search on the right -->
+        <div class="col-md-8 d-flex justify-content-end align-items-center">
+          <form
+            [formGroup]="searchKeywordForm"
+            (ngSubmit)="handleSubmit()"
+            class="d-flex w-100 justify-content-end"
+          >
+            <input
+              class="form-control me-2"
+              formControlName="search"
+              type="text"
+              style="font-size: small"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-primary"
+              style="font-size: small"
+              type="submit"
+            >
+              Search Keyword
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="filters">
+      <div class="row">
+        
+        <div class="col-1">
+          <div style="margin: 13px;"><i class="fas fa-filter" style="font-size:20px p-10"></i>Filters</div>
+        </div>
+       
+        <div class="col-2">
+          <div class="d-flex">
+            <select (change)="applyFilter($event)" class="form-select m-2" style="width: 100%" aria-label="Default select example">
+              <option selected>by rating</option>
+              <option *ngFor="let rating of ratings" [value]="rating">
+                <p *ngIf="rating == 4; else elseBlock">{{ rating }} & Up</p>
+                <ng-template #elseBlock>
+                  {{ rating }}
+                </ng-template>
+              </option>
+            
+            </select>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="d-flex">
+            <select
+              (change)="changeSortOrder($event)"
+              class="form-select m-2"
+              style="width: 100%"
+              aria-label="Default select example"
+            >
+              <option selected>Sort Order</option>
+              <option value="ratingLowToHigh">Rating: Low to High</option>
+              <option value="ratingHighToLow">Rating: High to Low</option>
+              <option value="priceLowToHigh">Price: Low to High</option>
+              <option value="priceHighToLow">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-2">
+          2 of 2
+        </div>
+        <div class="col-2">
+          2 of 2
+        </div>
+        <div class="col-2">
+          2 of 2
+        </div>
+        <div class="col-1">
+          2 of 2
+        </div>
+
+      
+      </div>
+      
+
+    </div> -->
+ 
+
+  <div class="mt-0 mb-5 ms-0 me-0 bg-white">
+
+    <div class="search_content">
+      <!-- class="example-container mat-elevation-z8" -->
+      <div *ngIf="productData && productData.length > 0; else noReviews">
+        <div *ngIf="loadingService.isLoading | async" class="loader-container">
+          <mat-progress-bar mode="determinate"></mat-progress-bar>
+          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+        </div>
+        <div class="row m-0" style="border: 1px solid rgb(228, 228, 228); box-shadow: 20px">
+          <div class="col justify-content-start">
+            <p class="search_title">
+              1-50 of over {{ productData.length }} results for "{{
+                keywordSearchName
+              }}"
+            </p>
+          </div>
+
+          <div class="col">
+            <div class="d-flex justify-content-end">
+              <select
+                (change)="changeSortOrder($event)"
+                class="form-select m-2"
+                style="width: auto"
+                aria-label="Default select example"
+              >
+                <option selected>Sort Order</option>
+                <option value="ratingLowToHigh">Rating: Low to High</option>
+                <option value="ratingHighToLow">Rating: High to Low</option>
+                <option value="priceLowToHigh">Price: Low to High</option>
+                <option value="priceHighToLow">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <div style="padding: 5px; margin-top: 3px;"> 
+        <form [formGroup]="searchProductForm" (ngSubmit)="productSearch()" >
+
+          <div class="row">
+            <div class="col-10">    
+              <input class="form-control me-2" formControlName="search" type="text" style="width: 100%; font-size: small" placeholder="Search" aria-label="Search"/>
+            </div>
+            <div class="col-2">
+             <button class="btn btn-outline-primary" style="font-size: small; width: 100%;" type="submit">
+              Search Product
+             </button>
+            </div>
+          </div>
+          <!-- <input
+            class="form-control me-2"
+            formControlName="search"
+            type="text"
+            style="width: 85%; font-size: small"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-primary"
+            style="font-size: small"
+            type="submit"
+          >
+            Search Product
+          </button> -->
+        </form>
+      </div>
+       
+      <div class="filters">
+        <div class="row">
+          
+          <div class="col-1">
+            <div style="margin: 13px;"><i class="fas fa-filter" style="font-size:20px p-10"></i>Filters</div>
+          </div>
+         
+          <div class="col-2">
+            <div class="d-flex">
+              <select (change)="applyFilter($event)" class="form-select m-2" style="width: 100%" aria-label="Default select example">
+                <option selected>by rating</option>
+                <option *ngFor="let rating of ratings" [value]="rating">
+                  <p *ngIf="rating == 4; else elseBlock">{{ rating }} & Up</p>
+                  <ng-template #elseBlock>
+                    {{ rating }}
+                  </ng-template>
+                </option>
+              
+              </select>
+            </div>
+          </div>
+          <div class="col-2">
+            <!-- <div class="d-flex">
+              <select
+                (change)="SortByPrice($event)"
+                class="form-select m-2"
+                style="width: 100%"
+                aria-label="Default select example"
+              >
+                <option selected>by price</option>
+                
+                <option value="priceLowToHigh">Price: Low to High</option>
+                <option value="priceHighToLow">Price: High to Low</option>
+              </select>
+            </div> -->
+          </div>
+          <div class="col-2">
+          
+          </div>
+          <div class="col-2">
+          
+          </div>
+          <div class="col-2">
+          
+          </div>
+          <div class="col-1">
+           
+          </div>
+  
+        
+        </div>
+        </div>
+      
+
+      
+
+        <div class="example-container mat-elevation-z8">
+        <section class="example-table-container">
+          <!-- (matSortChange)="announceSortChange($event)" -->
+          <table mat-table [dataSource]="dataSource" matSort>
+            <!-- Review Title Column -->
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef>#</th>
+              <td mat-cell *matCellDef="let review; let i = index">
+                {{ i + 1 }}
+              </td>
+            </ng-container>
+
+            <!-- Review Detail Column -->
+            <ng-container matColumnDef="pdp_title_value">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Product Details
+              </th>
+              <td mat-cell *matCellDef="let review">
+                {{ review.pdp_title_value }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pdp_image_url">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Images</th>
+              <td mat-cell *matCellDef="let review">
+                <img
+                  width="35px"
+                  height="35px"
+                  [src]="review.pdp_image_url"
+                  alt=""
+                />
+              </td>
+            </ng-container>
+
+            <!-- Rating Column -->
+            <!-- <ng-container matColumnDef="web_pid">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ASIN  </th>
+                    <td mat-cell *matCellDef="let review">{{review.web_pid}}  </td>
+                  </ng-container> -->
+
+            <!-- Reviewed By Column -->
+            <ng-container matColumnDef="price_sp">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Selling Price
+              </th>
+              <td mat-cell *matCellDef="let review">{{ review.price_sp }}</td>
+            </ng-container>
+
+            <!-- Reviewed Date Column -->
+            <ng-container matColumnDef="price_rp">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>MRP</th>
+              <td mat-cell *matCellDef="let review">{{ review.price_rp }}</td>
+            </ng-container>
+
+            <!-- Verified Purchase Column -->
+            <ng-container matColumnDef="pdp_discount_value">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Discounted Price
+              </th>
+              <td mat-cell *matCellDef="let review">
+                {{ review.pdp_discount_value }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pdp_rating_value">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Ratings</th>
+              <td mat-cell *matCellDef="let review">
+                {{ review.pdp_rating_value
+                }}<star-rating
+                  style="display: inline-block"
+                  [stars]="review.pdp_rating_value"
+                ></star-rating>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pdp_rating_count">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Rating Count
+              </th>
+              <td mat-cell *matCellDef="let review">
+                {{ review.pdp_rating_count }}
+              </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="pdp_page_url">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> URL </th>
+                    <td mat-cell *matCellDef="let review"><a [href]="review.pdp_page_url" target="_blank"> 
+                      <ng-container matColumnDef="web_pid">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> ASIN  </th>
+                      <td mat-cell *matCellDef="let review">{{review.web_pid}}  </td>
+                    </ng-container></a> </td>
+                  </ng-container> -->
+
+            <ng-container matColumnDef="web_pid">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>ASIN</th>
+              <td mat-cell *matCellDef="let review">
+                <a [href]="review.pdp_page_url" target="_blank">{{
+                  review.web_pid
+                }}</a>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bought">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Bought</th>
+              <td mat-cell *matCellDef="let review">{{ review.bought }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="moreInfo">
+          
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>More Info</th>
+              <td mat-cell *matCellDef="let review">
+                <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More info
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item"  (click)="openReviewDialog(review.web_pid)">View Reviews</a></li>
+                  <li><a class="dropdown-item" (click)="openReviewAnalysisDialog()">Reviews analysis</a></li>
+                 
+                </ul>
+              </td>
+            </ng-container>
+
+            <!-- Header and Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </section>
+      </div>
+        <mat-paginator
+          class="card-footer"
+          [length]="this.productData.length"
+          [pageSize]="50"
+          [pageSizeOptions]="[50, 100, 1000]"
+          (page)="onPageChange($event)"
+          aria-label="Select page of users"
+        >
+        </mat-paginator>
+      </div>
+      <ng-template style=" position: relative;" #noReviews>
+        <div *ngIf="loadingService.isLoading | async" class="loader-container">
+          <mat-progress-bar mode="determinate"></mat-progress-bar>
+          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+        </div>
+        <p style="padding: 10%">No Product Data available.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

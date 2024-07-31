@@ -1,0 +1,19 @@
+
+    <h4 mat-dialog-title>Specification</h4>
+    <mat-dialog-content >
+
+
+      <div *ngFor="let feature of productFeatures">
+        <div *ngFor="let key of getObjectKeys(feature)">
+          <strong>{{ key }}:</strong> {{ feature[key] }}
+        </div>
+        <hr>
+      </div>    
+                </mat-dialog-content>    
+                
+    <mat-dialog-actions>
+      <button class="btn btn-danger" (click)=closepopup()>Close</button>
+    </mat-dialog-actions>
+
+
+

@@ -1,0 +1,35 @@
+<div class="container">
+
+    <div class="row">
+      <div>
+        <span ><button class="btn btn-sm text-center" (click)="goBack()"><span><i class="fa fa-arrow-left fa-1x"></i></span></button></span>
+    </div>
+    <h1 style="text-align: center; margin-top:20px;">
+      <!-- {{productSiteName}}  -->
+      <img src="{{productSiteImgSrc}}"  alt="logo"></h1> 
+    </div>
+    <div class="container" >
+        <div class="row">
+          <div class="col-6 d-flex justify-content-around  bg-light py-2">
+              <div>
+                <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" >
+                  Product Search
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="keyword-search" >Keyword Search</a></li>
+                    <li><a class="dropdown-item" routerLink="sku-search">SKU Search</a></li>
+                  </ul>
+              </div>
+            <a  routerLink="market-search" >Market Search</a>
+            <a  routerLink="competitor-analysis">Competitor Analysis</a>
+          </div>
+        </div>
+      </div>
+      
+</div>
+
+
+
+
+
+

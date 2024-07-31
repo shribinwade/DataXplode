@@ -1,0 +1,39 @@
+.form-control{
+  
+    display: inline-block !important;
+    border: none ;
+}
+.example-chip-list {
+    width: 100%;
+  }
+
+.mdc-text-field{
+    border-radius: 0 !important;
+}  
+
+.loader-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+}
+
+
+.analyzerPage{
+    background: linear-gradient(to right, #00c9ff, #92fe9d);
+}
+.container{
+ color: white;
+}
+.mdc-notched-outline {
+     z-index: 0 !important; 
+    /* width: 77px; */
+    /* height: 20px; */
+    border: 3px solid; 
+    background-color: white !important;
+}
+

@@ -1,0 +1,285 @@
+<div class="header">
+  <span
+    ><button class="btn btn-sm text-center" (click)="goBack()">
+      <span><i class="fa fa-arrow-left fa-1x"></i></span>
+    </button>
+    <h1 style="text-align: center; margin-top: -10px">
+      <!-- {{ productSiteName }} -->
+      <img src="{{ SiteImgSrc }}" width="150px" alt="logo" class="img-fluid" />
+    </h1>
+  </span>
+</div>
+<hr />
+
+<div class="container text-center">
+  <div class="row d-flex flex-wrap">
+    <div class="col-lg-3" style="display: block">
+      <app-sku-search-card
+        (dataReceived)="handleDataReceived($event)"
+        (ReviewData)="handleReviewDataReceived($event)"
+      ></app-sku-search-card>
+    </div>
+
+    <div class="col-lg-9" style="display: block; position: relative">
+      <!-- <div *ngIf="loadingService.isLoading | async" class="loader-container">
+        <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
+      </div> -->
+      <!-- [hidden]="getdata()" -->
+      <div *ngIf="receivedData && receivedData.Amazon_info.length > 0;else noReviews">
+      
+        <div class="card mb-4 " style="position: relative;">
+          <div *ngIf="loadingService.isLoading | async" class="loader-container">
+            <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
+          </div>
+          <div class="row card-body text-start">
+            <div class="col-md-5">
+              <swiper-container
+                class="mySwiper"
+                style="--swiper-navigation-color: #fff"
+                navigation="true"
+                pagination="true"
+                loop="true"
+                thumbs-swiper=".mySwiper2"
+              >
+                <swiper-slide>
+                  <img
+                    [src]="productSiteImgSrc"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide>
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide>
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide>
+              </swiper-container>
+              <swiper-container
+                class="mySwiper2"
+                space-between="10"
+                slides-per-view="4"
+                free-mode="true"
+              >
+                 <swiper-slide>
+                  <img
+                    [src]="productSiteImgSrc"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </swiper-slide>
+                
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide>
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide>
+                <swiper-slide>
+                  <img src="" class="d-block w-100" alt="..." />
+                </swiper-slide> 
+              </swiper-container>
+
+              <!-- <div class="" (appGetZoomPosition)="onZoomImage($event)">
+                    <img [src]="selectedImage" class="d-block w-100" alt="..."  >
+                  </div>  -->
+            </div>
+
+            <div class="col-md-7">
+              <h4>
+                {{ ProductName }}
+              </h4>
+
+              <p>Product SKU Code {{ ASIN }}</p>
+              <div class="row">
+                <div class="d-flex">
+                  <p>
+                    Rating:{{ Rating_value }}
+                    <star-rating
+                      style="display: inline-block"
+                      [stars]="Rating_value"
+                    ></star-rating>
+                  </p>
+                  <p>|</p>
+                  <p>RatingCount:{{ Rating_count }}</p>
+                </div>
+              </div>
+              <hr />
+              <p class="price">
+                Selling price:{{ Selling_price | currency : "INR" }}
+              </p>
+              <span class="text-decoration-line-through"
+                ><p>M.R.P:{{ MRP | currency : "INR" }}</p></span
+              >
+              <hr />
+              <p><b>Availability:</b>{{ Availablity }}</p>
+              <P><b>Condition:</b>New</P>
+              <P><b>Brand:</b> {{ Brand }}</P>
+              <hr />
+              <p><b>Description:</b>{{ Description }}</p>
+              <hr />
+              <div class="row">
+                <div style="justify-content: center">
+                  <button
+                    style="margin: 5px"
+                    class="btn btn-primary"
+                    type="submit"
+                    (click)="handleReviewListAction()"
+                  >
+                    Review List
+                  </button>
+
+                  <button
+                    style="margin: 5px"
+                    class="btn btn-primary"
+                    type="submit"
+                    (click)="handleSpecificationAction()"
+                  >
+                    Specification
+                  </button>
+                  <button
+                    style="margin: 5px"
+                    class="btn btn-primary"
+                    type="submit"
+                    (click)="handleBulletPointsAction()"
+                  >
+                    Bullet Points
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <ng-template style=" position: relative;" #noReviews>
+        <div *ngIf="loadingService.isLoading | async" class="loader-container">
+          <mat-progress-bar mode="determinate"></mat-progress-bar>
+          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+        </div>
+        <p style="padding: 10%">No sku Data available.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="header">
+      <span
+        ><button class="btn btn-sm text-center" (click)="goBack()">
+          <span><i class="fa fa-arrow-left fa-1x"></i></span>
+        </button>
+        <h1 style="text-align: center; margin-top: -10px">
+          {{ productSiteName }}
+          <img src="{{SiteImgSrc}}" alt="logo" class="img-fluid" />
+        </h1>
+      </span>
+    </div>
+    <hr>
+   
+    <div class="container">
+     <div class="row d-flex flex-wrap"  >
+      <div class="content col-md-3" >
+        <div>
+            <app-sku-search-card (dataReceived)="handleDataReceived($event)" (ReviewData)="handleReviewDataReceived($event)"></app-sku-search-card>
+        </div>
+      </div>
+      <div></div> -->
+
+<!-- [hidden]="getdata()" -->
+<!-- <div class="row d-flex flex-wrap" >
+      <div   class="col-md-9"  style="margin-left: 10px; "   >
+       
+          <div class="row d-flex flex-wrap" >
+            <div class=" col-md-5">
+                
+              <swiper-container class="mySwiper" style="--swiper-navigation-color: #fff; " 
+                                navigation="true" 
+                                pagination="true"
+                                loop="true"
+                                thumbs-swiper=".mySwiper2"
+                                >
+                 <swiper-slide>
+                  <img [src]=productSiteImgSrc class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-2.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-3.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-3.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+
+              </swiper-container>
+               <swiper-container class="mySwiper2" 
+                                 space-between="10" 
+                                 slides-per-view="4"
+                                 free-mode="true">
+                 <swiper-slide>
+                  <img [src]=productSiteImgSrc class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-2.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-3.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+                 <swiper-slide>
+                  <img src="assets/img-3.jpg" class="d-block w-100" alt="..."  >
+                 </swiper-slide>
+
+              </swiper-container>
+                -->
+<!-- <div class="" (appGetZoomPosition)="onZoomImage($event)">
+                  <img [src]="selectedImage" class="d-block w-100" alt="..."  >
+                </div> -->
+
+<!-- </div>
+             
+              <div class="col-md-7">
+                  <h4>
+                    {{ProductName}}
+                  </h4>
+                 
+                  <p>
+                    Product SKU Code {{ASIN}}
+                  </p>
+                  <div class="row">
+                    <div class="d-flex">
+                      <p >Rating:{{Rating_value}} <star-rating style="display: inline-block;" [stars]="(Rating_value)" ></star-rating></p>
+                      <p>|</p>
+                      <p>RatingCount:{{Rating_count}}</p>
+                    </div>
+                 
+                  </div>
+                  <hr>
+                  <p class="price"> Selling price:{{Selling_price | currency:'INR'}}</p>
+                  <span class="text-decoration-line-through"><p>M.R.P:{{MRP | currency:'INR'}}</p></span>
+                  <hr>
+                  <p><b>Availability:</b>{{Availablity}}</p>
+                  <P><b>Condition:</b>New</P>
+                  <P><b>Brand:</b> {{Brand}}</P>
+                  <hr>
+                  <p><b>Description:</b>{{Description}}</p>
+                  <hr>
+                  <div class="row">
+                    <div style="justify-content: center;">
+                      <button style="margin: 5px;" class="btn btn-primary" type="submit" (click)="handleReviewListAction()">Review List</button>
+                      <button style="margin: 5px;" class="btn btn-primary" type="submit" (click)="handleReviewAnalysisAction()">Review Analysis</button>
+                      <button style="margin: 5px;" class="btn btn-primary" type="submit" (click)="handleSpecificationAction()">Specification</button>
+                      <button style="margin: 5px;" class="btn btn-primary" type="submit" (click)="handleBulletPointsAction()">Bullet Points</button>
+                   
+        
+                    </div>
+              </div>
+            
+
+          </div>
+                
+        </div>
+      </div>
+    </div> -->

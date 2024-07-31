@@ -1,0 +1,680 @@
+<div class="overflow-hidden" >
+    <header class="menu-wrapper">
+        <nav class="navbar navbar-expand-lg bg-light p-0 fixed-top">
+            <div class="container d-flex justify-content-between align-items-center">
+                <!-- Logo -->
+                <a class="navbar-brand"  href="#"><img style="width: 120px; height: 35px; padding: 0px; margin-bottom: 10px;" src="assets/dataxplode-logo-1.png" alt=""></a>
+
+                <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <!-- offcanvas-header -->
+                    <div class="offcanvas-header bg-light m-0 p-0">
+                        <div class="container d-flex justify-content-between align-items-center">
+                            <a class="navbar-brand fs-4" href="#"><img style="width: 120px; height: 35px; padding: 0px; margin-bottom: 10px;" src="assets/dataxplode-logo-1.png" alt=""></a>
+                            <div class="d-flex align-items-center ms-auto">
+                                <!-- Login button -->
+                                <button  class="btn m-1 text-primary" style="font-weight: 400" role="button">
+                                    Login
+                                </button>
+
+                                <!-- Sign Up button -->
+                                <a class="btn btn-primary m-1 d-none d-lg-block" style="width: 150px" (click)="handleSignupAction()">
+                                    Sign Up For Free
+                                </a>
+
+                                <!-- Toggle-button -->
+                                <button id="navbar-toggler" class="navbar-toggler shadow-none border-0" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                                    aria-controls="offcanvasNavbar">
+                                    <button class="btn custom-navbar-toggler"
+                                        style="border: none; background-color: transparent" [class.open]="isOpen"
+                                        (click)="toggleMenu()" [@toggleIcon]="isOpen ? 'open' : 'closed'">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                    </button>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar body -->
+                    <div class="offcanvas-body d-flex flex-column p-4">
+                        <ul class="navbar-nav justify-content-start align-items-start fs-5 pe-3">
+                            <!-- Your navigation items here -->
+                            <li class="nav-item dropdown" [ngClass]="{
+                  dropdown: !isOffcanvasOpen,
+                  dropend: isOffcanvasOpen
+                }">
+                                <a class="nav-link dropdown-toggle text-black" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">Get Started</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">AI Web</a></li>
+                                    <li><a class="dropdown-item" href="#">Automation</a></li>
+                                    <li><a class="dropdown-item" href="#">Analytics</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown" [ngClass]="{
+                  dropdown: !isOffcanvasOpen,
+                  dropend: isOffcanvasOpen
+                }">
+                                <a class="nav-link dropdown-toggle text-black" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">MI Tool</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Price Optimization</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Sentiment Analysis</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown dropdown-mega" [ngClass]="{
+                  dropdown: !isOffcanvasOpen,
+                  dropend: isOffcanvasOpen
+                }">
+                             
+
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="canvasNavbar"
+                                    aria-labelledby="offcanvasNavbarLabel">
+                                    <div class="offcanvas-header">
+                                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                                            Offcanvas Sidebar
+                                        </h5>
+                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <ul class="dropdown-menu shadow">
+                                            <li><a class="dropdown-item" href="#">Gallary</a></li>
+                                            <li><a class="dropdown-item" href="#">Blog</a></li>
+                                            <li class="dropend">
+                                                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                    href="#">submenu</a>
+                                                <ul class="dropdown-menu shadow">
+                                                    <li><a href="" class="dropdown-item">Level 1</a></li>
+                                                    <li><a href="" class="dropdown-item">Level 1</a></li>
+                                                    <li><a href="" class="dropdown-item">Level 1</a></li>
+                                                    <li><a href="" class="dropdown-item">Level 1</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-black" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-black" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item dropdown" [ngClass]="{
+                  dropdown: !isOffcanvasOpen,
+                  dropend: isOffcanvasOpen
+                }">
+                                <a class="nav-link dropdown-toggle text-black" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">About us</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">About-us</a></li>
+                                    <li><a class="dropdown-item" href="#">Contact</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Sign up button (visible on smaller screens) -->
+                        <div class="mt-auto text-center d-lg-none">
+                            <button class="btn btn-primary m-1" role="button" (click)="handleSignupAction()" >
+                                Sign Up For Free
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toggle-button and buttons container -->
+                <div class="d-flex align-items-center ms-auto">
+                    <!-- Login button -->
+                    <button class="btn m-1 text-primary" style="font-weight: 400" role="button" >
+                        Login
+                    </button>
+
+                    <!-- Sign Up button -->
+                    <button class="btn btn-primary m-1 d-none d-lg-block" style="width: 150px" role="button" (click)="handleSignupAction()">
+                        Sign Up For Free
+                    </button>
+
+                    <!-- Toggle-button -->
+                    <button id="navbar-toggler" class="btn navbar-toggler shadow-none border-0" type="button"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <button class="btn custom-navbar-toggler" style="border: none; background-color: transparent"
+                            [class.open]="isOpen" (click)="toggleMenu()" [@toggleIcon]="isOpen ? 'open' : 'closed'">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                        </button>
+                    </button>
+                </div>
+
+                <!-- SideBar -->
+            </div>
+        </nav>
+    </header>
+    <!-- body -->
+    <div class="container text-center mt-5">
+        <div class="row flex-wrap m-5">
+            <div class="col" style=" margin-top: 45px;">
+                <h3 class="bg-sky-100">
+                    <span class="text-black">Accelerate the Growth of Your Business Brand or Agency</span>
+                </h3>
+                <p class="lead mt-1 font-light">
+                    Drive Results With Software for Global Ecommerce Platforms
+                </p>
+                <div class="row">
+                    <div class="col">
+                        <div class="info-card">
+                            <h4>Sellers</h4>
+                            <p>Increase Your Revenue</p>
+                            <a href="#">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info-card">
+                            <h4>Brands</h4>
+                            <p>Scale Your Business</p>
+                            <a href="#">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 ">
+                <div class="video-container">
+                    <video #videoPlayer class="vi" src="/assets/demo.mp4" controls></video>
+                    <!-- <div class="play-button"></div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="m-1 d-flex flex-wrap" style="justify-content: left; width: fit-content">
+            <div *ngFor="let researchCard of ResearchCard" style="margin-left: 50px; width: 16rem; justify-content: center">
+                <div class="card m-1">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: bold">
+                            {{ researchCard.header }}
+                        </p>
+                        <p></p>
+
+                        <p class="card-text" style="font-size: 10px; width: 55%">
+                            {{ researchCard.content }}
+                        </p>
+                        <a href="#" style="font-size: 10px" class="card-link">{{
+                            researchCard.link
+                            }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container flex-column" style="margin-top: 100px;">
+        <h2 class="text-center h1 mt-10 ">Plans & Pricing</h2>
+        <p class="text-center fw-normal h4">For every stage of your seller journey</p>
+        <div class="row PRMO__row">
+            <div class="col-md-12 col-lg-4 justify-content-center">
+                <div class="col-md-6">
+
+                </div>
+                <div class="PRMO__subscription-toggle col-md-6">
+                    <p><span>Save up to 25%</span> per month when billed annually.</p>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                            checked="" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked">See annual pricing</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-md-12 col-lg-8">
+                <div class="PRMO__subscripsions-desk">
+                    <div class="row" style="margin-left: 60px;">
+                        <div class="col-md-4" >
+                            <h4>Diamond</h4>
+                            <div class="PRMO__price">
+                                <span class="PRMO__price-annual active">$229</span><span
+                                    class="PRMO__price-monthly">$279</span> / mo
+                            </div>
+                            <p class="PRMO__subscripsions-desk-billed">Billed annually</p>
+                            <div class="PRMO__subscripsions-btn" data-annual-url="​">
+                                <a href="​" class="btn btn-outline-primary">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="PRMO__subscripsions-desk-badge"
+                                style="background: #d2edff; color: #0253b6">Most
+                                Popular</span>
+                            <h4>Platinum</h4>
+                            <div class="PRMO__price">
+                                <span class="PRMO__price-annual active">$79</span><span
+                                    class="PRMO__price-monthly">$99</span> / mo
+                            </div>
+                            <p class="PRMO__subscripsions-desk-billed">Billed annually</p>
+                            <div class="PRMO__subscripsions-btn" data-annual-url="​">
+                                <a href="​" class="btn btn-outline-primary">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Starter</h4>
+                            <div class="PRMO__price">
+                                <span class="PRMO__price-annual active">$29</span><span
+                                    class="PRMO__price-monthly">$39</span> / mo
+                            </div>
+                            <p class="PRMO__subscripsions-desk-billed">Billed annually</p>
+                            <div class="PRMO__subscripsions-btn" data-annual-url="​">
+                                <a href="​" class="btn btn-outline-primary">Buy Now</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h2 class="mb-6" style="font-size: 40px">FAQs</h2>
+                    <div class="accordion accordion--faq" id="accordionFaq">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-0">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-0" aria-expanded="false" aria-controls="collapse-0">
+                                    Does Amazon Have a Software for Sellers? </button>
+                            </h3>
+                            <div id="collapse-0" class="accordion-collapse collapse" aria-labelledby="faq-0"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        Amazon has an app for sellers called Amazon Seller Central. While it provides
+                                        some very useful reports like the Search Terms Report and other metrics for your
+                                        store, it doesnt cover everything you need to run a successful Amazon business.
+                                        Thats where Helium 10s software for Amazon sellers comes into the picture.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                                    What Is an Amazon Seller Platform? </button>
+                            </h3>
+                            <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="faq-1"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        An Amazon seller platform is a third-party SaaS solution that enables sellers to
+                                        identify insights and manage their Amazon business in a way that’s not available
+                                        to people simply using Amazon Seller Central. <br>
+                                        <br>
+                                        The best Amazon seller platform gives entrepreneurs brand-new ways to optimize
+                                        their product listings, advertising strategies, and branding efforts through a
+                                        data-driven approach.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                    What Software Do You Need to Sell on Amazon? </button>
+                            </h3>
+                            <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-2"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        You technically don’t need any software other than Amazon Seller Central to sell
+                                        on Amazon, yet if you want to maximize profits, you’ll need a third-party
+                                        solution like Helium 10 to help you optimize your store and automate monotonous,
+                                        time-consuming tasks. <br>
+                                        <br>
+                                        We provide you with a full suite of tools, an advanced training course, industry
+                                        updates, and many other resources to take you from beginner to selling millions
+                                        of dollars worth of products.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                    What Is the Best Software for Selling on Amazon? </button>
+                            </h3>
+                            <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-3"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        While most platforms provide one or two tools that help Amazon sellers, Helium
+                                        10 sets the industry standard by providing the most comprehensive and accurate
+                                        solution on the market. <br>
+                                        <br>
+                                        Helium 10 offers over 30 Amazon seller software tools, ranging from data-driven
+                                        keyword research to functional account maintenance &amp; protection. Simply put,
+                                        the best software for Amazon sellers is the one that holistically addresses
+                                        every component of your store’s operations; not just the fun parts!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                    What Is Helium 10 and How Does It Work? </button>
+                            </h3>
+                            <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-4"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        Helium 10 is the ultimate all-in-one software solution for Amazon and Walmart
+                                        sellers. If you need to identify a profitable product, discover keywords to
+                                        target, optimize your listing, conduct outreach to ask buyers to write reviews,
+                                        manage inventory, prevent coupon stacking, or streamline your PPC campaigns,
+                                        Helium 10 has the best Amazon seller software tools for the job. <br>
+                                        <br>
+                                        We have a full stack of tools that enable you to maximize revenue and minimize
+                                        time spent on the day-to-day management of your store. <br>
+                                        <br>
+                                        We give you the flexibility of choosing a tool plan that fits the needs of your
+                                        business, regardless of if you’re a weekend seller or a scaling business looking
+                                        for a profitable exit plan. <br>
+                                        <br>
+                                        Once you’ve selected your Helium 10 plan, you can connect your Amazon seller
+                                        token and begin to revolutionize your business operations today!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                    Why Do I Need Helium 10? </button>
+                            </h3>
+                            <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="faq-5"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        Before Helium 10, sellers simply had to guess which products they should sell,
+                                        which keywords they should target, whether their listing was optimized to rank
+                                        well on Amazon’s search engine, etc. <br>
+                                        <br>
+                                        Helium 10 provides you with the ability to make data-driven decisions. With
+                                        keyword search volumes, trending product niches, listing optimization tools,
+                                        Amazon Ads automation, automated product review requests, and much more, sellers
+                                        can eliminate the guesswork with their business. <br>
+                                        <br>
+                                        While your competition is falling behind doing a ton of guesswork, you’ll have
+                                        systems and processes in place through the raw power of Helium 10.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+                                    How Much Is Helium 10? </button>
+                            </h3>
+                            <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="faq-6"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        Helium 10 costs anywhere from $29  $229 per month if youre on an annual plan,
+                                        or $39  $279 per month if youre on the monthly plan (depending on the package
+                                        level that suits your business). You can also sign up for free to get an inside
+                                        look into the account. Be sure to connect your Amazon token so that you may see
+                                        your businesss data within our platform! </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="faq-7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+                                    How Accurate Is Helium 10? </button>
+                            </h3>
+                            <div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="faq-7"
+                                data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    <p>
+                                        On average, Helium 10 estimates 38.2% of product sales perfectly correct (with 0
+                                        errors), while our closest competitor estimates 29.5% perfectly correct (with 0
+                                        errors), making Helium 10 almost 10% more accurate. <br>
+                                        <br>
+                                        Helium 10 gives an estimation within 22 units above or below actual sales. Our
+                                        closest competitors margin of error is 35 above or below. <br>
+                                        <br>
+                                        While a differential of 13 may not seem like much on its own, multiplied out by
+                                        thousands (or hundreds of thousands) of sales, that information becomes less and
+                                        less accurate which will negatively impact your ability to make data-driven
+                                        decisions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- footer -->
+
+<!-- Footer -->
+<footer class="bg-body-tertiary text-center " style="  background-color: #024c9a !important;">
+    <!-- Grid container -->
+    <div class="container p-4 ">
+          
+      
+      <!-- Section: Form -->
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex ">
+            <!--Grid column-logo-->
+            <div class="col-lg-4" >
+                <a class="navbar-brand " href="#"><img style="margin-top: 50px; width: 217px;height: 55px;padding: 0px; " src="assets/dataxplode-logo-1.png" alt=""></a>
+              </div>
+
+            <!--Grid column-->
+         
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-lg-4 " style="margin-top: 60px;   ">
+                <div class="">
+                    <p class="" >
+                      <strong style="color: white; flex-wrap: nowrap; ">Never miss insights into the e-commerce selling space</strong>
+                    </p>
+                  </div>
+            </div>
+            <!--Grid column-->
+         
+            <!--Grid column-->
+            <div class="col-lg-4" >
+                <div data-mdb-input-init  class=" col-lg-2 mt-5" style="width: 100%;"  >
+                    <input type="email" placeholder="Email" id="form5Example24" class="form-control" />
+                </div>
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="button" style="width: 100%; " class=" mt-1 btn btn-primary mb-4">
+                  Subscribe
+                </button>
+              </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
+  
+      <!-- Section: Text -->
+      <section class="mb-4">
+    
+      </section>
+      <!-- Section: Text -->
+  
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">GET STARTED</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="text-body" href="#!">Link 1</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 2</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 3</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">TOOLS</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="text-body" href="#!">Link 1</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 2</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 3</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">RESOURCES</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="text-body" href="#!">Link 1</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 2</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 3</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">COMPANY</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="text-body" href="#!">Link 1</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 2</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 3</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">HELP CENTER AND SUPPORT </h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="text-body" href="#!">Link 1</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 2</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 3</a>
+              </li>
+              <li>
+                <a class="text-body" href="#!">Link 4</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+    <section class="d-flex justify-content-center  p-4 border-bottom">
+    <!-- Left -->
+      
+    <!-- Section: Social media --> 
+    <div class="me-4" style="margin-left: 55px;">
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i style="background-color: white; padding: 12px; border-radius: 8px; justify-content: center;" class="fab fa-github"></i>
+        </a>
+      </div>
+       <!-- Section: Social media -->
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div class="me-5 d-none d-lg-block mt-2" style="color: white;">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      </section>
+      <!-- Right -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="color: white; background-color: rgba(236, 231, 231, 0.05);">
+      © 2024 Copyright:
+      <a class="text-reset fw-bold"   href="https://mdbootstrap.com/">DataXplode</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->

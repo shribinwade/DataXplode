@@ -1,0 +1,30 @@
+<section class="product ">
+    <div class="container-fluid">
+      <div class="slider-wrap ">
+        <div class="slider-main ">
+          <div class="item"  *ngFor="let logo of logos" >
+            <div type="button" (click)=onCarouselItemClick(logo.label) >
+            <img style="margin-left: 59px; " class="mt-3" width="45" height="45" src={{logo.src}} alt="image">
+            <div class="text"><p>{{logo.label|uppercase}}</p></div>
+          </div>
+  
+          </div>
+          
+        </div>
+        
+        <div class="button-area">
+          <button class="prevIcon " type="button" appPrev  data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span  aria-hidden="true"><i class="fa fa-chevron-left" style="font-size:30px"></i></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="next" type="button" appNext data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <i class="fa fa-chevron-right" style="font-size:30px"></i>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr>
+  <h3 style="text-align: center; margin-top: 0; font-weight: bold;">Market Intelligence</h3>
+  <hr>
