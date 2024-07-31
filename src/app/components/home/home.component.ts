@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit  {
       this.isOpen = !this.isOpen;
       this.isOffcanvasOpen = !this.isOffcanvasOpen;
   }
+
+  handleLogin(){
+
+  }
  
   
   ResearchCard = [
