@@ -14,6 +14,7 @@ import { environment } from '../../../environments/environments';
 export class CacheInterceptor implements HttpInterceptor {
 
   apiurl: string = environment.apiUrl;
+  awsurl: string = environment.awsUrl;
 
   //store the response object
   cacheMap = new Map<string, HttpResponse<any>>();
@@ -72,7 +73,25 @@ export class CacheInterceptor implements HttpInterceptor {
        //the request must be POST method and match the specific URL
        if (req.method === 'POST') {
         //define all the cache partial URL
-        const storeUrls = [`${this.apiurl}/get_CompetitorAnalyzer`,`${this.apiurl}/get_amazon_info_reviews`,`${this.apiurl}/get_amazon_keyword_details`,`${this.apiurl}/get_brand_details`,`${this.apiurl}/get_search_brand_details`,`${this.apiurl}/get_data_IP`];
+        const storeUrls = [`${this.apiurl}/get_CompetitorAnalyzer`,
+                           `${this.apiurl}/get_amazon_info_reviews`,
+                           `${this.apiurl}/get_amazon_keyword_details`,
+                           `${this.apiurl}/get_brand_details`,
+                           `${this.apiurl}/get_search_brand_details`,
+                           `${this.apiurl}/get_data_IP`,
+                           //aws urls
+                           `${this.awsurl}/get_CompetitorAnalyzer`,
+                           `${this.awsurl}/get_amazon_info_reviews`,
+                           `${this.awsurl}/get_amazon_keyword_details`,
+                           `${this.awsurl}/get_brand_details`,
+                           `${this.awsurl}/get_search_brand_details`,
+                           `${this.awsurl}/get_data_IP`
+                          
+                          
+                          
+                          
+                          
+                          ];
         //get the request URL
         for (let i = 0; i < storeUrls.length; i++) {
           if (req.url.includes(storeUrls[i])) {
@@ -87,7 +106,15 @@ export class CacheInterceptor implements HttpInterceptor {
     //the request must be POST method and match the specific URL
     if (req.method === 'POST') {
       //define all the cache partial URL
-      const cacheableUrls = [`${this.apiurl}/get_amazon_keyword_details`, `${this.apiurl}/get_amazon_info_reviews`, `${this.apiurl}/get_brand_details`, `${this.apiurl}/get_CompetitorAnalyzer`,`${this.apiurl}/get_amazon_keyword_details`,`${this.apiurl}/get_search_brand_details`,`${this.apiurl}/get_data_IP`]
+      const cacheableUrls = [`${this.apiurl}/get_amazon_keyword_details`, 
+                             `${this.apiurl}/get_amazon_info_reviews`, 
+                             `${this.apiurl}/get_brand_details`, 
+                             `${this.apiurl}/get_CompetitorAnalyzer`,
+                             `${this.apiurl}/get_amazon_keyword_details`,
+                             `${this.apiurl}/get_search_brand_details`,
+                             `${this.apiurl}/get_data_IP`
+                            
+                            ]
       //get the request URL
       for (let i = 0; i < cacheableUrls.length; i++) {
         if (req.url.includes(cacheableUrls[i])) {
