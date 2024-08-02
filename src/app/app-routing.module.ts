@@ -34,7 +34,7 @@ const routes: Routes = [
       
       {
         path: '',
-        redirectTo: '',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
       },
       { 
@@ -115,6 +115,9 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**',  
+    component: PagenotfoundComponent 
+  }, 
 ];
   @NgModule({
     imports: [RouterModule.forRoot(routes)],
@@ -210,9 +213,7 @@ const routes: Routes = [
     
 
 //   },
-//   { path: '**',  
-//     component: PagenotfoundComponent 
-//   }, 
+
  
 
 
