@@ -14,7 +14,7 @@ import { SkuDashboardComponent } from './mi-tool/product-search/sku-dashboard/sk
 import { SkuSearchCardComponent } from './mi-tool/product-search/sku-search-card/sku-search-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgxUiLoaderConfig, NgxUiLoaderModule, SPINNER } from 'ngx-ui-loader';
+
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { SpecificationComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/specification/specification.component';
@@ -35,8 +35,7 @@ import { KeywordSearchComponent } from './mi-tool/keyword-search/keyword-search.
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InterceptorService } from '../../Services/interceptor.service';
-import { BcgMatrixComponent } from '../bcg-matrix/bcg-matrix.component';
-import { BcgMatrixChartComponent } from '../markertsearch/dialog-component/BCG-matrix-chart/bcg-matrix-chart/bcg-matrix-chart.component';
+
 
 
 
@@ -74,10 +73,10 @@ import { BcgMatrixChartComponent } from '../markertsearch/dialog-component/BCG-m
     CommonModule,
     ToolsRoutingModule,
     ReactiveFormsModule,
-    // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxImageZoomModule,
+
+
     MatDialogModule,
-    InfiniteScrollModule,
+   
     MatTableModule,  
     MatFormFieldModule,
     MatSelectModule,

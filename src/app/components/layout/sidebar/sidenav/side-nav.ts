@@ -61,7 +61,7 @@ export const navbarData :INavbarData[] = [
       },
       {
         routeLink: 'services/contact',
-        icon: 'fas fa-phone-square',
+        icon: 'fas fa-phone-alt',
         label: 'Contact'
       },
       {

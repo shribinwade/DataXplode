@@ -10,6 +10,7 @@ import { CountrydataComponent } from './components/tools/mi-tool/countrydata/cou
 import { CompititorAnalyzerComponent } from './components/competitor-analyzer/compititor-analyzer/compititor-analyzer.component';
 import { MatrixResultComponentComponent } from './components/competitor-analyzer/result-component/matrix-result-component/matrix-result-component.component';
 import { ReviewSentimentChartComponent } from './review-sentiment-chart/review-sentiment-chart.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
     children: [
            {
             path: '',
-            redirectTo: '',
+            redirectTo: 'dashboard',
             pathMatch: 'full',
            },
            {
@@ -51,7 +52,9 @@ const routes: Routes = [
     ],
     
 
-  }
+  },
+  { path: '**', pathMatch: 'full',  
+    component: PagenotfoundComponent }, 
  
 
 

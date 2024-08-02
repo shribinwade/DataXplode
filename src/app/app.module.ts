@@ -3,12 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { SidenavComponent } from './components/layout/sidebar/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
-
 import { SignupComponent } from './components/signup/signup.component';
 import { BodyComponent } from './components/layout/sidebar/body/body.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,7 +20,7 @@ import { ReviewAnalysisComponent } from './material-component/dialog/review-anal
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {NgxUiLoaderConfig,NgxUiLoaderHttpModule,NgxUiLoaderModule,SPINNER} from 'ngx-ui-loader'
+// import {NgxUiLoaderConfig,NgxUiLoaderHttpModule,NgxUiLoaderModule,SPINNER} from 'ngx-ui-loader'
 import { FullcomponentComponent } from './components/layout/sidebar/full/fullcomponent/fullcomponent.component';
 import { ToolsModule } from './components/tools/tools.module';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
@@ -61,16 +59,18 @@ import { ReviewSentimentChartComponent } from './review-sentiment-chart/review-s
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NewsResultComponent } from './components/markertsearch/child-components/news-data/news-result/news-result.component';
 import { InnovationComponent } from './components/markertsearch/child-components/innovation/innovation.component';
-const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-text:"Loading...",
-textColor:"#FFFFFF",
-textPosition:"center-center",
-bgsColor: "#2660d2",
-fgsColor: "#2660d2",
-fgsType:SPINNER.chasingDots,
-fgsSize:100,
-hasProgressBar:true
-}
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+
+// const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+// text:"Loading...",
+// textColor:"#FFFFFF",
+// textPosition:"center-center",
+// bgsColor: "#2660d2",
+// fgsColor: "#2660d2",
+// fgsType:SPINNER.chasingDots,
+// fgsSize:100,
+// hasProgressBar:true
+// }
 
 
 
@@ -110,19 +110,8 @@ hasProgressBar:true
     SwotAnalysisComponent,
     ReviewSentimentChartComponent,
     NewsResultComponent,
-    InnovationComponent
-
-    
-   
- 
-  
-   
-   
-   
- 
-
-   
-
+    InnovationComponent,
+    PagenotfoundComponent
   ],
   imports: [
     FormsModule,
@@ -131,7 +120,7 @@ hasProgressBar:true
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToolsModule,
     FormsModule,
     MatTableModule,
@@ -149,11 +138,6 @@ hasProgressBar:true
     CdkTableModule,
     MatCheckboxModule
     
-    
-  
-   
-    
-   
   ],
   providers: [
     provideAnimationsAsync(),
