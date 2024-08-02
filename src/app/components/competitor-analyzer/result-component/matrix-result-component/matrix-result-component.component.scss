@@ -25,6 +25,7 @@
   width: inherit;
  }
 
+
  .table-primary{
     background-color: #0d6efdcf !important;
     color: white;
@@ -105,3 +106,13 @@
  .table-primary{
   width: 200px;
  }
+
+ .table-fixed tbody {
+  height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+
+
+

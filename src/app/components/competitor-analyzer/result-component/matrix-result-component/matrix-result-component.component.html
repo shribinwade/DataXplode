@@ -1,21 +1,19 @@
 
-<div class="card">
+<!-- <div class="">
   <div class="card-title">
       <h5 class="text-center">Product Matrix</h5>
-  </div>
+  </div> -->
+
+<div class="container py-5">
+  
 
   <div class="table-responsive">
-    <table class="table table-bordered ">
-      <thead>
+    <table class="table table-fixed table-bordered ">
+      <thead >
         <tr class="" >
-          <th class="text-center headers"  *ngFor="let header of headers" scope="col">
-           
+          <th class="text-center headers "  *ngFor="let header of headers" scope="col">
                 {{header}}
-            
-         
            </th>
-         
-        
         </tr>
       </thead>
       <tbody>
@@ -77,6 +75,8 @@
       <ng-template #loading>
         <p>Loading data...</p>
       </ng-template>
-</div>
+<!-- </div> -->
+       
+    </div>
 
   

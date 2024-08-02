@@ -1,18 +1,31 @@
 <div class="service-section  mt-0" >
     <div class="container" >
         <div class="row">
+
+       
+
             <div *ngIf="filteredSites.length > 0">
                 <h2>{{ country }}</h2>
                 <div *ngFor="let site of filteredSites" style="display: inline-block;">
-                  <div>
-                    <div class="service-box border border-dark" [routerLink]="['product-details',site.name,site.id]"  type="button" >
+                  <a [routerLink]="['product-details', site.name, site.id]" style="text-decoration: none;">
+                    <div class="service-box border border-dark">
                       <div class="service-img-box">
-                        <img [src]="site.src"  type="button" [routerLink]="['product-details',site.name,site.id]"  alt="{{ site.name }}" class="img-fluid">
+                        <img [src]="site.src" alt="{{ site.name }}" class="img-fluid">
+                      </div>
+                      <p>{{ site.name }}</p>
+                    </div>
+                  </a>
+                </div>
+                <!-- <div *ngFor="let site of filteredSites" style="display: inline-block;">
+                  <div>
+                    <div class="service-box border border-dark" routerLink="product-details"  type="button" >
+                      <div class="service-img-box">
+                        <img [src]="site.src"  type="button" routerLink="product-details"  alt="{{ site.name }}" class="img-fluid">
                       </div>
                       <p >{{ site.name }}</p>    
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div *ngIf="filteredSites.length === 0">
                

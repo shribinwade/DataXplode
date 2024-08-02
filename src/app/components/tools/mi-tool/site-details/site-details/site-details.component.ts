@@ -12,6 +12,7 @@ export class SiteDetailsComponent {
   productSite!:string;
   productSiteName!:any
   productSiteImgSrc!:String;
+  productId:any;
   
   constructor(private activatedRoute:ActivatedRoute, private ecommarcesites:ECommerceSitesService  ){
 
@@ -19,12 +20,16 @@ export class SiteDetailsComponent {
   ngOnInit(): void {
     this.productId=this.activatedRoute.snapshot.paramMap.get('id');
     this.productSiteName=this.activatedRoute.snapshot.paramMap.get('name');
-    this.productSiteImgSrc=getImgSrc(this.ecommarcesites,this.productId);                     
+    this.productSiteImgSrc=getImgSrc(this.ecommarcesites,this.productId);  
+    console.log(this.productId);
+    console.log(this.productSiteName);
+    
+                       
     console.log(this.productSite);
     console.log(this.productSiteImgSrc);
     
   }
-  productId:any;
+  
 
   goBack(): void {
     // this.location.back();

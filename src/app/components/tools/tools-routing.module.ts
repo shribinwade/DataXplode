@@ -24,9 +24,9 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
  
-  { path: 'services/tools/mi_tools', component: MiToolComponent},
-  { path:'price_optimization', component: PriceOptimizationComponent},
-  { path: 'sentiment_analysis',component: SentimentAnalysisComponent},
+  // { path: 'services/tools/mi_tools', component: MiToolComponent},
+  // { path:'price_optimization', component: PriceOptimizationComponent},
+  // { path: 'sentiment_analysis',component: SentimentAnalysisComponent},
   // { path: 'services/tools/mi_tools/product-details/:name/:id',component: SiteDetailsComponent},
   // {
   //   path: 'product-service',

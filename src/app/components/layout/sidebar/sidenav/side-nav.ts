@@ -13,19 +13,19 @@ export const navbarData :INavbarData[] = [
         label: 'Services',
         items: [
             {
-                routeLink: 'services/ai_web',
+                routeLink: 'ai_web',
                 label: 'AI Web'
             },
             {
-                routeLink: 'services/automation',
+                routeLink: 'automation',
                 label: 'Automation'
             },
             {
-                routeLink: 'services/analytics',
+                routeLink: 'analytics',
                 label: 'Analytics'
             },
             {
-              routeLink: 'services/competitor-analyzer',
+              routeLink: 'competitor-analyzer',
               label: 'Competitor Analyzer'
             }
         ]
