@@ -16,12 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import {MatDialogModule} from '@angular/material/dialog';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
+
 import { SpecificationComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/specification/specification.component';
 import { BulletpointsComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/bulletpoints/bulletpoints.component';
 import { ReviewlistComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/reviewlist/reviewlist.component';
 import { ReviewAnalysisComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/review-analysis/review-analysis.component';
-import { InfiniteScrollModule } from "ngx-infinite-scroll";
+
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -57,14 +57,7 @@ import { InterceptorService } from '../../Services/interceptor.service';
     BulletpointsComponent,
     ReviewlistComponent,
     ReviewAnalysisComponent,
-   
     KeywordSearchComponent,
-   
-
-   
-    
-
-   
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -73,10 +66,7 @@ import { InterceptorService } from '../../Services/interceptor.service';
     CommonModule,
     ToolsRoutingModule,
     ReactiveFormsModule,
-
-
     MatDialogModule,
-   
     MatTableModule,  
     MatFormFieldModule,
     MatSelectModule,

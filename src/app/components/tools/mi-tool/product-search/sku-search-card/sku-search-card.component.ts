@@ -2,9 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkuService } from '../../../../../Services/sku.service';
 import { HttpClient } from '@angular/common/http';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 import { SnackbarService } from '../../../../../Services/snackbar.service';
-import { forkJoin } from 'rxjs';
+
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs'; 
 import { switchMap, catchError } from 'rxjs/operators';
@@ -26,9 +26,6 @@ export class SkuSearchCardComponent implements OnInit {
   constructor(
     private skuservice:SkuService ,
     private formBuilder:FormBuilder,
-    private httpClient:HttpClient,
-    private ngxService: NgxUiLoaderService,
-    private snackbarService:SnackbarService,
     private activatedRoute:ActivatedRoute
   ){}
 
