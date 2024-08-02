@@ -18,6 +18,7 @@ import { MarketNewsComponent } from '../markertsearch/child-components/market-ne
 import { MarketSearchResultComponent } from '../markertsearch/child-components/market-search-result/market-search-result.component';
 import { NewsResultComponent } from '../markertsearch/child-components/news-data/news-result/news-result.component';
 import { InnovationComponent } from '../markertsearch/child-components/innovation/innovation.component';
+import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 
 
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   //   children: [
   //     { path: 'product-details/:name/:id', component: SiteDetailsComponent} // Nested route with ID parameter
   //   ]
-  // }
+  // },
   {
     path:'services',
     component: FullcomponentComponent,
@@ -87,7 +88,10 @@ const routes: Routes = [
     ],
     
 
-  }
+  },
+  { path: '**',  
+    component: PagenotfoundComponent 
+  }, 
  
 ];
 

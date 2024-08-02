@@ -52,9 +52,9 @@ const routes: Routes = [
     ],
     
 
-  },
-  { path: '**', pathMatch: 'full',  
-    component: PagenotfoundComponent }, 
+  }
+  // { path: '**', pathMatch: 'full',  
+  //   component: PagenotfoundComponent }, 
  
 
 
