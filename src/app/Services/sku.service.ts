@@ -18,10 +18,10 @@ export class SkuService {
   Post_get_amazon_info_details(data:any):Observable<any>{
     const formData = new FormData();
     formData.append('query1',data );
-    return this.httpClient.post<any>(this.url+'/get_amazon_info_details',formData); 
+    // return this.httpClient.post<any>(this.url+'/get_amazon_info_details',formData); 
     
     // aws url
-    // return this.httpClient.post<any>(this.awsUrl+'/get_amazon_info_details',formData); 
+    return this.httpClient.post<any>(this.awsUrl+'/get_amazon_info_details',formData); 
 
   }
 

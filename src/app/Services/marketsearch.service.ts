@@ -20,10 +20,10 @@ export class MarketsearchService {
     formData.append('query1',data);
     console.log(formData);
     
-    return this.httpClient.post<any>(this.url+'/get_brand_details',formData); 
+    // return this.httpClient.post<any>(this.url+'/get_brand_details',formData); 
 
     //aws url
-    //  return this.httpClient.post<any>(this.awsUrl+'/get_brand_details',formData); 
+     return this.httpClient.post<any>(this.awsUrl+'/get_brand_details',formData); 
   }
 
   //Get News from brand search
@@ -31,10 +31,10 @@ export class MarketsearchService {
     const formData = new FormData();
     formData.append('query1',data);
     console.log(formData.get('query1'));
-     return this.httpClient.post<any>(this.url+'/get_search_brand_details',formData);
+    //  return this.httpClient.post<any>(this.url+'/get_search_brand_details',formData);
 
     //aws url
-    // return this.httpClient.post<any>(this.awsUrl+'/get_search_brand_details',formData);
+    return this.httpClient.post<any>(this.awsUrl+'/get_search_brand_details',formData);
   }
 
   // url:string= "http://localhost:3000/data";
