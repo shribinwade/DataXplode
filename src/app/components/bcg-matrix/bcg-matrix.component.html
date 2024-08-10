@@ -1,169 +1,125 @@
-<!-- <div class="bcg-matrix-container">
-    <div class="y-axis-label">
-      Market Growth Rate
-      <div class="y-axis-line">
-        <div class="arrow-up "></div>
-      </div>
-    </div>
-    <div class="bcg-matrix">
-      <div class="bcg-cell star">
-        <div class="icon">⭐</div>
-        <div class="title">Star</div>
-        <div class="description">
-             
-          <div *ngFor="let data of brands.Brand_list ">
-              <p *ngIf="data.bcg_value=== 'Star'">
-                 {{data.Brand}}
-              </p>
-          </div>
-
-        </div>
-      </div>
-      <div class="bcg-cell question-mark">
-        <div class="icon">❓</div>
-        <div class="title">Question mark</div>
-        <div class="description"></div>
-      </div>
-      <div class="bcg-cell cash-cow">
-        <div class="icon">🐄</div>
-        <div class="title">Cash cow</div>
-        <div class="description"></div>
-      </div>
-      <div class="bcg-cell dog">
-        <div class="icon">🐶</div>
-        <div class="title">Dog</div>
-        <div class="description"></div>
-      </div>
-    </div>
-    <div class="x-axis-label">
-     Market Share
-      <div class="x-axis-line">
-        <div class="arrow-right"></div>
-      </div>
-    </div>
-  </div>
-  
-
-  <div class="chart">
-    <div class="y-axis">
-        <div class="tick" style="top: 0%;">100</div>
-        <div class="tick" style="top: 25%;">75</div>
-        <div class="tick" style="top: 50%;">50</div>
-        <div class="tick" style="top: 75%;">25</div>
-        <div class="tick" style="top: 100%;">0</div>
-    </div>
-    <div class="x-axis">
-        <div class="tick" style="left: 0%;">Jan</div>
-        <div class="tick" style="left: 25%;">Feb</div>
-        <div class="tick" style="left: 50%;">Mar</div>
-        <div class="tick" style="left: 75%;">Apr</div>
-        <div class="tick" style="left: 100%;">May</div>
-    </div>
-    <div class="arrow y-arrow"></div>
-    <div class="arrow x-arrow"></div>
-
-    
-</div> -->
-
-
-
 <h4 mat-dialog-title>BCG Matrix Chart:</h4>
-<mat-dialog-content >
-    
-  <!-- <div class="heading">
-    <h4>BCG Matrix Chart</h4>
-  </div> -->
-  <div class="chart">
-  
-  
-    <div class="y-axis">
-      
-        <div class="tick" style="top: 35%;"><h6>High</h6></div>
-     
-        <div class="tick" style="top: 78%;"><h6>Low</h6></div>
-      
-    </div>
-    <div class="x-axis">
-       
-        <div class="tick" style="left: 28%;"><h6>High</h6></div>
-       
-        <div class="tick" style="left: 74%;"><h6>Low</h6></div>
-      
-    </div>
-    <div class="arrow y-arrow"></div>
-    <div class="arrow x-arrow"></div>
-    
-   
-    
-    <div class="y-axis-label">
-      Market Growth Rate
-      
-    </div>
-  
-    <div class="bcg-matrix-container">
-    
-        <div class="bcg-matrix">
-            <div class="bcg-cell star">
-                <div class="icon">⭐</div>
-                <div class="title">Star</div>
-                <div class="description">
-                    <!-- Example Angular code, ensure your Angular app is properly set up -->
-                    <div *ngFor="let data of brands.Brand_list">
-                        <p *ngIf="data.bcg_value === 'Star'">
-                            {{data.Brand}}
-                        </p>
+
+<mat-dialog-content class="mat-typography">
+  <div class="flex-container">
+    <div class="box">
+
+        <div class="box-container">
+            
+                <div class="innerbox" id="box1">
+                      <div class="namelabel" id="y">Market Growth Rate</div>
+                </div>
+
+                <div class="innerbox" id="box3">
+                    <div class="chart">
+                        <div class="y-axis">
+                          <div class="tick" style="top: 25%"><h6>High</h6></div>
+                
+                          <div class="tick" style="top: 68%"><h6>Low</h6></div>
+                        </div>
+                
+                        <div class="x-axis">
+                          <div class="tick" style="left: 28%"><h6>High</h6></div>
+                
+                          <div class="tick" style="left: 74%"><h6>Low</h6></div>
+                        </div>
+                        <div class="arrow y-arrow"></div>
+                        <div class="arrow x-arrow"></div>
+                
+                       
+                        <!-- <div class="y-axis-label">Market Growth Rate</div> -->
+                
+                        
+                
+                        <div class="bcg-matrix-container">
+                           
+                          <div class="bcg-matrix">
+                            <div class="bcg-cell star">
+                              <div class="title">Star</div>
+                              <div class="icon"><i class="icon fas fa-star"></i></div>
+                              <div class="description">
+                                <!-- Example Angular code, ensure your Angular app is properly set up -->
+                                <div *ngFor="let data of brands.Brand_list">
+                                  <p *ngIf="data.bcg_value === 'Star'">
+                                    {{ data.Brand }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bcg-cell question-mark">
+                              <div class="title">Question mark</div>
+                              <div class="icon">
+                                <i class="icon fas fa-question-circle"></i>
+                              </div>
+                              <div class="description">
+                                <div *ngFor="let data of brands.Brand_list">
+                                  <p *ngIf="data.bcg_value === 'Question Mark'">
+                                    {{ data.Brand }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bcg-cell cash-cow">
+                              <div class="title">Cash cow</div>
+                              <div class="icon"><i class="icon fas fa-dollar-sign"></i></div>
+                              <div class="description">
+                                <div *ngFor="let data of brands.Brand_list">
+                                  <p *ngIf="data.bcg_value === 'Cash Cow'">
+                                    {{ data.Brand }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bcg-cell dog">
+                              <div class="title">Dog</div>
+                              <div class="icon"><i class="icon fas fa-dog"></i></div>
+                              <div class="description">
+                                <div *ngFor="let data of brands.Brand_list">
+                                  <p *ngIf="data.bcg_value === 'Dog'">
+                                    {{ data.Brand }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+                        </div>
+                        <!-- <div class="x-axis-label">
+                            Market Share
+                            <div class="x-axis-line">
+                              <div class="arrow-right"></div>
+                            </div>
+                          </div> -->
+                      </div>   
+
+
+
+
+                </div>
+
+
+
+
+                <div class="innerbox" id="box2">
+                    
+                    <div class="namelabel" id="x">
+                        Market Share
+                        <!-- <div class="x-axis-line">
+                          <div class="arrow-right"></div>
+                        </div> -->
                     </div>
                 </div>
-            </div>
-            <div class="bcg-cell question-mark">
-                <div class="icon">❓</div>
-                <div class="title">Question mark</div>
-                <div class="description">
-                  <div *ngFor="let data of brands.Brand_list">
-                    <p *ngIf="data.bcg_value === 'Question Mark'">
-                        {{data.Brand}}
-                    </p>
-                </div>
-                </div>
-            </div>
-            <div class="bcg-cell cash-cow">
-                <div class="icon">🐄</div>
-                <div class="title">Cash cow</div>
-                <div class="description">
-                  <div *ngFor="let data of brands.Brand_list">
-                    <p *ngIf="data.bcg_value === 'Cash Cow'">
-                        {{data.Brand}}
-                    </p>
-                </div>
-                </div>
-            </div>
-            <div class="bcg-cell dog">
-                <div class="icon">🐶</div>
-                <div class="title">Dog</div>
-                <div class="description">
-                  <div *ngFor="let data of brands.Brand_list">
-                    <p *ngIf="data.bcg_value === 'Dog'">
-                        {{data.Brand}}
-                    </p>
-                </div>
-                </div>
-            </div>
         </div>
-        <div class="x-axis-label">
-            Market Share
-            <div class="x-axis-line">
-                <div class="arrow-right"></div>
-            </div>
+
+        <div class="">
+
         </div>
+      
+     
+      
     </div>
   </div>
-
 </mat-dialog-content>
-       
-<mat-dialog-actions>
-  <button class="btn btn-danger" (click)=closepopup()>Close</button>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" (click)="closepopup()">Close</button>
 </mat-dialog-actions>
-
-
-
- 

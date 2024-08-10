@@ -27,10 +27,10 @@ export class ProductMatrixService {
     formData.append('query3',data.features[0].feature );
     console.log(formData.get('query1'));
     
-    // return this.httpClient.post<any>(this.url+'/get_CompetitorAnalyzer',formData); 
+    return this.httpClient.post<any>(this.url+'/get_CompetitorAnalyzer',formData); 
 
     //aws url
-    return this.httpClient.post<any>(this.awsUrl+'/get_CompetitorAnalyzer',formData); 
+    // return this.httpClient.post<any>(this.awsUrl+'/get_CompetitorAnalyzer',formData); 
   }
 
   //   url:string= "http://localhost:3000/Search_result";

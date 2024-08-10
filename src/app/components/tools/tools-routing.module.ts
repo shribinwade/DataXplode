@@ -11,7 +11,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { SkuDashboardComponent } from './mi-tool/product-search/sku-dashboard/sku-dashboard.component';
 import { KeywordSearchComponent } from './mi-tool/keyword-search/keyword-search.component';
 import { MarkertsearchComponent } from '../markertsearch/markertsearch.component';
-import { CompetitorAnalysisComponent } from '../competitor-analysis/competitor-analysis.component';
+
 import { MarketTrendComponent } from '../markertsearch/child-components/market-trend/market-trend.component';
 import { MarketLeaderComponent } from '../markertsearch/child-components/market-leader/market-leader.component';
 import { MarketNewsComponent } from '../markertsearch/child-components/market-news/market-news.component';

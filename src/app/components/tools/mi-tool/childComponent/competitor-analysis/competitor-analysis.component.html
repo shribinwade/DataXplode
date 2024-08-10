@@ -1,0 +1,70 @@
+
+    
+<mat-dialog-content>
+    <div class="flex-container">
+   
+        <div class="formbox">
+            <h4 class="text-center">Product Input Form</h4>
+            <hr style="color: blue; margin: 1px;">
+            <p class="text-center">Please fill out the form below to submit a new product.</p>
+            
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
+                <label for="keyword">Keyword</label>
+                <input formControlName="keyword" class="form-control mb-1" type="text" id="keyword" placeholder="Enter keyword">
+    
+                <label for="productName">Product Name</label>
+                <input formControlName="productName" class="form-control mb-1" type="text" id="productName" placeholder="Enter product name">
+
+                <div class="row g-2">
+                    <div class="col-md">
+                      <div class="form-floating">
+                        <div>
+                            <label for="mrp">MRP</label>
+                            <input formControlName="mrp" class="form-control mb-1" type="text" id="mrp" placeholder="Enter MRP">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md">
+                      <div class="form-floating">
+                        <div>
+                            <label for="sp">Selling Price</label>
+                            <input formControlName="sp" class="form-control mb-1" type="text" id="sp" placeholder="Enter Selling Price">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+          
+    
+                <label for="productDescription">Product Description</label>
+                <textarea formControlName="productDescription" class="form-control mb-1" id="productDescription" placeholder="Enter product description" rows="4"></textarea>
+    
+                <label for="brand">Brand</label>
+                <input formControlName="brand" class="form-control mb-1" type="text" id="brand" placeholder="Enter brand name">
+    
+                <label for="features">Features</label>
+                <input formControlName="features" class="form-control mb-1" type="text" id="features" placeholder="Enter features, press Enter to add">
+    
+               
+                <label for="imageUpload">Upload Image</label>
+
+                <input formControlName="image" class="form-control mb-1" type="file" id="imageUpload" accept="image/*" onchange="previewImage()">
+
+                <div class="image-preview" style="display: none;">
+                    <img src="" alt="Image preview">
+                </div>
+              
+    
+                <button class="btn btn-primary w-100 mb-1" type="submit">Submit</button>
+            </form>
+        </div>
+    
+    </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+   
+
+

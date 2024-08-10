@@ -12,7 +12,7 @@ import { MatrixResultComponentComponent } from './components/competitor-analyzer
 import { ReviewSentimentChartComponent } from './review-sentiment-chart/review-sentiment-chart.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { SiteDetailsComponent } from './components/tools/mi-tool/site-details/site-details/site-details.component';
-import { CompetitorAnalysisComponent } from './components/competitor-analysis/competitor-analysis.component';
+
 import { InnovationComponent } from './components/markertsearch/child-components/innovation/innovation.component';
 import { MarketLeaderComponent } from './components/markertsearch/child-components/market-leader/market-leader.component';
 import { MarketNewsComponent } from './components/markertsearch/child-components/market-news/market-news.component';
@@ -60,6 +60,26 @@ const routes: Routes = [
               {
                 path: '',
                 component: MiToolComponent,
+                children: [
+                  { path: 'sku-search-child', component: SkuDashboardComponent, outlet: 'service' },
+                  { path: 'keyword', component: KeywordSearchComponent, outlet: 'service' },
+                  { path: 'market-search-child', component: MarkertsearchComponent,
+                    children: [
+                      { path: 'market-trend', component: MarketTrendComponent, outlet: 'content' },
+                      { path: 'market-leader', component: MarketLeaderComponent, outlet: 'content' },
+                      { path: 'innovation', component: InnovationComponent, outlet: 'content' },
+                      {
+                        path: 'search-result',
+                        component: MarketSearchResultComponent,
+                        outlet: 'content',
+                        children: [
+                          { path: 'search-result', component: NewsResultComponent, outlet: 'searchnews' },
+                          { path: 'news', component: MarketNewsComponent, outlet: 'searchnews' },
+                        ]
+                      },
+                    ],
+                    outlet: 'service' },
+                ]
               },
               {
                 path: 'product-details/:name/:id',
@@ -95,10 +115,7 @@ const routes: Routes = [
                       },
                     ],
                   },
-                  {
-                    path: 'competitor-analysis',
-                    component: CompetitorAnalysisComponent,
-                  },
+               
                 ],
               },
             ],
@@ -120,7 +137,10 @@ const routes: Routes = [
   }, 
 ];
   @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+      // RouterModule.forRoot(routes),
+      RouterModule.forRoot(routes) // Add enableTracing here
+    ],
     exports: [RouterModule]
   })
   export class AppRoutingModule { }

@@ -30,11 +30,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 
-import { StarRatingComponent } from '../star-rating/star-rating.component';
+
 import { KeywordSearchComponent } from './mi-tool/keyword-search/keyword-search.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InterceptorService } from '../../Services/interceptor.service';
+import { ProductSearchComponent } from './mi-tool/childComponent/product-search/product-search.component';
+import { MarketSearchComponent } from './mi-tool/childComponent/market-search/market-search.component';
+import { CompetitorAnalysisComponent } from './mi-tool/childComponent/competitor-analysis/competitor-analysis.component';
+import { KeywordChildSearchComponent } from './mi-tool/childComponent/keyword-child-search/keyword-child-search.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 
 
@@ -58,6 +63,13 @@ import { InterceptorService } from '../../Services/interceptor.service';
     ReviewlistComponent,
     ReviewAnalysisComponent,
     KeywordSearchComponent,
+    ProductSearchComponent,
+    MarketSearchComponent,
+    CompetitorAnalysisComponent,
+    KeywordChildSearchComponent,
+    StarRatingComponent,
+    CompetitorAnalysisComponent
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

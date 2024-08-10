@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ECommerceSitesService } from '../../../../e-commerce-sites.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -12,6 +12,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ReviewDialogComponent } from '../../../competitor-analyzer/result-component/matrix-result-component/Dialog/ReviewDialog/review-dialog/review-dialog.component';
 import { ReviewSentimentChartComponent } from '../../../../review-sentiment-chart/review-sentiment-chart.component';
+import { MiDataService } from '../../mi-service/mi-data.service';
+import { Subscription } from 'rxjs';
 
 export interface keywordDetails {
   position:number;
@@ -32,7 +34,7 @@ export interface keywordDetails {
   templateUrl: './keyword-search.component.html',
   styleUrl: './keyword-search.component.scss'
 })
-export class KeywordSearchComponent implements OnInit,AfterViewInit {
+export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
   
   productData: keywordDetails[] = [];
@@ -58,26 +60,43 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  private subscription!: Subscription;
+
   constructor(
      private activatedRoute: ActivatedRoute, 
      private ecommarcesites: ECommerceSitesService,  
      private formBuilder:FormBuilder,
      public loadingService:LoadingService,
      private keyService:KeywordService,
-     private dialog: MatDialog
+     private dialog: MatDialog,
+     private sharedService:MiDataService,
+     private elementRef: ElementRef
   ){}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+    this.elementRef.nativeElement.remove();
+  }
   
   ngOnInit(): void {
+    
     this.productSiteName = this.activatedRoute.snapshot.paramMap.get('name');
     this.siteImgSrc = this.getImgSrc(this.ecommarcesites, this.productSiteName);
+    
     this.searchKeywordForm = this.formBuilder.group({
       search:['']
     });
     this.searchProductForm = this.formBuilder.group({
       search:['']
     })
-   
+    
+    this.subscription = this.sharedService.handleSubmit.subscribe(searchValue =>{
+      this.handleSubmit();
+    })
+  
   }
+
+
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -86,20 +105,34 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit {
 
   //handling submit 
   handleSubmit(){
-    this.loadingService.setLoadingState(true);
-    const formdata = this.searchKeywordForm.value;
-    const data: string = formdata.search;
-    console.log('Search Query:', data);
-    this.keyService.Post_get_amazon_info_details(data).subscribe(res => {
-      console.log(res);
+    debugger
+    const data=this.sharedService.getSearchData();
+    if(data!=undefined){
+          console.log("oninit method");
+          console.log("submit data method");
+          this.loadingService.setLoadingState(true);
+          const formdata = this.searchKeywordForm.value;
       
-      debugger
-      this.loadingService.setLoadingState(false);
-      this.productData = res.Amazon_keyword_data;
-      this.keywordSearchName = data;
-      this.pageSlice=this.productData.slice(0, 50);
-      this.updatePageSlice();
-    })
+      
+          // const data: string = formdata.search;
+      
+          // const data: string = this.sharedService.getSearchData();
+          console.log(data);
+          
+      
+          console.log('Search Query:', data);
+          this.keyService.Post_get_amazon_info_details(data).subscribe(res => {
+            console.log(res);
+            
+            debugger
+            this.loadingService.setLoadingState(false);
+            this.productData = res.Amazon_keyword_data;
+            this.keywordSearchName = data;
+            this.pageSlice=this.productData.slice(0, 50);
+            this.updatePageSlice();
+          })
+    }
+   
       
   }
 

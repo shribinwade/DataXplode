@@ -1,5 +1,5 @@
 .active{
-    background-color: rgb(63, 63, 131);
+    background-color: #00575b;
     text-align: center;
     color: rgb(255, 255, 255);
     padding: 8px;
@@ -33,8 +33,30 @@
 }
 .mat-mdc-header-row{
    text-align: center;     
-   background-color: rgb(63, 63, 131);
+   background-color: #00575b;
    color: white;
    font-weight: bold;
    word-spacing: 2px;
+   z-index: 0 !important;
+   
   }
+  .mat-mdc-row:nth-child(even) {
+   background-color: #f1f1f1; /* Set the background color for even rows */
+ }
+ 
+ .mat-mdc-row:nth-child(odd) {
+   background-color: #ffffff; /* Set the background color for odd rows */
+ } 
+ .mat-mdc-row:hover .mat-mdc-cell {
+   background-color: #f1f1f1;
+ } 
+
+ .titles{
+    border: 1px solid #ddd; padding: 8px;   text-align: center;     
+    background-color: #00575b;
+    color: white;
+    font-weight: bold;
+    word-spacing: 2px;
+ }
+
+ 

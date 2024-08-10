@@ -1,0 +1,45 @@
+.container{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100% !important;
+}
+
+.header{
+    background-color: #263238;
+    color: white;
+    padding: 1rem;
+}
+
+.left-header {
+    background-color: #263238;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center; 
+}
+.search-header{
+    background-color: #263238;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.selects {
+
+}
+p{
+    text-align: start;
+}
+
+.box{
+  border: 2px soild #ddd;
+}
+.form-group{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; /* Align labels and inputs vertically */
+}

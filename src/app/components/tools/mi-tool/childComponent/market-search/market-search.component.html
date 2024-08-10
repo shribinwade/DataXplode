@@ -1,0 +1,13 @@
+<div class="card m-3" >
+    <div class="search-header p-2">
+     Market search
+     <span class="info-icon">(i)</span>
+    </div>
+  
+    <div class="form-group">
+     <form [formGroup]="marketsearchform" (ngSubmit)="marketSubmit()" class="p-2"  >
+        <input class="form-control" formControlName="search" type="text"  style="font-size: small;"  placeholder="Search"  aria-label="Search">
+        <button class="btn btn-primary mt-2" style="   font-size: small;" type="submit" >Search</button>
+     </form>
+    </div>
+</div>

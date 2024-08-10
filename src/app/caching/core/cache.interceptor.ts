@@ -79,13 +79,15 @@ export class CacheInterceptor implements HttpInterceptor {
                            `${this.apiurl}/get_brand_details`,
                            `${this.apiurl}/get_search_brand_details`,
                            `${this.apiurl}/get_data_IP`,
+                           `${this.apiurl}/get_amazon_info_details`,
                            //aws urls
                            `${this.awsurl}/get_CompetitorAnalyzer`,
                            `${this.awsurl}/get_amazon_info_reviews`,
                            `${this.awsurl}/get_amazon_keyword_details`,
                            `${this.awsurl}/get_brand_details`,
                            `${this.awsurl}/get_search_brand_details`,
-                           `${this.awsurl}/get_data_IP`
+                           `${this.awsurl}/get_data_IP`,
+                           `${this.awsurl}/get_amazon_info_details`,
                           
                           
                           
@@ -112,8 +114,9 @@ export class CacheInterceptor implements HttpInterceptor {
                              `${this.apiurl}/get_CompetitorAnalyzer`,
                              `${this.apiurl}/get_amazon_keyword_details`,
                              `${this.apiurl}/get_search_brand_details`,
-                             `${this.apiurl}/get_data_IP`
-                            
+                             `${this.apiurl}/get_data_IP`,
+                             `${this.apiurl}/get_amazon_info_details`
+                             
                             ]
       //get the request URL
       for (let i = 0; i < cacheableUrls.length; i++) {

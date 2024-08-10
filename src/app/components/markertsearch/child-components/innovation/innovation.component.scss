@@ -29,13 +29,7 @@
 
 }
 
-.mat-mdc-header-row{
-  text-align: center;     
-  background-color: rgb(63, 63, 131);
-  color: white;
-  font-weight: bold;
-  word-spacing: 2px;
- }
+
 
 .loader-container{
   position: absolute;
@@ -46,4 +40,24 @@
   z-index: 200;
   margin: 0;
   padding: 0;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background-color: #f1f1f1; /* Set the background color for even rows */
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: #ffffff; /* Set the background color for odd rows */
+} 
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #f1f1f1;
+} 
+
+.mat-mdc-header-row{
+ text-align: center;     
+ background-color: #004d40;
+ color: white;
+ font-weight: bold;
+ word-spacing: 2px;
+ font-size: 100em;
 }

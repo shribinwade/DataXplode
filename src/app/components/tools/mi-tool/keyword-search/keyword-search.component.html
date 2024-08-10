@@ -1,54 +1,27 @@
-<div class="header">
+<!-- <div class="header">
   <span
     ><button class="btn btn-sm text-center">
       <span><i class="fa fa-arrow-left fa-1x"></i></span>
     </button>
     <h1 style="text-align: center; margin-top: -10px">
-      <!-- {{ productSiteName }} -->
-      <img src="{{ siteImgSrc }}" width="150px" alt="logo" class="img-fluid" />
+       {{ productSiteName }} -->
+      <!-- <img src="{{ siteImgSrc }}" width="150px" alt="logo" class="img-fluid" />
     </h1>
   </span>
-</div>
+</div>  -->
 
 
 <div class="text-center mt-0 m-2">
   
-    <div class="content">
-      <div class="row" style="padding: 2%;">
+    <!-- <div class="content">
+      <div class="row" style="padding: 2%;"> -->
         <!-- Filters on the left -->
-        <div class="col-md-4 d-flex align-items-center">
+        <!-- <div class="col-md-4 d-flex align-items-center">
           <h4 style="margin: 5px;">Keyword Search</h4>
-          <!-- <p style="font-size: large; margin-top: 0; margin-right: 15px">
-            Filters
-          </p>
-          <mat-form-field style="width: 10rem" appearance="fill" class="m-2">
-            <mat-label>Sort Order</mat-label>
-            <mat-select (selectionChange)="changeSortOrder($event.value)">
-              <mat-option value="ratingLowToHigh"
-                >Rating: Low to High</mat-option
-              >
-              <mat-option value="ratingHighToLow"
-                >Rating: High to Low</mat-option
-              >
-              <mat-option value="priceLowToHigh">Price: Low to High</mat-option>
-              <mat-option value="priceHighToLow">Price: High to Low</mat-option>
-            </mat-select>
-          </mat-form-field> -->
+        </div> -->
 
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>Rating</mat-label>
-            <mat-select (change)="applyFilter($event)">
-              <mat-option *ngFor="let rating of ratings" [value]="rating">
-                <p *ngIf="rating == 4; else elseBlock">{{ rating }} & Up</p>
-                <ng-template #elseBlock>
-                  {{ rating }}
-                </ng-template>
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
-        </div>
         <!-- Search on the right -->
-        <div class="col-md-8 d-flex justify-content-end align-items-center">
+        <!-- <div class="col-md-8 d-flex justify-content-end align-items-center">
           <form
             [formGroup]="searchKeywordForm"
             (ngSubmit)="handleSubmit()"
@@ -72,7 +45,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="filters">
       <div class="row">
@@ -171,11 +144,11 @@
         <form [formGroup]="searchProductForm" (ngSubmit)="productSearch()" >
 
           <div class="row">
-            <div class="col-10">    
+            <div class="col-lg-10">    
               <input class="form-control me-2" formControlName="search" type="text" style="width: 100%; font-size: small" placeholder="Search" aria-label="Search"/>
             </div>
-            <div class="col-2">
-             <button class="btn btn-outline-primary" style="font-size: small; width: 100%;" type="submit">
+            <div class="col-lg-2">
+             <button class="btn btn-primary" style="font-size: small; width: 100%;" type="submit">
               Search Product
              </button>
             </div>
@@ -201,11 +174,11 @@
       <div class="filters">
         <div class="row">
           
-          <div class="col-1">
+          <div class="col-lg-3">
             <div style="margin: 13px;"><i class="fas fa-filter" style="font-size:20px p-10"></i>Filters</div>
           </div>
          
-          <div class="col-2">
+          <div class="col-lg-3">
             <div class="d-flex">
               <select (change)="applyFilter($event)" class="form-select m-2" style="width: 100%" aria-label="Default select example">
                 <option selected>by rating</option>
@@ -219,7 +192,7 @@
               </select>
             </div>
           </div>
-          <div class="col-2">
+          <!-- <div class="col-lg-2"> -->
             <!-- <div class="d-flex">
               <select
                 (change)="SortByPrice($event)"
@@ -233,19 +206,12 @@
                 <option value="priceHighToLow">Price: High to Low</option>
               </select>
             </div> -->
-          </div>
-          <div class="col-2">
+          <!-- </div> -->
+          <div class="col-lg-6">
           
           </div>
-          <div class="col-2">
-          
-          </div>
-          <div class="col-2">
-          
-          </div>
-          <div class="col-1">
-           
-          </div>
+        
+        
   
         
         </div>
@@ -322,10 +288,10 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Ratings</th>
               <td mat-cell *matCellDef="let review">
                 {{ review.pdp_rating_value
-                }}<star-rating
+                }}<app-star-rating
                   style="display: inline-block"
                   [stars]="review.pdp_rating_value"
-                ></star-rating>
+                ></app-star-rating>
               </td>
             </ng-container>
 
@@ -392,7 +358,7 @@
         >
         </mat-paginator>
       </div>
-      <ng-template style=" position: relative;" #noReviews>
+      <ng-template style="position: relative;" #noReviews>
         <div *ngIf="loadingService.isLoading | async" class="loader-container">
           <mat-progress-bar mode="determinate"></mat-progress-bar>
           <mat-spinner style="top: 25%; left: 46%"></mat-spinner>

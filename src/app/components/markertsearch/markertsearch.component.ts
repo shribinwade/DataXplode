@@ -5,7 +5,8 @@ import { ECommerceSitesService } from '../../e-commerce-sites.service';
 import { MarketsearchService } from '../../Services/marketsearch.service';
 import { DataServiceService } from './shared-service/data-service.service';
 import { LoadingService } from '../../Services/loading.service';
-import { finalize } from 'rxjs';
+import { finalize, Subscription } from 'rxjs';
+import { MiDataService } from '../tools/mi-service/mi-data.service';
 
 export interface marketSearch {
   Brand_list:BrandList;
@@ -40,7 +41,10 @@ export class MarkertsearchComponent implements OnInit{
   searchData!: marketSearch ;
   isLoading!: boolean;
 
-  constructor(private formBuilder:FormBuilder,
+  private subscription!: Subscription;
+
+  constructor(
+              private formBuilder:FormBuilder,
               private activatedRoute: ActivatedRoute, 
               private ecommarcesites: ECommerceSitesService, 
               private marketService:MarketsearchService,
@@ -48,6 +52,7 @@ export class MarkertsearchComponent implements OnInit{
               private route: ActivatedRoute,
               private dataService: DataServiceService,
               public loadingService:LoadingService,
+              private sharedService:MiDataService
 
             ){
 
@@ -61,35 +66,53 @@ export class MarkertsearchComponent implements OnInit{
     this.marketSearchForm = this.formBuilder.group({
       search:['']
     });
+
+    this.subscription = this.sharedService.handleSubmit.subscribe(searchValue =>{
+      this.handleSubmit();
+    })
   }
   //
   handleSubmit() {
-    this.loadingService.setParentState(true);
+   
+    const data=this.sharedService.getSearchData();
+    console.log(data);
+   
+    if(data!=undefined){
+      console.log("oninit method");
+      console.log("submit data method");
+   
+      this.loadingService.setParentState(true);
     
-    const formdata = this.marketSearchForm.value;
-    console.log(formdata);
-    
-    const data: string = formdata.search;
-    console.log('Search Query:', data);
-    this.marketService.Post_search_brand_details(data).pipe(
-      finalize(() => {
+      const formdata = this.marketSearchForm.value;
+      console.log(formdata);
+      
+      // const data: string = formdata.search;
+      // console.log('Search Query:', data);
+  
+      this.marketService.Post_search_brand_details(data).pipe(
+        finalize(() => {
+          this.loadingService.setParentState(false);
+        })
+      ).subscribe(res => {
         this.loadingService.setParentState(false);
-      })
-    ).subscribe(res => {
-      this.loadingService.setParentState(false);
-       this.searchData = res;
-       console.log(this.searchData);
+         this.searchData = res;
+         console.log(this.searchData);
+  
+         //search data in the shared service
+         this.dataService.setSearchData(this.searchData);
+  
+         // Navigate to SearchResultComponent
+         this.router.navigate([{ outlets: { content: ['search-result'] } }], { relativeTo: this.route });
+        },
+        error => {
+          console.error('Error fetching search results:', error);
+          // Handle error here if needed
+        });
+      
 
-       //search data in the shared service
-       this.dataService.setSearchData(this.searchData);
+    }
 
-       // Navigate to SearchResultComponent
-       this.router.navigate([{ outlets: { content: ['search-result'] } }], { relativeTo: this.route });
-      },
-      error => {
-        console.error('Error fetching search results:', error);
-        // Handle error here if needed
-      });
+ 
   }
 
    //getting site img header 

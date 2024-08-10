@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'star-rating',
+  selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
   styleUrl: './star-rating.component.scss'
 })
 export class StarRatingComponent {
 
+  
   @Input() stars!:number;
 
   @Input() size: number = 1;
@@ -25,6 +26,5 @@ export class StarRatingComponent {
     this.stars >= current ? 'star-full' :this.stars >= previousHalf ? 'star-half' :'star-empty'; 
     return `assets/stars/${imageName}.svg`;
   }
-
 
 }

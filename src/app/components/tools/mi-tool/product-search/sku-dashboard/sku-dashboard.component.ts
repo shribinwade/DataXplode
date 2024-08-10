@@ -85,6 +85,7 @@ export class SkuDashboardComponent implements OnInit {
   Reseller!: string;
   Brand!: string;
   ASIN!: string;
+  ProductURl!: string;
   BulletPoints: any [] = [];
 
   // Api endpoint data
@@ -141,6 +142,11 @@ export class SkuDashboardComponent implements OnInit {
     this.Brand = this.getBrand();
     this.ASIN = this.getASIN();
     this.BulletPoints = this.getBulletPoints(); 
+     const productData = Object.values(this.receivedData.Amazon_info);
+    
+    
+    
+
 
     console.log(this.BulletPoints);
     console.log('Data received from child:', this.receivedData);
@@ -180,7 +186,6 @@ export class SkuDashboardComponent implements OnInit {
     dialogConfig.width = '550px';
     this.dialog.open(BulletpointsComponent, {
       width: '900px',
-      
       data: {bullet: this.BulletPoints}
       
     });

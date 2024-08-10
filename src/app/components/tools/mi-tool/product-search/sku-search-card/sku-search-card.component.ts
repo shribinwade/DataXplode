@@ -6,8 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { SnackbarService } from '../../../../../Services/snackbar.service';
 
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs'; 
+import { of, Subscription } from 'rxjs'; 
 import { switchMap, catchError } from 'rxjs/operators';
+import { MiDataService } from '../../../mi-service/mi-data.service';
 @Component({
   selector: 'app-sku-search-card',
   templateUrl: './sku-search-card.component.html',
@@ -22,11 +23,14 @@ export class SkuSearchCardComponent implements OnInit {
   ReceviedReviewData:any;
   productId!: string | null;
   productSiteName!: string | null;
+  private subscription!: Subscription;
  
   constructor(
     private skuservice:SkuService ,
     private formBuilder:FormBuilder,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private sharedService:MiDataService,
+    
   ){}
 
 
@@ -40,46 +44,58 @@ export class SkuSearchCardComponent implements OnInit {
 
     this.productId=this.activatedRoute.snapshot.paramMap.get('id');
     this.productSiteName=this.activatedRoute.snapshot.paramMap.get('name');
+
+    this.subscription = this.sharedService.handleSubmit.subscribe(searchValue =>{
+      this.handleSubmit();
+    })
+    
+    }
+
+    handleSubmit(): void {
+
+      const data=this.sharedService.getSearchData();
+    if(data!=undefined){
+
+         // this.ngxService.start();
+         const formData = this.SearchProductForm.value;
+         // const data: String = formData.search;
+       
+         console.log('Search Query:', data);
+       
+   
+         this.skuservice.Post_get_amazon_info_details(data).pipe(
+           switchMap((detailsResponse:any) => {
+             // Handle details response
+             this.ReceviedData = detailsResponse;
+             this.dataReceived.emit(this.ReceviedData);
+             console.log('Details Response:', detailsResponse);
+       
+             // Return the next observable for reviews response
+             return this.skuservice.Post_get_amazon_info_reviews(data);
+           }),
+           catchError((error:any) => {
+             // this.ngxService.stop();
+             console.log('Error:', error);
+             if (error.error.message) {
+               this.responseMessage = error.error.message;
+             }
+             // Return an empty observable to terminate the chain
+             return of(null);
+           })
+         ).subscribe(reviewsResponse => {
+           if (reviewsResponse) {
+             // Handle reviews response
+             this.ReceviedReviewData = reviewsResponse;
+             this.ReviewData.emit(this.ReceviedReviewData);
+             console.log('Reviews Response:', reviewsResponse);
+           }
+           // this.ngxService.stop();
+         });
     
    
     }
 
-    handleSubmit(): void {
-      // this.ngxService.start();
-      const formData = this.SearchProductForm.value;
-      const data: String = formData.search;
-    
-      console.log('Search Query:', data);
-    
-
-      this.skuservice.Post_get_amazon_info_details(data).pipe(
-        switchMap((detailsResponse:any) => {
-          // Handle details response
-          this.ReceviedData = detailsResponse;
-          this.dataReceived.emit(this.ReceviedData);
-          console.log('Details Response:', detailsResponse);
-    
-          // Return the next observable for reviews response
-          return this.skuservice.Post_get_amazon_info_reviews(data);
-        }),
-        catchError((error:any) => {
-          // this.ngxService.stop();
-          console.log('Error:', error);
-          if (error.error.message) {
-            this.responseMessage = error.error.message;
-          }
-          // Return an empty observable to terminate the chain
-          return of(null);
-        })
-      ).subscribe(reviewsResponse => {
-        if (reviewsResponse) {
-          // Handle reviews response
-          this.ReceviedReviewData = reviewsResponse;
-          this.ReviewData.emit(this.ReceviedReviewData);
-          console.log('Reviews Response:', reviewsResponse);
-        }
-        // this.ngxService.stop();
-      });
+   
 
 
     }

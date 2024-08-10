@@ -33,6 +33,7 @@ export class MatrixResultComponentComponent implements OnInit {
   headers:string[]=['Features'];
 
   data:any[] = [];
+  productvalues:any;
 
   constructor(
     private skuservice:SkuService ,private dataService: MatrixResultService,private dialog: MatDialog) {}
@@ -51,6 +52,7 @@ export class MatrixResultComponentComponent implements OnInit {
     const searchData = this.dataService.getSearchData();
     
     const productValues =Object.values(searchData.Search_result);
+    this.productvalues = productValues;
     this.featureKeys = Object.keys(searchData.Search_result[0]);
 
     this.featureKeys.push("More Info")

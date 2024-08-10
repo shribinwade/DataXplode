@@ -6,11 +6,7 @@
 
   
 <div class="row" style="margin-top: 10px;">
-    <div class="col-md-3" style=" border: 1px solid #ddd; padding: 8px;   text-align: center;     
-    background-color: rgb(63, 63, 131);
-    color: white;
-    font-weight: bold;
-    word-spacing: 2px;">
+    <div class="titles col-lg-3" >
        Market Defination
     </div>
     <div style=" border: 1px solid #ddd; padding: 8px;">
@@ -19,11 +15,7 @@
  </div>
 
  <div class="row " style="margin-top: 10px;">
-   <div class="col-md-3" style=" border: 1px solid #ddd; padding: 8px;   text-align: center;     
-   background-color: rgb(63, 63, 131);
-   color: white;
-   font-weight: bold;
-   word-spacing: 2px;">
+   <div class="titles col-lg-3">
       Market Size
    </div>
    <div style=" border: 1px solid #ddd; padding: 8px;">
@@ -34,17 +26,14 @@
 <!-- table -->
 
 <div class="row" style="margin-top: 10px">
-   <div class="col-md-3" style="border: 1px solid #ddd; padding: 8px;   text-align: center;     
-  background-color: rgb(63, 63, 131);
-  color: white;
-  font-weight: bold;
-  word-spacing: 2px;">
+   <div class="titles col-lg-3">
       Market Trend
    </div>
 </div>
 
+
 <div class="row">
-   <div class="col-lg-6" style=" border: 1px solid #ddd; padding: 8px;">
+   <div class="col-lg-6" style="border: 1px solid #ddd; padding: 8px; z-index: 0 !important; overflow: auto;">
       <section class="example-table-container">
          <!-- (matSortChange)="announceSortChange($event)" -->
          <table mat-table [dataSource]="dataSource" matSort>
@@ -56,7 +45,7 @@
              </td>
            </ng-container>
 
-           <ng-container matColumnDef="select">
+           <!-- <ng-container matColumnDef="select">
             <th mat-header-cell *matHeaderCellDef>
                <mat-checkbox (change)="$event ? toggleAllRows() : null"
                              [checked]="selection.hasValue() && isAllSelected()"
@@ -71,7 +60,7 @@
                              [aria-label]="checkboxLabel(row)">
                </mat-checkbox>
              </td>
-          </ng-container>
+          </ng-container> -->
     
            <!-- data Detail Column -->
            <ng-container matColumnDef="title">
@@ -122,8 +111,8 @@
              style="font-size: mdall; width: 70%;"
            />
            <button
-             class="btn btn-outline-primary"
-             style="font-size: mdall; width: 30%;"
+             class="btn "
+             style="font-size: mdall; width: 30%; color: white; background-color: #00575b;"
              type="submit"
            >
              News Search

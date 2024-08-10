@@ -3,14 +3,14 @@
 <div class="text-center">
 
 
-<div class="m-2 content"  >
+<!-- <div class="m-2 content"  >
     <div class="row" style="padding: 2%;">
       <div class="col-md-4 d-flex align-items-center">
        <h4 style="margin:10px;">Market Search</h4>
       </div>
       <div class="col-md-8 d-flex justify-content-end align-items-center">
-        <!-- [formGroup]="searchKeywordForm"
-        (ngSubmit)="handleSubmit()" -->
+         [formGroup]="searchKeywordForm"
+        (ngSubmit)="handleSubmit()" 
         <form [formGroup]="marketSearchForm" (ngSubmit)="handleSubmit()" class="d-flex w-100 justify-content-end">
           <input
             class="form-control me-2 "
@@ -32,7 +32,7 @@
       </div>
     </div>
 </div>
-</div>
+</div> -->
 <!--  -->
 <div class="m-2 text-center"  style="position: relative;"  >
     <div  *ngIf="searchData && searchData.Brand_list; else noReviews" class="row m-2">
@@ -41,27 +41,25 @@
             <mat-progress-bar mode="determinate"></mat-progress-bar>
             <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
           </div>
-            <div class="col mt-1" >
+            <div class="col-md-10 mt-1" >
           
               <div class="row" >
-                  <div class="col-md-3"  style="border: 1px solid #ddd; ">
+                  <div class="col-md-5 p-0"  style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['search-result'] } }]" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" >Market Trend & News</a>
                   </div>
                
-                  <div class="col-md-3" style="border: 1px solid #ddd; ">
+                  <div class="col-md-4 p-0" style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['market-leader'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Market Leader</a>
                   </div>
-                  <div class="col-md-3" style="border: 1px solid #ddd; ">
+                  <div class="col-md-3 p-0" style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['innovation'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Innovation</a>
                   </div>
-                  <div class="col-md-3" >
-                 
-                  </div>
+                
               </div>
             
 
             </div>
-            <div class="col">
+            <div class="col-md-2">
             
               <!-- <app-bcg-matrix ></app-bcg-matrix> -->
             </div>

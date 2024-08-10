@@ -34,7 +34,10 @@ export class MarketSearchResultComponent {
   newsSearchData: any;
   dataSource = new MatTableDataSource<marketSearch>();
   selection = new SelectionModel<any>(true, []);
-  displayedColumns: string[] = ['index', 'select', 'title', 'descr'];
+  displayedColumns: string[] = [ 'index',  
+                                //  'select', 
+                                 'title', 
+                                 'descr'];
   ColumnsHeaders: string[] = [];
   dataSourceData: any = [];
   

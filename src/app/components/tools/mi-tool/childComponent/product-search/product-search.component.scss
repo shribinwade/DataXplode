@@ -1,0 +1,16 @@
+.search-header{
+    background-color: #263238;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; /* Align labels and inputs vertically */
+}

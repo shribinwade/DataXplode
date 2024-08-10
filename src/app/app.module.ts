@@ -18,15 +18,15 @@ import { SpecificationComponent } from './material-component/dialog/specificatio
 import { BulletpointsComponent } from './material-component/dialog/bulletpoints/bulletpoints.component';
 import { ReviewAnalysisComponent } from './material-component/dialog/review-analysis/review-analysis.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {  HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-// import {NgxUiLoaderConfig,NgxUiLoaderHttpModule,NgxUiLoaderModule,SPINNER} from 'ngx-ui-loader'
+
 import { FullcomponentComponent } from './components/layout/sidebar/full/fullcomponent/fullcomponent.component';
 import { ToolsModule } from './components/tools/tools.module';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
+
 import { InterceptorService } from './Services/interceptor.service';
 import { MarkertsearchComponent } from './components/markertsearch/markertsearch.component';
-import { CompetitorAnalysisComponent } from './components/competitor-analysis/competitor-analysis.component';
+
 import { MarketTrendComponent } from './components/markertsearch/child-components/market-trend/market-trend.component';
 import { MarketLeaderComponent } from './components/markertsearch/child-components/market-leader/market-leader.component';
 import { MarketNewsComponent } from './components/markertsearch/child-components/market-news/market-news.component';
@@ -60,6 +60,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NewsResultComponent } from './components/markertsearch/child-components/news-data/news-result/news-result.component';
 import { InnovationComponent } from './components/markertsearch/child-components/innovation/innovation.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { RouterModule } from '@angular/router';
+
 
 // const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 // text:"Loading...",
@@ -93,7 +95,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     FullcomponentComponent,
     BodyComponent,
     MarkertsearchComponent,
-    CompetitorAnalysisComponent,
+  
     MarketTrendComponent,
     MarketLeaderComponent,
     MarketNewsComponent,
@@ -105,13 +107,15 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     MatrixResultComponentComponent,
     ReadMoreDirective,
     ReviewDialogComponent,
-    StarRatingComponent,
     CharCodeToLetterPipe,
     SwotAnalysisComponent,
     ReviewSentimentChartComponent,
     NewsResultComponent,
     InnovationComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+ 
+    
+    
   ],
   imports: [
     FormsModule,
@@ -136,7 +140,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     MatTooltipModule,
     MatSelectModule,
     CdkTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    
     
   ],
   providers: [

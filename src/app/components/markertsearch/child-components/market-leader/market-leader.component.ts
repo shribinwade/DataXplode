@@ -50,7 +50,7 @@ export class MarketLeaderComponent {
 
   constructor(private dataService: DataServiceService,private dialog: MatDialog) {}
   
-  displayedColumns: string[] = ['index','name','company','type','segment','marketShare','MarketGrouthRate','bcgValue','financial'];
+  displayedColumns: string[] = ['index','name','company','segment','marketShare','MarketGrouthRate','bcgValue'];
 
   ngOnInit(): void {
     const searchData: brandList = this.dataService.getSearchData();
