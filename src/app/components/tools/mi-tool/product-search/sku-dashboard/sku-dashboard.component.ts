@@ -121,6 +121,7 @@ export class SkuDashboardComponent implements OnInit {
   handleReviewDataReceived(data: any) {
     if (data != null) {
       this.reviewreceivedData = data;
+      this.showdata = false;
     }
     console.log(this.reviewreceivedData);
     }
@@ -128,7 +129,7 @@ export class SkuDashboardComponent implements OnInit {
   handleDataReceived(data: any): void {
     if (data != null) {
       this.receivedData = data;
-      this.showdata = false;
+      
     }
     this.productSiteImgSrc = this.getImageUrls();
     this.ProductName = this.getProductName();
@@ -142,16 +143,12 @@ export class SkuDashboardComponent implements OnInit {
     this.Brand = this.getBrand();
     this.ASIN = this.getASIN();
     this.BulletPoints = this.getBulletPoints(); 
-     const productData = Object.values(this.receivedData.Amazon_info);
-    
-    
-    
-
-
+    const productData = Object.values(this.receivedData.Amazon_info);
     console.log(this.BulletPoints);
     console.log('Data received from child:', this.receivedData);
     // Process the received data as needed
   }
+ 
 
   //Dialog components
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -166,16 +163,21 @@ export class SkuDashboardComponent implements OnInit {
       data: {product_features: this.receivedData?.Amazon_info?.[0]?.Product_features} 
     });
   }
-  handleReviewListAction(): void {
+  handleReviewListAction(asinData:string){
+    debugger
+    console.log(asinData);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
     dialogConfig.maxWidth = '100%';
     
     dialogConfig.panelClass = 'full-screen-dialog';
-    dialogConfig.data = { Amazon_review_info: this.reviewreceivedData };
+    dialogConfig.data = { asinData };
     this.dialog.open(ReviewlistComponent, dialogConfig);
   }
+
+
+  
   handleReviewAnalysisAction(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '550px';

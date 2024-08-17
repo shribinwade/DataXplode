@@ -39,7 +39,10 @@ import { ProductSearchComponent } from './mi-tool/childComponent/product-search/
 import { MarketSearchComponent } from './mi-tool/childComponent/market-search/market-search.component';
 import { CompetitorAnalysisComponent } from './mi-tool/childComponent/competitor-analysis/competitor-analysis.component';
 import { KeywordChildSearchComponent } from './mi-tool/childComponent/keyword-child-search/keyword-child-search.component';
-import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { SharedModule } from '../../shared/shared.module';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -67,8 +70,10 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
     MarketSearchComponent,
     CompetitorAnalysisComponent,
     KeywordChildSearchComponent,
-    StarRatingComponent,
-    CompetitorAnalysisComponent
+    
+    CompetitorAnalysisComponent,
+ 
+   
     
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -78,6 +83,16 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
     CommonModule,
     ToolsRoutingModule,
     ReactiveFormsModule,
+
+   
+ 
+    MatIconModule,
+
+    
+    MatTooltipModule,
+   
+
+
     MatDialogModule,
     MatTableModule,  
     MatFormFieldModule,
@@ -88,7 +103,9 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
     MatSortModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatChipsModule,
+    SharedModule
     
   ],
   providers: [

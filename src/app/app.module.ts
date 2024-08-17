@@ -24,7 +24,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FullcomponentComponent } from './components/layout/sidebar/full/fullcomponent/fullcomponent.component';
 import { ToolsModule } from './components/tools/tools.module';
 
-import { InterceptorService } from './Services/interceptor.service';
+
 import { MarkertsearchComponent } from './components/markertsearch/markertsearch.component';
 
 import { MarketTrendComponent } from './components/markertsearch/child-components/market-trend/market-trend.component';
@@ -54,13 +54,14 @@ import { ReviewDialogComponent } from './components/competitor-analyzer/result-c
 import { MatSelectModule } from '@angular/material/select';
 import { CharCodeToLetterPipe } from '../CustomPipe/char-code-to-letter.pipe';
 import { SwotAnalysisComponent } from './components/competitor-analyzer/result-component/matrix-result-component/Dialog/SwoatAnalysis/swot-analysis/swot-analysis.component';
-import { IonicModule } from '@ionic/angular';
+
 import { ReviewSentimentChartComponent } from './review-sentiment-chart/review-sentiment-chart.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NewsResultComponent } from './components/markertsearch/child-components/news-data/news-result/news-result.component';
 import { InnovationComponent } from './components/markertsearch/child-components/innovation/innovation.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
+
 
 
 // const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -95,7 +96,6 @@ import { RouterModule } from '@angular/router';
     FullcomponentComponent,
     BodyComponent,
     MarkertsearchComponent,
-  
     MarketTrendComponent,
     MarketLeaderComponent,
     MarketNewsComponent,
@@ -105,7 +105,6 @@ import { RouterModule } from '@angular/router';
     BcgMatrixChartComponent,
     CompititorAnalyzerComponent,
     MatrixResultComponentComponent,
-    ReadMoreDirective,
     ReviewDialogComponent,
     CharCodeToLetterPipe,
     SwotAnalysisComponent,
@@ -113,9 +112,7 @@ import { RouterModule } from '@angular/router';
     NewsResultComponent,
     InnovationComponent,
     PagenotfoundComponent,
- 
-    
-    
+     
   ],
   imports: [
     FormsModule,
@@ -141,6 +138,8 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     CdkTableModule,
     MatCheckboxModule,
+    SharedModule
+   
     
     
   ],

@@ -1,8 +1,8 @@
 <h4 mat-dialog-title>Reviews</h4> 
-<div *ngIf="loadingService.isLoading | async" class="loader-container" >
+<!-- <div *ngIf="loadingService.isLoading | async" class="loader-container" >
   <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
   <mat-spinner  style="top: 25%; left: 46%;"></mat-spinner>
-</div>
+</div> -->
 <mat-dialog-content>
 
  <span>
@@ -32,8 +32,8 @@
     </mat-select>
   </mat-form-field>
  
- 
-  <div [hidden]=show_spinner>
+<!--  
+  <div *ngIf="loadingService.isChildLoading | async">
   <div class="justify-content-center text-center ">
     <div>
       <mat-spinner style="top: 50%; left: 47%; "></mat-spinner>
@@ -42,63 +42,72 @@
       <p  class="text-center">Reviews Loading! Please Wait</p>
     </div>
    </div>
-  </div>
+  </div> -->
   
-<div *ngIf="ReviewData && ReviewData.length > 0; else noReviews">
+  <div style="position: relative;"  >
+    <div *ngIf="loadingService.isChildLoading | async" class="loader-container" >
+      <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+      <mat-spinner  style="top: 25%; left: 46%;"></mat-spinner>
+    </div>
+   
+    <!-- (matSortChange)="announceSortChange($event)" -->
+      <table mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
+  
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef > No. </th>
+          <td mat-cell *matCellDef="let review; let i = index"> {{i + 1}} </td>
+        </ng-container>
+        
+        <!-- Review Title Column -->
+        <ng-container matColumnDef="reviewTitle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+          <td mat-cell *matCellDef="let review"> {{review.reviewTitle}} </td>
+        </ng-container>
+    
+        <!-- Review Detail Column -->
+        <ng-container matColumnDef="reviewDetail">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Detail </th>
+          <td mat-cell *matCellDef="let review"> {{review.reviewDetail}} </td>
+        </ng-container>
 
- 
-  <!-- (matSortChange)="announceSortChange($event)" -->
-    <table mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z8">
-
-      <ng-container matColumnDef="index">
-        <th mat-header-cell *matHeaderCellDef > No. </th>
-        <td mat-cell *matCellDef="let review; let i = index"> {{i + 1}} </td>
-      </ng-container>
-      
-      <!-- Review Title Column -->
-      <ng-container matColumnDef="reviewTitle">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-        <td mat-cell *matCellDef="let review"> {{review.reviewTitle}} </td>
-      </ng-container>
   
-      <!-- Review Detail Column -->
-      <ng-container matColumnDef="reviewDetail">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Detail </th>
-        <td mat-cell *matCellDef="let review"> {{review.reviewDetail}} </td>
-      </ng-container>
-  
-      <!-- Rating Column -->
-      <ng-container matColumnDef="rating">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
-        <td mat-cell *matCellDef="let review">{{review.rating}}  <app-star-rating style="display: inline-block;" [stars]="review.rating" ></app-star-rating></td>
-      </ng-container>
-  
-      <!-- Reviewed By Column -->
-      <ng-container matColumnDef="reviewed_by_name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Reviewed By </th>
-        <td mat-cell *matCellDef="let review"> {{review.reviewed_by_name}} </td>
-      </ng-container>
-  
-      <!-- Reviewed Date Column -->
-      <ng-container matColumnDef="reviewed_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Reviewed Date </th>
-        <td mat-cell *matCellDef="let review"> {{review.reviewed_date}} </td>
-      </ng-container>
-  
-      <!-- Verified Purchase Column -->
-      <ng-container matColumnDef="verfied_purchase">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Verified Purchase </th>
-        <td mat-cell *matCellDef="let review"> {{review.verfied_purchase}} </td>
-      </ng-container>
-  
-      <!-- Header and Row Definitions -->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-  <ng-template #noReviews>
-    <p>No reviews available.</p>
-  </ng-template>
+    
+        <!-- Rating Column -->
+        <ng-container matColumnDef="rating">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+   
+          <td mat-cell *matCellDef="let review">
+            <div class="ratingColValue">
+             <p style="margin: 0.3rem !important">{{review.rating}}</p> 
+              <app-star-rating [stars]="review.rating" [size]="1"></app-star-rating>
+            </div>
+            
+          </td>
+        </ng-container>
+    
+        <!-- Reviewed By Column -->
+        <ng-container matColumnDef="reviewed_by_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reviewed By </th>
+          <td mat-cell *matCellDef="let review"> {{review.reviewed_by_name}} </td>
+        </ng-container>
+    
+        <!-- Reviewed Date Column -->
+        <ng-container matColumnDef="reviewed_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reviewed Date </th>
+          <td mat-cell *matCellDef="let review"> {{review.reviewed_date}} </td>
+        </ng-container>
+    
+        <!-- Verified Purchase Column -->
+        <ng-container matColumnDef="verfied_purchase">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Verified Purchase </th>
+          <td mat-cell *matCellDef="let review"> {{review.verfied_purchase}} </td>
+        </ng-container>
+    
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button class="btn btn-danger" mat-dialog-close>Close</button>

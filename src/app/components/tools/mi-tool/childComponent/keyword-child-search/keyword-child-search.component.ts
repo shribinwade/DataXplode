@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { MiDataService } from '../../../mi-service/mi-data.service';
 
 @Component({
@@ -31,20 +31,40 @@ export class KeywordChildSearchComponent implements OnInit {
     this.keywordSearchForm = this.formBuilder.group({
       search: [''],
     });
-    this.router.navigate([{ outlets: { service: ['keyword'] } }], {relativeTo: this.route});
-  
-   
+    // console.log(this.route.component);
+    
+    this.router.navigate(['keyword-data-search'], { relativeTo: this.route });
+
+    // this.router.events.subscribe(() => {
+    //   const routeSnapshot = this.router.routerState.snapshot.root;
+    //   const activeComponentName = this.findComponentName(routeSnapshot);
+    //   console.log('Active Component:', activeComponentName);
+    // });
+
   }
+  // private findComponentName(routeSnapshot: ActivatedRouteSnapshot): string {
+  //   const component = routeSnapshot.routeConfig?.component;
+  //   if (component) {
+  //     return (component as any).name; // Get the component class name
+  //   }
+
+  //   for (let child of routeSnapshot.children) {
+  //     const childComponentName = this.findComponentName(child);
+  //     if (childComponentName) {
+  //       return childComponentName;
+  //     }
+  //   }
+
+  //   return 'Unknown Component';
+  // }
 
   keywordSubmit() {
-    
-   
+    debugger
     const formdata = this.keywordSearchForm.value;
     const value: string = formdata.search;
 
     this.sharedService.setSearchData(value);
 
-    this.sharedService.triggerHandleSubmit(value);
-    this.router.navigate([{ outlets: { service: ['keyword'] } }], {relativeTo: this.route});
+    this.sharedService.triggerHandleSubmit();
   }
 }

@@ -43,9 +43,44 @@
                 <input formControlName="brand" class="form-control mb-1" type="text" id="brand" placeholder="Enter brand name">
     
                 <label for="features">Features</label>
-                <input formControlName="features" class="form-control mb-1" type="text" id="features" placeholder="Enter features, press Enter to add">
-    
+                
+                    <div  class="form-control" appearance="fill"> 
+          
+                        <mat-chip-grid #chipGrid aria-label="Enter fruits">
+                          <mat-chip-row style="background-color: rgb(39, 86, 255); "  *ngFor="let fruit of features"
+                                        (removed)="remove(fruit)"
+                                        [editable]="true"
+                                        (edited)="edit(fruit, $event)"
+                                        [aria-description]="'press enter to edit ' + fruit.feature">
+                           <p style="color: white; text-align: center; margin-top: 8px;">{{fruit.feature}}</p> 
+                            <button matChipRemove [attr.aria-label]="'remove ' + fruit.feature">
+                              <mat-icon>cancel</mat-icon>
+                            </button>
+                          </mat-chip-row>
+                          <input  class="form-control" style="border: none;" placeholder="Enter features, press Enter to add"
+                                 [matChipInputFor]="chipGrid"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)"/>
+                        </mat-chip-grid>
+                    </div> 
+                
                
+
+
+
+
+
+
+
+
+                
+
+
+
+
+                
+    
                 <label for="imageUpload">Upload Image</label>
 
                 <input formControlName="image" class="form-control mb-1" type="file" id="imageUpload" accept="image/*" onchange="previewImage()">
@@ -53,18 +88,30 @@
                 <div class="image-preview" style="display: none;">
                     <img src="" alt="Image preview">
                 </div>
-              
-    
+
                 <button class="btn btn-primary w-100 mb-1" type="submit">Submit</button>
+
             </form>
         </div>
-    
     </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
+
+     
+        <div mat-dialog-close *ngIf="loadingService.isLoading | async" class="loader-container">
+          <div>
+            <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+            <mat-spinner [diameter]="40"></mat-spinner>
+          </div>
+          <div>
+               <p style="margin: 2px; color: #005CBB">Loading... Please wait!</p>
+          </div>
+        </div> 
+     
+   
         <button mat-button mat-dialog-close>Close</button>
-      </mat-dialog-actions>
+    </mat-dialog-actions>
    
 
 

@@ -21,7 +21,6 @@ export class ProductSearchComponent {
     private sharedService:MiDataService,
     private elementRef: ElementRef
    ){
-
   }
 
   ngOnInit(): void {
@@ -29,18 +28,15 @@ export class ProductSearchComponent {
     this.SearchProductForm = this.formBuilder.group({
       search:['']
     });
-    this.router.navigate([{ outlets: { service: ['sku-search-child'] } }], { relativeTo: this.route });
-    
+    this.router.navigate( ['sku-search-child'] , { relativeTo: this.route }); 
   }
 
   productSubmit() {
-
+    debugger
     const formdata = this.SearchProductForm.value;
     const value:string =formdata.search;
-
     this.sharedService.setSearchData(value);
-  
-    this.sharedService.triggerHandleSubmit(value);
+    this.sharedService.triggerHandleSubmit();
   }
 
 

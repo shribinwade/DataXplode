@@ -18,8 +18,10 @@ export class MiDataService {
   }
   
   handleSubmit = new EventEmitter<string>();
+  keywordSubmit = new EventEmitter<string>();
 
-  triggerHandleSubmit(searchValue: string) {
-    this.handleSubmit.emit(searchValue);
+  triggerHandleSubmit() {
+    this.handleSubmit.emit();
+    this.keywordSubmit.emit();
   }
 }

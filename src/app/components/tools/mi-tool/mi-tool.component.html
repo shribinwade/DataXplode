@@ -34,7 +34,7 @@
                 <div class="selects m-3" [hidden]="!selectedSites">
                   <label for="platform"><p>Select a Service:</p></label>
                   <select #service (change)="onSelectService()"  class="form-select form-select-sm" id="platform" name="platform" [disabled]="!selectedSites">
-                  <option value="">--Select Service--</option>
+                  <option value="">--Select Service-</option>
                   <option value="product-search">Product Search</option>
                   <option value="keyword-search">Keyword Search</option>
                   <option value="market-search">Market Search</option>
@@ -85,8 +85,7 @@
       <div class="col-lg-8">
         <div class="card m-3 p-0 " style="min-height: 100vh; height: max-content;">
           <div class="" style="margin-top: 20px;">
-            <router-outlet name="service"></router-outlet>
-          </div>
+            <router-outlet></router-outlet>
         </div>
       </div>
     </div>

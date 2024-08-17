@@ -88,11 +88,7 @@ export class CacheInterceptor implements HttpInterceptor {
                            `${this.awsurl}/get_search_brand_details`,
                            `${this.awsurl}/get_data_IP`,
                            `${this.awsurl}/get_amazon_info_details`,
-                          
-                          
-                          
-                          
-                          
+                        
                           ];
         //get the request URL
         for (let i = 0; i < storeUrls.length; i++) {

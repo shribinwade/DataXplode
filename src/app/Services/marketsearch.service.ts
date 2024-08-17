@@ -16,6 +16,7 @@ export class MarketsearchService {
  
   
   Post_search_brand_details(data:any):Observable<any>{
+    debugger
     const formData = new FormData();
     formData.append('query1',data);
     console.log(formData);

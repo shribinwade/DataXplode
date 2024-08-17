@@ -15,8 +15,6 @@ export class PatentService {
 
   constructor(private httpClient:HttpClient) { }
   
- 
-  
   Post_get_patent_info_details(data:any):Observable<any>{
   //   summary = query1
 	// title = query2

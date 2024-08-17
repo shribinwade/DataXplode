@@ -110,8 +110,13 @@
       <!-- class="example-container mat-elevation-z8" -->
       <div *ngIf="productData && productData.length > 0; else noReviews">
         <div *ngIf="loadingService.isLoading | async" class="loader-container">
-          <mat-progress-bar mode="determinate"></mat-progress-bar>
-          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+          <div>
+            <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+            <mat-spinner></mat-spinner>
+          </div>
+          <div>
+               <p style="margin: 2px; color: azure;">Loading... Please wait!</p>
+          </div>
         </div>
         <div class="row m-0" style="border: 1px solid rgb(228, 228, 228); box-shadow: 20px">
           <div class="col justify-content-start">
@@ -337,13 +342,13 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item"  (click)="openReviewDialog(review.web_pid)">View Reviews</a></li>
                   <li><a class="dropdown-item" (click)="openReviewAnalysisDialog()">Reviews analysis</a></li>
-                 
                 </ul>
               </td>
             </ng-container>
 
             <!-- Header and Row Definitions -->
-            <tr mat-header-row  *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+             <!-- added sticky for table header-->
+            <tr mat-header-row  *matHeaderRowDef="displayedColumns; sticky: true"></tr>  
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
         </section>
@@ -358,12 +363,17 @@
         >
         </mat-paginator>
       </div>
-      <ng-template style="position: relative;" #noReviews>
+      <ng-template  #noReviews>
         <div *ngIf="loadingService.isLoading | async" class="loader-container">
-          <mat-progress-bar mode="determinate"></mat-progress-bar>
-          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+          <div>
+            <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+            <mat-spinner ></mat-spinner>
+          </div>
+          <div>
+               <p style="margin: 2px; color: azure;">Loading... Please wait!</p>
+          </div>
         </div>
-        <p style="padding: 10%">No Product Data available.</p>
+        <p style="padding: 10%">No keyword Data available.</p>
       </ng-template>
     </div>
   </div>

@@ -4,8 +4,7 @@
       <h6 style="padding: none; text-align: start">Find Innovation</h6>
 
       <p style="padding: none; margin: 0; color: #c4c4c4; text-align: start">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
-        reprehenderit.
+        Discover technology with Matching AI
       </p>
     </div>
     <div class="col-md-4 d-flex justify-content-end align-items-center">
@@ -14,7 +13,7 @@
   </div>
 </div>
 
-<div class="chartCard" style="border: 1px solid #ddd">
+<div class="chartCard" >
   <div class="row">
     <div class="col col-lg-6">
       <div class="chartBox">
@@ -73,18 +72,26 @@
       </div>
     </div>
 
-    <div class="col col-lg-6"  style="position: relative;">
+    <div class="col col-lg-6 "  >
       
-      <div *ngIf="patentData ; else noReviews">
+    <div class="ResultBox" style="position: relative;">
+
+     
+      <div  *ngIf="patentData ; else noReviews">
        
         <div *ngIf="loadingService.isChildLoading | async" class="loader-container">
-          <mat-progress-bar mode="determinate"></mat-progress-bar>
-          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+          <div>
+            <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+            <mat-spinner ></mat-spinner>
+          </div>
+          <div>
+               <p style=" margin: 2px; color: azure;">Loading... Please wait!</p>
+          </div>
         </div>
          
 
-          <div class="col-md-12" style="border: 1px solid #ddd; padding: 8px">
-            <section class="example-table-container">
+          <div class="col-md-12" >
+            <section class="example-table-container" style="border: 2px solid #ddd; padding: 8px; overflow: auto;" >
               <!-- (matSortChange)="announceSortChange($event)" -->
               <table mat-table [dataSource]="dataSource" matSort>
                 <!-- data Title Column -->
@@ -116,9 +123,7 @@
 
                 <!-- Header and Row Definitions -->
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: displayedColumns"
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"
                 ></tr>
               </table>
             </section>
@@ -126,11 +131,17 @@
        </div>
        <ng-template   #noReviews>
         <div *ngIf="loadingService.isChildLoading| async" class="loader-container">
-          <mat-progress-bar mode="determinate"></mat-progress-bar>
-          <mat-spinner style="top: 25%; left: 46%"></mat-spinner>
+          <div>
+            <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+            <mat-spinner ></mat-spinner>
+          </div>
+          <div>
+               <p style=" margin: 2px; color: azure;">Loading... Please wait!</p>
+          </div>
         </div>
         <p style="padding: 10%">No Data Available.</p>
      </ng-template>
+    </div>
     </div>
   </div>
 </div>

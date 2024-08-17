@@ -1,5 +1,5 @@
 
-<div class="col-md-12" style=" border: 1px solid #ddd; padding: 8px;">
+<div class="col-md-12" style=" border: 1px solid #ddd; padding: 8px; overflow: auto;">
     <section class="example-table-container">
        <!-- (matSortChange)="announceSortChange($event)" -->
        <table mat-table [dataSource]="dataSource" matSort>
@@ -11,8 +11,6 @@
            </td>
          </ng-container>
 
-        
-  
          <!-- data Detail Column -->
          <ng-container matColumnDef="title">
              <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
@@ -36,9 +34,7 @@
   
          <!-- Header and Row Definitions -->
          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-         <tr mat-row *matRowDef="let row; columns: displayedColumns"
-             
-         ></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
        </table>
      </section>
 </div>

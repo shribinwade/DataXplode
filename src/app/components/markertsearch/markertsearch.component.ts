@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ECommerceSitesService } from '../../e-commerce-sites.service';
@@ -52,7 +52,8 @@ export class MarkertsearchComponent implements OnInit{
               private route: ActivatedRoute,
               private dataService: DataServiceService,
               public loadingService:LoadingService,
-              private sharedService:MiDataService
+              private sharedService:MiDataService,
+              private elementRef: ElementRef
 
             ){
 
@@ -71,6 +72,13 @@ export class MarkertsearchComponent implements OnInit{
       this.handleSubmit();
     })
   }
+
+  ngOnDestroy() { 
+    this.subscription.unsubscribe();
+    this.elementRef.nativeElement.remove();
+    console.log("Destroyed");
+  }
+
   //
   handleSubmit() {
    

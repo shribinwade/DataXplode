@@ -62,9 +62,7 @@ export class CompititorAnalyzerComponent implements OnInit {
     public loadingService:LoadingService,
     public dataService:MatrixResultService
 
-  ){
-  
-  }
+  ){}
 
   ngOnInit(): void {
    this.marketSearchForm = this.formBuilder.group({
@@ -80,7 +78,7 @@ export class CompititorAnalyzerComponent implements OnInit {
   
     const formdata = this.marketSearchForm.value;
     console.log(formdata);
-     console.log(typeof(formdata));
+    console.log(typeof(formdata));
       // typeof(formdata);
     
     // const data: string = formdata.search;
@@ -111,9 +109,7 @@ export class CompititorAnalyzerComponent implements OnInit {
 
         //     //search data in the shared service
         // this.dataService.setSearchData(this.searchData);
-        
-      
-    
+         
   }
 
   addOnBlur = true;

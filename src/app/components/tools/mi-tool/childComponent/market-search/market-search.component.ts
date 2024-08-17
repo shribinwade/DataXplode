@@ -23,8 +23,10 @@ export class MarketSearchComponent implements OnInit {
     this.marketsearchform = this.formBuilder.group({
       search:['']
     });
-    this.router.navigate([{ outlets: { service: ['market-search-child'] } }], { relativeTo: this.route });
+    this.router.navigate(['market-search-child'] , { relativeTo: this.route });
   }
+
+  
 
   marketSubmit(){
     debugger
@@ -34,7 +36,7 @@ export class MarketSearchComponent implements OnInit {
 
     this.sharedService.setSearchData(value);
   
-    this.sharedService.triggerHandleSubmit(value);
+    this.sharedService.triggerHandleSubmit();
 
   }
 

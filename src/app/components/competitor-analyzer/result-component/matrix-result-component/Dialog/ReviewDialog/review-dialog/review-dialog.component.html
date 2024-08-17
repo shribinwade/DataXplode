@@ -73,7 +73,12 @@
       <!-- Rating Column -->
       <ng-container matColumnDef="rating">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
-        <td mat-cell *matCellDef="let review">{{review.rating}}  </td>
+        <td mat-cell *matCellDef="let review">
+         <div class="ratingColValue">
+             <p style="margin: 0.3rem !important">{{review.rating}}</p> 
+              <app-star-rating [stars]="review.rating" [size]="1"></app-star-rating>
+            </div>  
+        </td>
       </ng-container>
   
       <!-- Reviewed By Column -->

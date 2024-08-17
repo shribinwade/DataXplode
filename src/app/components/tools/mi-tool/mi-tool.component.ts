@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ECommerceSitesService } from '../../../e-commerce-sites.service';
 import {MatDialog, MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { CompetitorAnalysisComponent } from './childComponent/competitor-analysis/competitor-analysis.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,10 @@ export class MiToolComponent  {
  
   constructor(
     private ecommarcesites:ECommerceSitesService,
-    private dialog:MatDialog)
+    private dialog:MatDialog,
+    private router:Router
+   )
+    
     {
     this.ecommarcebrands=ecommarcesites.eCommerceSites
     };
@@ -41,6 +45,15 @@ export class MiToolComponent  {
     if (this.selectedService === 'competitor-analysis') {
       this.openDialog();
     } 
+
+    if (this.selectedService === '') {
+      // Perform your redirection or logic when "--Select Service--" is chosen
+      this.router.navigate(['/services/tools/mi_tools/']); // Replace with your route
+  
+    } else {
+      // Handle other selected options if needed
+    }
+
 
   }
 
@@ -69,6 +82,9 @@ export class MiToolComponent  {
     this.filterSites();
 	}
 
+  goToService() {
+    this.router.navigate(['services/tools/mi_tools/']);
+  }
 
 
   filteredSites: Array<{ id: number; name: string; src: string }> = [];
@@ -82,6 +98,7 @@ export class MiToolComponent  {
       this.filteredSites=[];
     }
   }
+
 
 
 

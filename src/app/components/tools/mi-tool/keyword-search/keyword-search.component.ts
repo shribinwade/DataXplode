@@ -72,10 +72,8 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
      private sharedService:MiDataService,
      private elementRef: ElementRef
   ){}
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.elementRef.nativeElement.remove();
-  }
+
+
   
   ngOnInit(): void {
     
@@ -89,8 +87,8 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
       search:['']
     })
     
-    this.subscription = this.sharedService.handleSubmit.subscribe(searchValue =>{
-      this.handleSubmit();
+    this.subscription = this.sharedService.keywordSubmit.subscribe(searchValue =>{
+      this.handleKeywordSubmit();
     })
   
   }
@@ -104,14 +102,15 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
   //handling submit 
-  handleSubmit(){
+  handleKeywordSubmit(){
     debugger
     const data=this.sharedService.getSearchData();
     if(data!=undefined){
+      debugger
           console.log("oninit method");
           console.log("submit data method");
           this.loadingService.setLoadingState(true);
-          const formdata = this.searchKeywordForm.value;
+          // const formdata = this.searchKeywordForm.value;
       
       
           // const data: string = formdata.search;
@@ -122,6 +121,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
       
           console.log('Search Query:', data);
           this.keyService.Post_get_amazon_info_details(data).subscribe(res => {
+            debugger
             console.log(res);
             
             debugger
@@ -130,6 +130,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
             this.keywordSearchName = data;
             this.pageSlice=this.productData.slice(0, 50);
             this.updatePageSlice();
+           
           })
     }
    
@@ -194,6 +195,11 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
     }
     this.dataSource.sort = this.sort; // Reapply sorting with the new sortOrder
   
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+    this.elementRef.nativeElement.remove();
   }
 
   // SortByPrice(event: Event): void {

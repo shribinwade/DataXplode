@@ -61,63 +61,68 @@ const routes: Routes = [
                 path: '',
                 component: MiToolComponent,
                 children: [
-                  { path: 'sku-search-child', component: SkuDashboardComponent, outlet: 'service' },
-                  { path: 'keyword', component: KeywordSearchComponent, outlet: 'service' },
-                  { path: 'market-search-child', component: MarkertsearchComponent,
-                    children: [
-                      { path: 'market-trend', component: MarketTrendComponent, outlet: 'content' },
-                      { path: 'market-leader', component: MarketLeaderComponent, outlet: 'content' },
-                      { path: 'innovation', component: InnovationComponent, outlet: 'content' },
-                      {
-                        path: 'search-result',
-                        component: MarketSearchResultComponent,
-                        outlet: 'content',
-                        children: [
-                          { path: 'search-result', component: NewsResultComponent, outlet: 'searchnews' },
-                          { path: 'news', component: MarketNewsComponent, outlet: 'searchnews' },
-                        ]
-                      },
-                    ],
-                    outlet: 'service' },
+                  { path: 'keyword-data-search', component: KeywordSearchComponent },
+                  { path: 'sku-search-child', component: SkuDashboardComponent },
+                  { 
+                    path: 'product-matrix-result', component: MatrixResultComponentComponent 
+                  },
+                  {
+                    path: 'market-search-child',
+                          component: MarkertsearchComponent,
+                          children: [
+                            { path: 'market-trend', component: MarketTrendComponent, outlet: 'content' },
+                            { path: 'market-leader', component: MarketLeaderComponent, outlet: 'content' },
+                            { path: 'innovation', component: InnovationComponent, outlet: 'content' },
+                            {
+                              path: 'search-result',
+                              component: MarketSearchResultComponent,
+                              outlet: 'content',
+                              children: [
+                                { path: 'search-result', component: NewsResultComponent, outlet: 'searchnews' },
+                                { path: 'news', component: MarketNewsComponent, outlet: 'searchnews' },
+                              ]
+                            },
+                          ],
+                  }
                 ]
               },
-              {
-                path: 'product-details/:name/:id',
+              // {
+              //   path: 'product-details/:name/:id',
                
-                children: [
-                  {
-                    path: '',
-                    component: SiteDetailsComponent,
-                  },
-                  {
-                    path: 'sku-search',
-                    component: SkuDashboardComponent,
-                  },
-                  {
-                    path: 'keyword-search',
-                    component: KeywordSearchComponent,
-                  },
-                  {
-                    path: 'market-search',
-                    component: MarkertsearchComponent,
-                    children: [
-                      { path: 'market-trend', component: MarketTrendComponent, outlet: 'content' },
-                      { path: 'market-leader', component: MarketLeaderComponent, outlet: 'content' },
-                      { path: 'innovation', component: InnovationComponent, outlet: 'content' },
-                      {
-                        path: 'search-result',
-                        component: MarketSearchResultComponent,
-                        outlet: 'content',
-                        children: [
-                          { path: 'search-result', component: NewsResultComponent, outlet: 'searchnews' },
-                          { path: 'news', component: MarketNewsComponent, outlet: 'searchnews' },
-                        ]
-                      },
-                    ],
-                  },
+              //   children: [
+              //     {
+              //       path: '',
+              //       component: SiteDetailsComponent,
+              //     },
+              //     {
+              //       path: 'sku-search',
+              //       component: SkuDashboardComponent,
+              //     },
+              //     {
+              //       path: 'keyword-search',
+              //       component: KeywordSearchComponent,
+              //     },
+              //     {
+              //       path: 'market-search',
+              //       component: MarkertsearchComponent,
+              //       children: [
+              //         { path: 'market-trend', component: MarketTrendComponent, outlet: 'content' },
+              //         { path: 'market-leader', component: MarketLeaderComponent, outlet: 'content' },
+              //         { path: 'innovation', component: InnovationComponent, outlet: 'content' },
+              //         {
+              //           path: 'search-result',
+              //           component: MarketSearchResultComponent,
+              //           outlet: 'content',
+              //           children: [
+              //             { path: 'search-result', component: NewsResultComponent, outlet: 'searchnews' },
+              //             { path: 'news', component: MarketNewsComponent, outlet: 'searchnews' },
+              //           ]
+              //         },
+              //       ],
+              //     },
                
-                ],
-              },
+              //   ],
+              // },
             ],
           },
           {

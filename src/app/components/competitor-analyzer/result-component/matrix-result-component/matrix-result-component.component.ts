@@ -1,16 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatrixResultService } from '../../shared-service/matrix-result.service';
-import {  MatDialogConfig, MatDialogRef , MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle } from '@angular/material/dialog';
-import { ReviewlistComponent } from '../../../tools/mi-tool/product-search/sku-dashboard/components/dialog/reviewlist/reviewlist.component';
-import { switchMap } from 'rxjs';
+import {  MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { SkuService } from '../../../../Services/sku.service';
 import { ReviewDialogComponent } from './Dialog/ReviewDialog/review-dialog/review-dialog.component';
 import { SwotAnalysisComponent } from './Dialog/SwoatAnalysis/swot-analysis/swot-analysis.component';
-import { MatTableDataSource } from '@angular/material/table';
 import { ReviewSentimentChartComponent } from '../../../../review-sentiment-chart/review-sentiment-chart.component';
 
 
@@ -36,7 +29,10 @@ export class MatrixResultComponentComponent implements OnInit {
   productvalues:any;
 
   constructor(
-    private skuservice:SkuService ,private dataService: MatrixResultService,private dialog: MatDialog) {}
+    private skuservice:SkuService,
+    private dataService: MatrixResultService,
+    private dialog: MatDialog,
+    private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -71,9 +67,6 @@ export class MatrixResultComponentComponent implements OnInit {
       this.data.push(value);
      }
     
-     
-
-
      console.log(this.headers);
      console.log(searchData);
      console.log(this.data);
@@ -135,6 +128,11 @@ export class MatrixResultComponentComponent implements OnInit {
    
     this.dialog.open(ReviewSentimentChartComponent, dialogConfig);
   }
+
+  ngOnDestroy(): void {
+    this.elementRef.nativeElement.remove();
+  }
+  
 
 }
 
