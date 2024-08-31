@@ -80,6 +80,9 @@ export class CacheInterceptor implements HttpInterceptor {
                            `${this.apiurl}/get_search_brand_details`,
                            `${this.apiurl}/get_data_IP`,
                            `${this.apiurl}/get_amazon_info_details`,
+                           `${this.apiurl}/get_supplier`,
+                           `${this.apiurl}/get_swot_analyzer`,
+                           `${this.apiurl}/get_porterforces`,
                            //aws urls
                            `${this.awsurl}/get_CompetitorAnalyzer`,
                            `${this.awsurl}/get_amazon_info_reviews`,
@@ -88,7 +91,7 @@ export class CacheInterceptor implements HttpInterceptor {
                            `${this.awsurl}/get_search_brand_details`,
                            `${this.awsurl}/get_data_IP`,
                            `${this.awsurl}/get_amazon_info_details`,
-                        
+                         
                           ];
         //get the request URL
         for (let i = 0; i < storeUrls.length; i++) {
@@ -101,6 +104,7 @@ export class CacheInterceptor implements HttpInterceptor {
   }
 
   isRequestCachable(req: HttpRequest<any>): boolean {
+    debugger
     //the request must be POST method and match the specific URL
     if (req.method === 'POST') {
       //define all the cache partial URL
@@ -111,8 +115,22 @@ export class CacheInterceptor implements HttpInterceptor {
                              `${this.apiurl}/get_amazon_keyword_details`,
                              `${this.apiurl}/get_search_brand_details`,
                              `${this.apiurl}/get_data_IP`,
-                             `${this.apiurl}/get_amazon_info_details`
-                             
+                             `${this.apiurl}/get_amazon_info_details`,
+                             `${this.apiurl}/get_supplier`,
+                             `${this.apiurl}/get_swot_analyzer`,
+                             `${this.apiurl}/get_porterforces`,
+                             //aws
+                             `${this.awsurl}/get_CompetitorAnalyzer`,
+                             `${this.awsurl}/get_amazon_info_reviews`,
+                             `${this.awsurl}/get_amazon_keyword_details`,
+                             `${this.awsurl}/get_brand_details`,
+                             `${this.awsurl}/get_search_brand_details`,
+                             `${this.awsurl}/get_data_IP`,
+                             `${this.awsurl}/get_amazon_info_details`,
+                             `${this.awsurl}/get_amazon_info_details`,
+                             `${this.awsurl}/get_supplier`,
+                             `${this.awsurl}/get_swot_analyzer`,
+                             `${this.awsurl}/get_porterforces`,
                             ]
       //get the request URL
       for (let i = 0; i < cacheableUrls.length; i++) {

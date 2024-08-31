@@ -14,6 +14,7 @@ import { ReviewDialogComponent } from '../../../competitor-analyzer/result-compo
 import { ReviewSentimentChartComponent } from '../../../../review-sentiment-chart/review-sentiment-chart.component';
 import { MiDataService } from '../../mi-service/mi-data.service';
 import { Subscription } from 'rxjs';
+import { fadeInOutAnimation } from '../../../../shared/animations';
 
 export interface keywordDetails {
   position:number;
@@ -29,15 +30,18 @@ export interface keywordDetails {
   bought:string;
 }
 
+
 @Component({
   selector: 'app-keyword-search',
   templateUrl: './keyword-search.component.html',
-  styleUrl: './keyword-search.component.scss'
+  styleUrl: './keyword-search.component.scss',
+  animations: [fadeInOutAnimation]
 })
 export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
   
   productData: keywordDetails[] = [];
+  
   public pageSlice = this.productData.slice(0, 50);
 
   keywordSearchName!: string;
@@ -70,7 +74,8 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
      private keyService:KeywordService,
      private dialog: MatDialog,
      private sharedService:MiDataService,
-     private elementRef: ElementRef
+     private elementRef: ElementRef,
+     
   ){}
 
 
@@ -106,35 +111,28 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
     debugger
     const data=this.sharedService.getSearchData();
     if(data!=undefined){
-      debugger
-          console.log("oninit method");
-          console.log("submit data method");
+
+        
           this.loadingService.setLoadingState(true);
           // const formdata = this.searchKeywordForm.value;
-      
-      
           // const data: string = formdata.search;
       
           // const data: string = this.sharedService.getSearchData();
           console.log(data);
           
-      
           console.log('Search Query:', data);
           this.keyService.Post_get_amazon_info_details(data).subscribe(res => {
             debugger
             console.log(res);
-            
             debugger
             this.loadingService.setLoadingState(false);
             this.productData = res.Amazon_keyword_data;
             this.keywordSearchName = data;
             this.pageSlice=this.productData.slice(0, 50);
             this.updatePageSlice();
-           
           })
     }
-   
-      
+     
   }
 
   private updatePageSlice(): void {
@@ -326,7 +324,6 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
     dialogConfig.maxWidth = '100%';
-    
     dialogConfig.panelClass = 'full-screen-dialog';
     dialogConfig.data = { asinData };
     this.dialog.open(ReviewDialogComponent, dialogConfig);
@@ -335,14 +332,11 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
   
   openReviewAnalysisDialog(){
     debugger
-    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '70%';
     dialogConfig.height = '90%';
     dialogConfig.maxWidth = '100%';
-    
     dialogConfig.panelClass = 'full-screen-dialog';
-   
     this.dialog.open(ReviewSentimentChartComponent, dialogConfig);
   }
        

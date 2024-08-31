@@ -61,9 +61,39 @@
     }
 }
 
+.logo-text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00aaff, #00ffaa);
+    -webkit-background-clip: text;
+    color: transparent;
+  
+}
+
 .sidenav-collapsed{
     width: 18.1625rem;
 }
+
+
+
+.bottom-link {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+  }
+  
+  .bottom-a {
+    text-decoration: none;
+    font-size: small;
+    
+    color: #ddd;
+  }
 
 .sidenav-nav{
     list-style: none;
@@ -72,6 +102,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  
    
     cursor: pointer;
 

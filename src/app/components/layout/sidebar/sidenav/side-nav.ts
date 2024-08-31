@@ -66,7 +66,7 @@ export const navbarData :INavbarData[] = [
       },
       {
         routeLink: 'services/about',
-        icon: ' fa-people-group',
+        icon: 'fa fa-info-circle',
         label: 'About Us'
       },
     

@@ -14,16 +14,16 @@ export class ProductMatrixService {
 
   Post_get_amazon_info_details(data:any):Observable<any>{
     const formData = new FormData();
-    console.log(data.keyword);
-    console.log(data.brand);
+    console.log(data.Keyword);
+    console.log(data.Brand);
     console.log(data.features[0].feature);
     
     
     
     
     
-    formData.append('query1',data.keyword );
-    formData.append('query2',data.brand );
+    formData.append('query1',data.Keyword );
+    formData.append('query2',data.Brand );
     formData.append('query3',data.features[0].feature );
     console.log(formData.get('query1'));
     

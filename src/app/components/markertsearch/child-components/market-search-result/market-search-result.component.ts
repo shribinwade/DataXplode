@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import { DataServiceService } from '../../shared-service/data-service.service';
 import { LoadingService } from '../../../../Services/loading.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,7 +7,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MarketsearchService } from '../../../../Services/marketsearch.service';
 import { NewsDataService } from '../../shared-service/news-data.service';
-import { finalize } from 'rxjs';
+import { finalize, Subscription } from 'rxjs';
+import { fadeInOutAnimation } from '../../../../shared/animations';
 
 export interface marketSearch {
   Brand_list: any;
@@ -26,8 +27,11 @@ export interface marketSearch {
   selector: 'app-market-search-result',
   templateUrl: './market-search-result.component.html',
   styleUrl: './market-search-result.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInOutAnimation]
+
 })
-export class MarketSearchResultComponent {
+export class MarketSearchResultComponent implements OnInit{
   
   hiddendata: boolean = true;
   searchData!: marketSearch;
@@ -43,6 +47,7 @@ export class MarketSearchResultComponent {
   
   brandSearchForm: any = FormGroup;
 
+  public subscription!: Subscription;
 
   constructor(
     private dataService: DataServiceService,
@@ -52,6 +57,8 @@ export class MarketSearchResultComponent {
     private route: ActivatedRoute,
     private formBuilder:FormBuilder,
     private marketService:MarketsearchService,
+    private cdRef: ChangeDetectorRef,
+    private elementRef: ElementRef,
   ) {}
 
   ngOnInit(): void {
@@ -60,16 +67,57 @@ export class MarketSearchResultComponent {
       search:['']
     });
 
-
-    this.searchData = this.dataService.getSearchData();
-    if (this.searchData) {
-      this.hiddendata = !true;
-    }
-    this.dataSourceData = this.searchData.market_trend_list.map((data: any) => {
-      return data;
+    this.subscription = this.dataService.getSearchData().subscribe(data => {
+      this.searchData = data;
+      // The view will automatically update when `searchData` changes
+      if (this.searchData) {
+           this.hiddendata = false;
+           this.dataSourceData = this.searchData.market_trend_list || [];
+           this.dataSource.data = this.dataSourceData;
+         
+         } else {
+           console.warn('No search data found');
+         }
     });
-    this.dataSource = new MatTableDataSource<marketSearch>(this.dataSourceData);
+
+     // Ensure searchData is fetched from the service
+    //  this.searchData = this.dataService.getSearchData();
+    //  if (this.searchData) {
+    //    this.hiddendata = false;
+    //    this.dataSourceData = this.searchData.market_trend_list || [];
+    //    this.dataSource.data = this.dataSourceData;
+    //    this.cdRef.detectChanges();
+    //  } else {
+    //    console.warn('No search data found');
+    //  }
+
+     
+ 
+    
+
+
+    // this.searchData = this.dataService.getSearchData();
+    // if (this.searchData) {
+    //   this.hiddendata = !true;
+    // }
+    // this.dataSourceData = this.searchData.market_trend_list.map((data: any) => {
+    //   return data;
+    // });
+    // this.dataSource = new MatTableDataSource<marketSearch>(this.dataSourceData);
+    // this.cdRef.detectChanges();
+    
   }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
+    }
+    this.elementRef.nativeElement.remove();
+    console.log("Destroyed");
+  }
+
+  
+ 
 
   handleSubmit() {
     this.loadingService.setChildState(true);

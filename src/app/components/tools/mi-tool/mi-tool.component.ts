@@ -2,13 +2,54 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ECommerceSitesService } from '../../../e-commerce-sites.service';
 import {MatDialog, MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { CompetitorAnalysisComponent } from './childComponent/competitor-analysis/competitor-analysis.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-mi-tool',
   templateUrl: './mi-tool.component.html',
-  styleUrl: './mi-tool.component.scss'
+  styleUrl: './mi-tool.component.scss',
+  animations:[
+    trigger('hideAnimation',[
+      state('normal',style({
+        transform: 'translateX(0%)',
+        // col-lg-4 equivalent
+        opacity: 1,
+      })),
+      state('max',style({
+      transform: 'translateY(-40%),translateX(-30%)',
+      
+       width: '25%',   // col-lg-12 equivalent
+       opacity: 0,
+       display:'none'
+
+      })),
+      transition('normal => max', [
+        animate('0.5s ease-in-out')
+      ]),
+      transition('max => normal', [
+        animate('0.5s 0.6s ease-in-out')
+      ])
+    ]),
+    trigger('toggleAnimation', [
+      state('normal', style({
+        height: 'auto',
+        opacity: 1,
+      })),
+      state('max', style({
+        height: '100vh',
+        width: '100%', // col-lg-12 equivalent
+        opacity: 1, 
+      })),
+      transition('normal => max', [
+        animate('0.5s 0.6s ease-in-out')
+      ]),
+      transition('max => normal', [
+        animate('0.5s  ease-in-out')
+      ])
+    ]),
+  ]
 })
 export class MiToolComponent  {
 
@@ -22,7 +63,8 @@ export class MiToolComponent  {
   constructor(
     private ecommarcesites:ECommerceSitesService,
     private dialog:MatDialog,
-    private router:Router
+    private router:Router,
+    private route: ActivatedRoute,
    )
     
     {
@@ -46,6 +88,8 @@ export class MiToolComponent  {
       this.openDialog();
     } 
 
+  
+
     if (this.selectedService === '') {
       // Perform your redirection or logic when "--Select Service--" is chosen
       this.router.navigate(['/services/tools/mi_tools/']); // Replace with your route
@@ -53,8 +97,6 @@ export class MiToolComponent  {
     } else {
       // Handle other selected options if needed
     }
-
-
   }
 
   //open dialog || pop up method
@@ -62,9 +104,6 @@ export class MiToolComponent  {
   openDialog():void{
     const dialogConfig = new MatDialogConfig();
    
-   
-    
-    
     this.dialog.open(CompetitorAnalysisComponent, 
       { 
       width: '80%',
@@ -75,8 +114,6 @@ export class MiToolComponent  {
   
   }
 
-
-  
   onSelected():void {
 		this.selectedCountry = this.country.nativeElement.value;
     this.filterSites();
@@ -106,5 +143,11 @@ export class MiToolComponent  {
 
   eventHandler($event: any) {
     this.selectedCountry = $event;
+  }
+
+  maxView = false;
+
+  toggleView() {
+    this.maxView = !this.maxView;
   }
 }

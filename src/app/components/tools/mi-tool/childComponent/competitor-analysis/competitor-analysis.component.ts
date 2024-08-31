@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { LoadingService } from '../../../../../Services/loading.service';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MiDataService } from '../../../mi-service/mi-data.service';
 
 export interface Features {
   feature: string;
@@ -33,6 +34,7 @@ export class CompetitorAnalysisComponent implements OnInit {
     private elementRef: ElementRef,
     private ref: MatDialogRef<CompetitorAnalysisComponent>,
     public loadingService:LoadingService,
+    private shareData : MiDataService
   ){}
 
 
@@ -54,14 +56,14 @@ export class CompetitorAnalysisComponent implements OnInit {
    //now group frombuilder 
    ngOnInit(): void {
       this.checkoutForm = this.formBuilder.group({
-      keyword:'',
-      productName:'',
-      mrp:'',
-      sp:'',
-      productDescription:'',
-      brand:'',
+      Keyword:'',
+      ProductName:'',
+      Mrp:'',
+      Sp:'',
+      ProductDescription:'',
+      Brand:'',
       features:[this.features],
-      image:''
+      Image:''
      });
    
    }
@@ -85,10 +87,14 @@ export class CompetitorAnalysisComponent implements OnInit {
    
     const formdata = this.checkoutForm.value;
     console.log(this.checkoutForm.get('features'));
-     console.log(typeof(formdata));
+    const formdatajson= JSON.stringify(formdata);
 
-      // typeof(formdata);
-    
+    this.shareData.setFormData(formdatajson);
+
+    console.log(formdatajson);
+    console.log(typeof(formdata));
+
+    // typeof(formdata);
     // const data: string = formdata.search;
  
     this.productmatrixService.Post_get_amazon_info_details(formdata).subscribe(res =>{
@@ -104,7 +110,7 @@ export class CompetitorAnalysisComponent implements OnInit {
     // Redirect to the target route
    
     this.router.navigate(['services/tools/mi_tools/product-matrix-result'], { relativeTo: this.route });
-    this.closepopup()
+    this.closepopup();
 
     })
     

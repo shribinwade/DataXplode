@@ -35,6 +35,6 @@ export class SkuService {
     // return this.httpClient.post<any>(this.url+'/get_amazon_info_reviews',formData);
 
     //aws url
-    return this.httpClient.post<any>(this.awsUrl+'/get_amazon_info_reviews',formData);
+     return this.httpClient.post<any>(this.awsUrl+'/get_amazon_info_reviews',formData);
   }
 }

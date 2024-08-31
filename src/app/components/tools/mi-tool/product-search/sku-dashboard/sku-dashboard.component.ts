@@ -12,6 +12,7 @@ import { ReviewAnalysisComponent } from './components/dialog/review-analysis/rev
 import { ReviewlistComponent } from './components/dialog/reviewlist/reviewlist.component';
 import { LoadingService } from '../../../../../Services/loading.service';
 import { SkuService } from '../../../../../Services/sku.service';
+import { fadeInOutAnimation } from '../../../../../shared/animations';
 
 interface ProductFeatures {
   Brand?: string;
@@ -64,6 +65,7 @@ interface ReceivedData {
   selector: 'app-sku-dashboard',
   templateUrl: './sku-dashboard.component.html',
   styleUrl: './sku-dashboard.component.scss',
+  animations: [fadeInOutAnimation]
 })
 export class SkuDashboardComponent implements OnInit {
 

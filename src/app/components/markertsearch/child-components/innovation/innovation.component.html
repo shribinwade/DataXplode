@@ -77,9 +77,9 @@
     <div class="ResultBox" style="position: relative;">
 
      
-      <div  *ngIf="patentData ; else noReviews">
+      <div  @fadeInOut *ngIf="patentData ; else noReviews">
        
-        <div *ngIf="loadingService.isChildLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>
@@ -130,7 +130,7 @@
           </div> 
        </div>
        <ng-template   #noReviews>
-        <div *ngIf="loadingService.isChildLoading| async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isChildLoading| async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>

@@ -3,9 +3,9 @@
 <div class="text-center">
 
 <div class="m-2 text-center"  style="position: relative;"  >
-    <div  *ngIf="searchData && searchData.Brand_list; else noReviews" class="row m-2">
+    <div @fadeInOut *ngIf="searchData && searchData.Brand_list; else noReviews" class="row m-2">
         
-        <div *ngIf="loadingService.isParentLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isParentLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>
@@ -20,14 +20,12 @@
                   <div class="col-md-5 p-0"  style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['search-result'] } }]" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" >Market Trend & News</a>
                   </div>
-               
                   <div class="col-md-4 p-0" style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['market-leader'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Market Leader</a>
                   </div>
                   <div class="col-md-3 p-0" style="border: 1px solid #ddd; ">
                     <a [routerLink]="[{ outlets: { content: ['innovation'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Innovation</a>
                   </div>
-                
               </div>
             
 
@@ -43,7 +41,7 @@
     </div>
 
     <ng-template   #noReviews>
-        <div *ngIf="loadingService.isParentLoading| async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isParentLoading| async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>

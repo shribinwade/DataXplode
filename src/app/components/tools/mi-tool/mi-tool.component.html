@@ -1,97 +1,100 @@
-<div  style="border: 2px soild #504e4e ; background-color: #f4f4f4">
-  <div class=" header text-center">
+<div style="border: 2px solid #504e4e; background-color: #f4f4f4">
+  <div class="header text-center">
     Market Intelligence
   </div>
-  
-  <div class="w-100 ">
- 
+
+  <div class="w-100">
     <div class="row">
-
-      
-      <div class="col-lg-4">
-          <div class="card m-3 mr-0 p-0" style="min-height: 100vh; height: max-content;">
-              
-                <div class="left-header m-3 p-3">
-                  Select the options below:
-                </div>
-             
-                <div class="selects m-3">
-                  <label for="country" class=""><p>Select a Country:</p> </label>
-                  <select name="country" [(ngModel)]="selectedCountry" #country (change)="onSelected()" class="form-select form-select-sm" >
-                  <option selected value="">--Selected Country--</option>
-                  <option *ngFor="let brands of ecommarcebrands" [value]="brands.country" selected>{{brands.country | uppercase}}</option>
-                  </select>
-                </div>
-
-                <div class="selects m-3">
-                  <label for="platform"><p>Select a Platform:</p></label>
-                  <select #sites (change)="onSelectedService()" class="form-select form-select-sm" id="platform" name="platform" [disabled]="!selectedCountry">
-                  <option>--Select Platform--</option>
-                  <option *ngFor="let site of filteredSites"><p>{{site.name}}</p></option>
-                  </select>
-                </div>
-
-                <div class="selects m-3" [hidden]="!selectedSites">
-                  <label for="platform"><p>Select a Service:</p></label>
-                  <select #service (change)="onSelectService()"  class="form-select form-select-sm" id="platform" name="platform" [disabled]="!selectedSites">
-                  <option value="">--Select Service-</option>
-                  <option value="product-search">Product Search</option>
-                  <option value="keyword-search">Keyword Search</option>
-                  <option value="market-search">Market Search</option>
-                  <option value="competitor-analysis">
-                    <a (click)="openDialog()" class="btn" style="background-color: #00575b; color: white;" >Competitor Analysis</a>
-                    </option>
-                  </select>
-                </div>
-
-              
-                  <!-- <div class="card m-3" >
-                      <div class="search-header p-2">
-                       product search
-                       <span class="info-icon">(i)</span>
-                      </div>
-                    
-                      <div class="form-group">
-                        <form class="p-2" >
-                          <input class="form-control" formControlName="search" type="text"  style="font-size: small;"  placeholder="Search"  aria-label="Search">
-                          <button class="btn btn-outline-primary mt-2" style="   font-size: small;" type="submit" >Search</button>
-                       </form>
-                      </div>
-                  </div> -->
-
-
-               
-                  <div *ngIf="selectedService === 'product-search'">
-                    <app-product-search></app-product-search>
-                  </div>
-                  
-                  <div *ngIf="selectedService === 'keyword-search'">
-                    
-                    <app-keyword-child-search></app-keyword-child-search>
-                  </div>
-                  
-                  <div *ngIf="selectedService === 'market-search'">
-                    <app-market-search></app-market-search>
-                  </div>
-<!--                   
-                  <div *ngIf="selectedService === 'competitor-analysis'">
-                    <app-competitor-analysis></app-competitor-analysis>
-                  </div> -->
-               
-                  
-                                
+      <div class="col-lg-4"[@hideAnimation]="maxView ? 'max' : 'normal'">
+        <div class="card m-3 mr-0 p-0" style="height: max-content;">
+          <div class="left-header m-3 p-3">
+            Select the options below:
           </div>
+          <!-- Select country, platform, service as before -->
+          <div class="selects m-3">
+            <label for="country"><p>Select a Country:</p></label>
+            <select name="country" [(ngModel)]="selectedCountry" #country (change)="onSelected()" class="form-select form-select-sm">
+              <option selected value="">--Selected Country--</option>
+              <option 
+                  *ngFor="let brands of ecommarcebrands" 
+                  [value]="brands.country"
+                  [disabled]="brands.country !== 'India'"
+                  [title]="brands.country !== 'India' ? 'Currently unavailable' : ''"
+                  >
+                  
+                  {{brands.country | uppercase}}
+                </option>
+            </select>
+          </div>
+
+          <div class="selects m-3">
+            <label for="platform"><p>Select a Platform:</p></label>
+            <select #sites (change)="onSelectedService()" class="form-select form-select-sm" id="platform" name="platform" [disabled]="!selectedCountry">
+              <option>--Select Platform--</option>
+              <option *ngFor="let site of filteredSites"
+              [value]="site.name"
+              [disabled]="site.name !== 'Amazon'"
+              [title]="site.name !== 'Amazon' ? 'Currently unavailable' : ''"
+              >{{site.name}}
+              </option>
+            </select>
+          </div>
+
+          <div class="selects m-3" [hidden]="!selectedSites">
+            <label for="platform"><p>Select a Service:</p></label>
+            <select #service (change)="onSelectService()" class="form-select form-select-sm" id="platform" name="platform" [disabled]="!selectedSites">
+              <option value="">--Select Service--</option>
+              <option value="product-search">Product Search</option>
+              <option value="keyword-search">Keyword Search</option>
+              <option value="market-search">Market Search</option>
+              <option value="competitor-analysis">
+                <a (click)="openDialog()" class="btn" style="background-color: #00575b; color: white;">Competitor Analysis</a>
+              </option>
+              <option value="distributor-search">Search Distributor</option>
+              <option value="competitive-strategy">Competitive Strategy</option>
+            </select>
+          </div>
+
+
+          <div *ngIf="selectedService === 'distributor-search'">
+              
+            <app-porter-search></app-porter-search>
+
+          </div>
+
+          <div *ngIf="selectedService === 'product-search'">
+            <app-product-search></app-product-search>
+          </div>
+
+          <div *ngIf="selectedService === 'keyword-search'">
+            <app-keyword-child-search></app-keyword-child-search>
+          </div>
+
+          <div *ngIf="selectedService === 'market-search'">
+            <app-market-search></app-market-search>
+          </div>
+
+          <div *ngIf="selectedService === 'competitive-strategy'">
+             <app-competitor-stratergy></app-competitor-stratergy>
+          </div>
+
+        </div>
       </div>
-      <div class="col-lg-8">
-        <div class="card m-3 p-0 " style="min-height: 100vh; height: max-content;">
-          <div class="" style="margin-top: 20px;">
+
+      <div class="col-lg-8" [@toggleAnimation]="maxView ? 'max' : 'normal'">
+        <div class="card m-3 p-0" style="min-height: 100vh; height: max-content;">
+          <div class="d-flex justify-content-end p-3">
+            <button class="btn btn-primary" *ngIf="!maxView" (click)="toggleView()" > <i class="fa fa-expand"></i> Expand</button>
+            <!-- <button class="btn btn-primary" *ngIf="!maxView" (click)="toggleView()">Max View</button> -->
+            <button class="btn btn-secondary" *ngIf="maxView" (click)="toggleView()"> <i class="fa fa-compress"></i> Exit</button>
+          </div>
+          <div style="margin-top: 5px;">
             <router-outlet></router-outlet>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-
 </div>
 
 

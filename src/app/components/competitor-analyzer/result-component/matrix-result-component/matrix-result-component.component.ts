@@ -5,11 +5,8 @@ import { SkuService } from '../../../../Services/sku.service';
 import { ReviewDialogComponent } from './Dialog/ReviewDialog/review-dialog/review-dialog.component';
 import { SwotAnalysisComponent } from './Dialog/SwoatAnalysis/swot-analysis/swot-analysis.component';
 import { ReviewSentimentChartComponent } from '../../../../review-sentiment-chart/review-sentiment-chart.component';
-
-
-
-
-
+import { JsonPipe } from '@angular/common';
+import { MiDataService } from '../../../tools/mi-service/mi-data.service';
 
 
 @Component({
@@ -22,79 +19,69 @@ export class MatrixResultComponentComponent implements OnInit {
 
  
   featureKeys:string[]=[];
-  
   headers:string[]=['Features'];
-
   data:any[] = [];
+  swotData:any [] = [];
   productvalues:any;
 
   constructor(
     private skuservice:SkuService,
     private dataService: MatrixResultService,
     private dialog: MatDialog,
-    private elementRef: ElementRef) {}
+    private elementRef: ElementRef,
+    private formDataService: MiDataService
+  ) {}
 
   ngOnInit(): void {
     this.fetchData();
   }
-  
 
-  
-  
-   fetchData(): void {
-    
-    debugger
-    // GETTING DATA FROM SERVICE
+  fetchData(): void {
+
+    // GETTING DATA FROM SERVICE 
+    const formData = this.formDataService.getFormData();
     const searchData = this.dataService.getSearchData();
-    
     const productValues =Object.values(searchData.Search_result);
     this.productvalues = productValues;
     this.featureKeys = Object.keys(searchData.Search_result[0]);
-
     this.featureKeys.push("More Info")
-    
     const productKeys = Object.keys(searchData.Search_result);
     const mappedProductKeys = productKeys.map((key, index) => `product${String.fromCharCode(65 + index)}`);
     
 
      for(let data of mappedProductKeys){
+      console.log(data);
+      
       this.headers.push(data);
      }
 
      for(let value of productValues){
       console.log(value);
-      
       this.data.push(value);
      }
-    
-     console.log(this.headers);
-     console.log(searchData);
-     console.log(this.data);
+  
+     const SearchDatajson =JSON.stringify(searchData.Search_result);
+     console.log(SearchDatajson);
+     this.swotData.push(formData);
+     this.swotData.push(SearchDatajson);
+     console.log(this.swotData);
      
-
-    console.log("mappedProductKeys"+mappedProductKeys);
-    
-    console.log("productKeys"+productKeys);
-
-   
   }
 
     
 
-  openSwotAnalysis(product:any){
-    debugger
-    console.log(product);
+  openSwotAnalysis(){
+   
+ 
 
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '70%';
+    dialogConfig.width = '90%';
     dialogConfig.height = '90%';
     dialogConfig.maxWidth = '100%';
-    
+    dialogConfig.data = this.swotData;
     dialogConfig.panelClass = 'swot-full-screen';
     // dialogConfig.data = { asinData };
     this.dialog.open(SwotAnalysisComponent, dialogConfig);
-    
-
   }
 
 
@@ -102,10 +89,7 @@ export class MatrixResultComponentComponent implements OnInit {
   openReviewDialog(asinData:string){
     debugger
     console.log(asinData);
-
-
   
-    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
@@ -132,6 +116,8 @@ export class MatrixResultComponentComponent implements OnInit {
   ngOnDestroy(): void {
     this.elementRef.nativeElement.remove();
   }
+
+  
   
 
 }

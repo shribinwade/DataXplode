@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { DataServiceService } from '../markertsearch/shared-service/data-service.service';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MarketLeaderComponent } from '../markertsearch/child-components/market-leader/market-leader.component';
+import { Subscription } from 'rxjs';
 
 export interface brandList {
   Brand_list:brands[];
@@ -24,11 +25,17 @@ export interface brands{
 })
 export class BcgMatrixComponent {
 
-  brands:brandList;
+  brands!:brandList;
 
-  constructor( private dataService:DataServiceService, private ref:MatDialogRef<BcgMatrixComponent> ){
+  private subscription!: Subscription;
 
-    this.brands = this.dataService.getSearchData();
+  constructor( private dataService:DataServiceService, private ref:MatDialogRef<BcgMatrixComponent>, private elementRef: ElementRef ){
+
+    
+    this.subscription = this.dataService.getSearchData().subscribe(data => {
+      this.brands = data;
+      // The view will automatically update when `searchData` changes
+    });
 
    this.test()
      
@@ -44,6 +51,14 @@ export class BcgMatrixComponent {
 
    closepopup(){
     this.ref.close()
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
+    }
+    this.elementRef.nativeElement.remove();
+    console.log("Destroyed");
   }
 
 

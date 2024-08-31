@@ -10,25 +10,25 @@
             
             <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
                 <label for="keyword">Keyword</label>
-                <input formControlName="keyword" class="form-control mb-1" type="text" id="keyword" placeholder="Enter keyword">
+                <input formControlName="Keyword" class="form-control mb-1" type="text" id="keyword" placeholder="Enter keyword">
     
                 <label for="productName">Product Name</label>
-                <input formControlName="productName" class="form-control mb-1" type="text" id="productName" placeholder="Enter product name">
+                <input formControlName="ProductName" class="form-control mb-1" type="text" id="productName" placeholder="Enter product name">
 
                 <div class="row g-2">
                     <div class="col-md">
                       <div class="form-floating">
                         <div>
-                            <label for="mrp">MRP</label>
-                            <input formControlName="mrp" class="form-control mb-1" type="text" id="mrp" placeholder="Enter MRP">
+                            <label for="Mrp">MRP</label>
+                            <input formControlName="Mrp" class="form-control mb-1" type="text" id="mrp" placeholder="Enter MRP">
                         </div>
                       </div>
                     </div>
                     <div class="col-md">
                       <div class="form-floating">
                         <div>
-                            <label for="sp">Selling Price</label>
-                            <input formControlName="sp" class="form-control mb-1" type="text" id="sp" placeholder="Enter Selling Price">
+                            <label for="Sp">Selling Price</label>
+                            <input formControlName="Sp" class="form-control mb-1" type="text" id="sp" placeholder="Enter Selling Price">
                         </div>
                       </div>
                     </div>
@@ -36,13 +36,13 @@
     
           
     
-                <label for="productDescription">Product Description</label>
-                <textarea formControlName="productDescription" class="form-control mb-1" id="productDescription" placeholder="Enter product description" rows="4"></textarea>
+                <label for="ProductDescription">Product Description</label>
+                <textarea formControlName="ProductDescription" class="form-control mb-1" id="productDescription" placeholder="Enter product description" rows="4"></textarea>
     
-                <label for="brand">Brand</label>
-                <input formControlName="brand" class="form-control mb-1" type="text" id="brand" placeholder="Enter brand name">
+                <label for="Brand">Brand</label>
+                <input formControlName="Brand" class="form-control mb-1" type="text" id="brand" placeholder="Enter brand name">
     
-                <label for="features">Features</label>
+                <label for="Features">Features</label>
                 
                     <div  class="form-control" appearance="fill"> 
           
@@ -83,7 +83,7 @@
     
                 <label for="imageUpload">Upload Image</label>
 
-                <input formControlName="image" class="form-control mb-1" type="file" id="imageUpload" accept="image/*" onchange="previewImage()">
+                <input formControlName="Image" class="form-control mb-1" type="file" id="imageUpload" accept="image/*" onchange="previewImage()">
 
                 <div class="image-preview" style="display: none;">
                     <img src="" alt="Image preview">

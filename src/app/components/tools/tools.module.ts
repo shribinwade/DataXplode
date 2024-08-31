@@ -28,7 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatSortModule } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 
 import { KeywordSearchComponent } from './mi-tool/keyword-search/keyword-search.component';
@@ -43,13 +43,22 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PorterSearchComponent } from './mi-tool/childComponent/porter-search/porter-search.component';
+import { PorterStrategyComponent } from './mi-tool/porter-strategy/porter-strategy.component';
+import { CompetitorRivalsComponent } from './mi-tool/porter-strategy/Child-Component/competitor-rivals/competitor-rivals.component';
+import { SupplierPowerComponent } from './mi-tool/porter-strategy/Child-Component/supplier-power/supplier-power.component';
+import { CustomerPowerComponent } from './mi-tool/porter-strategy/Child-Component/customer-power/customer-power.component';
+import { ThreatOfSubtitutesComponent } from './mi-tool/porter-strategy/Child-Component/threat-of-subtitutes/threat-of-subtitutes.component';
+import { NewEntrantsComponent } from './mi-tool/porter-strategy/Child-Component/new-entrants/new-entrants.component';
+import { SearchDistributorComponent } from './mi-tool/search-distributor/search-distributor.component';
+import { CompetitorStratergyComponent } from './mi-tool/childComponent/competitor-stratergy/competitor-stratergy.component';
+
 
 
 
 
 @NgModule({
   declarations: [
-    
     ToolsComponent,
     MiToolComponent,
     PriceOptimizationComponent,
@@ -70,11 +79,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MarketSearchComponent,
     CompetitorAnalysisComponent,
     KeywordChildSearchComponent,
-    
     CompetitorAnalysisComponent,
- 
-   
-    
+    PorterSearchComponent,
+    PorterStrategyComponent,
+    CompetitorRivalsComponent,
+    SupplierPowerComponent,
+    CustomerPowerComponent,
+    ThreatOfSubtitutesComponent,
+    NewEntrantsComponent,
+    SearchDistributorComponent,
+    CompetitorStratergyComponent,
+  
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -83,16 +98,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule,
     ToolsRoutingModule,
     ReactiveFormsModule,
-
-   
- 
     MatIconModule,
-
-    
     MatTooltipModule,
-   
-
-
     MatDialogModule,
     MatTableModule,  
     MatFormFieldModule,
@@ -105,7 +112,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatChipsModule,
-    SharedModule
+    SharedModule,
+  
+   
     
   ],
   providers: [

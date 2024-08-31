@@ -4,6 +4,7 @@ import { PatentService } from '../../../../Services/patent.service';
 import { LoadingService } from '../../../../Services/loading.service';
 import { finalize } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { fadeInOutAnimation } from '../../../../shared/animations';
 
 interface patentdata {
   status: string;
@@ -33,7 +34,8 @@ interface value{
 @Component({
   selector: 'app-innovation',
   templateUrl: './innovation.component.html',
-  styleUrl: './innovation.component.scss'
+  styleUrl: './innovation.component.scss',
+  animations: [fadeInOutAnimation]
 })
 export class InnovationComponent implements OnInit{
 

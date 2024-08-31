@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomSnackBarComponent } from '../shared/custom-snack-bar/custom-snack-bar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +8,34 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SnackbarService {
 
   constructor(private snackBar:MatSnackBar) { }
+   
+  showSuccess(message: string, action: string, duration: number = 10000){
+    return this.snackBar.openFromComponent(CustomSnackBarComponent,{
+      data: { message , action},
+      duration: duration,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass:['green-snackbar'],
+    })
+    
+    
+    
+    // open(message,action,{
+    //   panelClass:['green-snackbar'],
+    //   horizontalPosition: 'right',   // Aligns the Snackbar to the right
+    //   verticalPosition: 'top',       // Aligns the Snackbar to the top
+    // });
 
-  openSnackBar(message:string, action:string){
-    if(action === 'error'){
-      this.snackBar.open(message,'',{horizontalPosition:'center',verticalPosition:'top',duration:2000,panelClass:['black-snackbar']})
-    }
-    else{
-      
-        this.snackBar.open(message,'',{horizontalPosition:'center',verticalPosition:'top',duration:2000,panelClass:['green-snackbar']})
-      
-    }
   }
+
+  showError(message: string,action: string, duration: number = 10000){
+    return this.snackBar.openFromComponent(CustomSnackBarComponent,{
+      data: { message , action},
+      duration: duration,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass:['red-snackbar'],
+    });
+  }
+
 }

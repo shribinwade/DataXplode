@@ -1,0 +1,55 @@
+<div class="porterBox" >
+
+    <div class="row m-0" *ngIf="!pageHidden; else noData">
+      <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container">
+         <div>
+           <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+           <mat-spinner></mat-spinner>
+         </div>
+         <div>
+              <p style="margin: 2px; color: azure;">Loading... Please wait!</p>
+         </div>
+      </div>
+
+       <div>
+
+        <div class="porterTabs ">
+             <div style="border: 1px solid #ddd; ">
+                <a [routerLink]="[{ outlets: { portercontent: ['competitor-rivals'] } }]" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" >Competitor Rivals</a>
+             </div>
+           
+             <div  style="border: 1px solid #ddd; ">
+                <a [routerLink]="[{ outlets: {portercontent: ['new-entrants'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >New Entrants</a>
+             </div>
+             <div  style="border: 1px solid #ddd; ">
+               <a [routerLink]="[{ outlets: { portercontent: ['customer-power'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Customer Power</a>
+            </div>
+             <div  style="border: 1px solid #ddd; ">
+                <a [routerLink]="[{ outlets: { portercontent: ['supplier-power'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Supplier Power</a>
+             </div>
+             <div  style="border: 1px solid #ddd; ">
+                <a [routerLink]="[{ outlets: { portercontent: ['threat-of-substitutes'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Threat of Substitutes</a>
+             </div>
+        </div>
+
+        <div class="" style="margin-top: 20px;">
+            <router-outlet name="portercontent"></router-outlet>
+          </div>
+
+    </div>
+
+
+
+</div>
+<ng-template   #noData>
+   <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container">
+     <div>
+       <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
+       <mat-spinner ></mat-spinner>
+     </div>
+     <div>
+          <p style=" margin: 2px; color: azure;">Loading... Please wait!</p>
+     </div>
+   </div>
+   <p style="padding: 10%">No Data available.</p>
+</ng-template>

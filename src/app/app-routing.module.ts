@@ -24,6 +24,13 @@ import { KeywordSearchComponent } from './components/tools/mi-tool/keyword-searc
 import { SkuDashboardComponent } from './components/tools/mi-tool/product-search/sku-dashboard/sku-dashboard.component';
 import { SentimentAnalysisComponent } from './components/tools/sentiment-analysis/sentiment-analysis.component';
 import { PriceOptimizationComponent } from './components/tools/price-optimization/price-optimization.component';
+import { PorterStrategyComponent } from './components/tools/mi-tool/porter-strategy/porter-strategy.component';
+import { CompetitorRivalsComponent } from './components/tools/mi-tool/porter-strategy/Child-Component/competitor-rivals/competitor-rivals.component';
+import { NewEntrantsComponent } from './components/tools/mi-tool/porter-strategy/Child-Component/new-entrants/new-entrants.component';
+import { SupplierPowerComponent } from './components/tools/mi-tool/porter-strategy/Child-Component/supplier-power/supplier-power.component';
+import { CustomerPowerComponent } from './components/tools/mi-tool/porter-strategy/Child-Component/customer-power/customer-power.component';
+import { ThreatOfSubtitutesComponent } from './components/tools/mi-tool/porter-strategy/Child-Component/threat-of-subtitutes/threat-of-subtitutes.component';
+import { SearchDistributorComponent } from './components/tools/mi-tool/search-distributor/search-distributor.component';
 
 const routes: Routes = [
    {path:'', component: HomeComponent},
@@ -83,7 +90,21 @@ const routes: Routes = [
                               ]
                             },
                           ],
+                  },
+                  {
+                    path:'porter-statergy',component: PorterStrategyComponent,
+                    children:[
+                      {path: 'competitor-rivals', component: CompetitorRivalsComponent, outlet: 'portercontent'},
+                      {path: 'new-entrants', component: NewEntrantsComponent, outlet: 'portercontent'},
+                      {path: 'supplier-power', component: SupplierPowerComponent, outlet: 'portercontent'},
+                      {path: 'customer-power', component: CustomerPowerComponent, outlet: 'portercontent'},
+                      {path: 'threat-of-substitutes', component: ThreatOfSubtitutesComponent, outlet: 'portercontent'}
+                    ]
+                  },
+                  {
+                    path:'porter-distributor',component: SearchDistributorComponent,
                   }
+
                 ]
               },
               // {

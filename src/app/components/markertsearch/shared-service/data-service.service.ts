@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
 
-  private searchData: any;
+
+  private searchDataSubject = new BehaviorSubject<any>(null);
 
   setSearchData(data: any) {
-    this.searchData = data;
+    this.searchDataSubject.next(data); // Emit new data
   }
 
   getSearchData() {
-    return this.searchData;
+    return this.searchDataSubject.asObservable(); // Return as observable
   }
+
+
+  // private searchData: any;
+
+  // setSearchData(data: any) {
+  //   this.searchData = data;
+  // }
+
+  // getSearchData() {
+  //   return this.searchData;
+  // }
 }

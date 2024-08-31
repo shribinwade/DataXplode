@@ -1,0 +1,55 @@
+.porterBox{
+    position: relative;
+    text-align: center;
+}
+
+.loader-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(35, 33, 33);
+    padding: 20px;
+    z-index: 100;
+    opacity: 0.9;
+}
+.porterTabs{
+    background-color: 2px solid #ddd;
+    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    text-decoration: none;
+    margin: 1px;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .porterTabs {
+      flex-direction: column;
+    }
+}
+
+.active{
+    background-color: #00575b;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem;
+ }
+a{
+    
+    display: flex;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+   
+ }

@@ -10,7 +10,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { SignupComponent } from './components/signup/signup.component';
 import { BodyComponent } from './components/layout/sidebar/body/body.component';
 import { LoginComponent } from './components/login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { SublevelMenuComponent } from './components/layout/sidebar/sidenav/sublevel-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReviewListComponent } from './material-component/dialog/review-list/review-list.component';
@@ -61,6 +61,8 @@ import { NewsResultComponent } from './components/markertsearch/child-components
 import { InnovationComponent } from './components/markertsearch/child-components/innovation/innovation.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 
 
@@ -112,6 +114,7 @@ import { SharedModule } from './shared/shared.module';
     NewsResultComponent,
     InnovationComponent,
     PagenotfoundComponent,
+  
      
   ],
   imports: [
@@ -119,7 +122,7 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    
     HttpClientModule,
     // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToolsModule,
@@ -138,7 +141,9 @@ import { SharedModule } from './shared/shared.module';
     MatSelectModule,
     CdkTableModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MatSortModule
    
     
     

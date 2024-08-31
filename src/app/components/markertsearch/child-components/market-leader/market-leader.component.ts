@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataServiceService } from '../../shared-service/data-service.service';
 import {  MatDialogConfig, MatDialogRef , MatDialog,
@@ -9,6 +9,9 @@ import {  MatDialogConfig, MatDialogRef , MatDialog,
 import { FinancialComponent } from '../../dialog-component/financial/financial.component';
 import { BcgMatrixChartComponent } from '../../dialog-component/BCG-matrix-chart/bcg-matrix-chart/bcg-matrix-chart.component';
 import { BcgMatrixComponent } from '../../../bcg-matrix/bcg-matrix.component';
+import { Subscription } from 'rxjs';
+import { fadeInOutAnimation } from '../../../../shared/animations';
+
 export interface brandList {
   Brand_list:brandData[];
 
@@ -36,9 +39,13 @@ export interface Brand {
 @Component({
   selector: 'app-market-leader',
   templateUrl: './market-leader.component.html',
-  styleUrl: './market-leader.component.scss'
+  styleUrl: './market-leader.component.scss',
+  animations: [fadeInOutAnimation]
+
 })
 export class MarketLeaderComponent {
+
+  public subscription!: Subscription;
 
   dataSource= new MatTableDataSource<Brand>();
 
@@ -48,19 +55,36 @@ export class MarketLeaderComponent {
 
   searchData!: brandList;
 
-  constructor(private dataService: DataServiceService,private dialog: MatDialog) {}
+  constructor(
+    private dataService: DataServiceService,
+    private dialog: MatDialog,
+    private elementRef: ElementRef
+  ) {}
   
   displayedColumns: string[] = ['index','name','company','segment','marketShare','MarketGrouthRate','bcgValue'];
 
   ngOnInit(): void {
-    const searchData: brandList = this.dataService.getSearchData();
-    if (searchData && searchData.Brand_list.length > 0) {
-      const brands = this.transformData(searchData.Brand_list);
+    // const searchData: brandList = this.dataService.getSearchData();
+    this.subscription = this.dataService.getSearchData().subscribe(data => {
+      this.searchData = data;
+      // The view will automatically update when `searchData` changes
+    });
+
+    if (this.searchData && this.searchData.Brand_list.length > 0) {
+      const brands = this.transformData(this.searchData.Brand_list);
       console.log(brands);
       
       this.dataSource = new MatTableDataSource<Brand>(brands);
       this.hiddendata = false; // Show the table if data is available
     }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
+    }
+    this.elementRef.nativeElement.remove();
+    console.log("Destroyed");
   }
 
   private transformData(brandList: brandData[]): Brand[] {

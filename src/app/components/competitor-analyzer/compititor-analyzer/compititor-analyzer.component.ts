@@ -77,8 +77,13 @@ export class CompititorAnalyzerComponent implements OnInit {
   handleSubmit() {
   
     const formdata = this.marketSearchForm.value;
+    const formdatajson= JSON.stringify(formdata);
+    console.log(formdatajson);
+    
     console.log(formdata);
     console.log(typeof(formdata));
+    console.log(formdata);
+    
       // typeof(formdata);
     
     // const data: string = formdata.search;
@@ -90,10 +95,7 @@ export class CompititorAnalyzerComponent implements OnInit {
      this.searchData= res;
     // this.searchData = res;
      console.log(this.searchData);
-    
      
-     
-      
       // this.searchData=res as ProductMatrix[];
       
       

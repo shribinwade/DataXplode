@@ -26,6 +26,6 @@ export class KeywordService {
     // return this.httpClient.post<any>(this.url+'/get_amazon_keyword_details',formData); 
 
     //aws ec2 url
-    return this.httpClient.post<any>(this.awsUrl+'/get_amazon_keyword_details',formData); 
+       return this.httpClient.post<any>(this.awsUrl+'/get_amazon_keyword_details',formData); 
   }
 }

@@ -122,9 +122,9 @@
 
    </div>
    <div class="m-2 text-center"  style="position: relative;  padding: 8px "  >
-    <div  *ngIf="newsSearchData ; else noReviews" class="row m-2">
+    <div @fadeInOut *ngIf="newsSearchData ; else noReviews" class="row m-2">
         
-        <div *ngIf="loadingService.isChildLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>
@@ -154,7 +154,7 @@
     </div>
 
     <ng-template #noReviews>
-        <div *ngIf="loadingService.isChildLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>

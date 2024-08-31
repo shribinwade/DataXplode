@@ -6,6 +6,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { LoadingService } from '../../../../../../../Services/loading.service';
 import { SkuService } from '../../../../../../../Services/sku.service';
+import { fadeInOutAnimation } from '../../../../../../../shared/animations';
 
 export interface Review {
   reviewTitle: string;
@@ -19,7 +20,8 @@ export interface Review {
 @Component({
   selector: 'app-review-dialog',
   templateUrl: './review-dialog.component.html',
-  styleUrls: ['./review-dialog.component.scss']
+  styleUrls: ['./review-dialog.component.scss'],
+  animations: [fadeInOutAnimation]
 })
 export class ReviewDialogComponent implements AfterViewInit, OnInit {
   ReviewData: Review[] = [];

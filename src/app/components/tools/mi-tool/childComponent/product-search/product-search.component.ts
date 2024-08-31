@@ -32,7 +32,7 @@ export class ProductSearchComponent {
   }
 
   productSubmit() {
-    debugger
+   
     const formdata = this.SearchProductForm.value;
     const value:string =formdata.search;
     this.sharedService.setSearchData(value);

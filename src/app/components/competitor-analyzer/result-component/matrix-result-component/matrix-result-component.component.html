@@ -9,6 +9,10 @@
     <div class="header-box">
       <h3>Feature Snapshot</h3>
     </div>
+
+    <div class="SwotButton">
+       <button class="btn btn-primary" (click)="openSwotAnalysis()">Get Swot analysis</button>    
+    </div>
   
     <div class="table-responsive">
       <table
@@ -42,31 +46,37 @@
                     style="max-width: 100px; max-height: 100px"
                   />
                 </ng-container>
+                
                 <ng-container *ngSwitchCase="'product_name'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
                   </p>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="'Manufacturer'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
                   </p>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="'Packer'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
                   </p>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="'Best Sellers Rank'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
                   </p>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="'Description'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
                   </p>
                 </ng-container>
+
                 <ng-container *ngSwitchCase="'Importer'">
                   <p appReadMore [toggle]="true" [limit]="20">
                     {{ values[feature] }}
@@ -98,7 +108,7 @@
                       >
                     </li>
                     <li>
-                      <a class="dropdown-item" (click)="openSwotAnalysis(values)"
+                      <a class="dropdown-item" (click)="openSwotAnalysis()"
                         >Swot analysis</a
                       >
                     </li>

@@ -30,11 +30,11 @@
         <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
       </div> -->
       <!-- [hidden]="getdata()" -->
-      <div *ngIf="receivedData && receivedData.Amazon_info.length>0; else noReviews">
+      <div @fadeInOut  *ngIf="receivedData && receivedData.Amazon_info.length>0; else noReviews">
       
         <div class="card mb-4 " style="position: relative; background-color: #f4f4f4;">
           
-          <div *ngIf="loadingService.isParentLoading | async" class="loader-container">
+          <div @fadeInOut *ngIf="loadingService.isParentLoading | async" class="loader-container">
             <div>
               <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
               <mat-spinner ></mat-spinner>
@@ -60,7 +60,7 @@
                     [src]="productSiteImgSrc"
                     class="d-block w-100"
                     alt="..."
-                  />
+                />
                 </swiper-slide>
                 <swiper-slide>
                   <img src="" class="d-block w-100" alt="..." />
@@ -114,7 +114,6 @@
                    <strong>Rating: </strong>{{ Rating_value }}
                   </p>
                   <app-star-rating style="display: inline-block" [stars]="Rating_value" [size]="1"></app-star-rating>
-
                   <p>|</p>
                   <p><strong>RatingCount: </strong>{{ Rating_count }}</p>
                 </div>
@@ -142,12 +141,8 @@
                 </div>
               </div>
            
-            
-
               <div class="row">
                 <div style="justify-content: center">
-               
-
                   <button
                     style="margin: 5px"
                     class="btn btn-primary"
@@ -176,33 +171,25 @@
               </div>
 
              
-          
-   
               <p><b>Description: </b>{{ Description }}</p>
               <div class="row">
                 <div style="justify-content: center">
-
                   <button class="btn btn-primary dropdown-toggle" style="color: white;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                    Reviews
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item"    (click)="handleReviewListAction(ASIN)">View Reviews</a></li>
                     <li><a class="dropdown-item" >Reviews analysis</a></li>
-                   
                   </ul>
-
                 </div>
               </div>
-             
-               
-             
             </div>
           </div>
         </div>
       
       </div>
       <ng-template   #noReviews>
-        <div *ngIf="loadingService.isParentLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isParentLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>

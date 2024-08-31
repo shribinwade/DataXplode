@@ -45,7 +45,7 @@
   </div> -->
   
   <div style="position: relative;"  >
-    <div *ngIf="loadingService.isChildLoading | async" class="loader-container" >
+    <div @fadeInOut *ngIf="loadingService.isChildLoading | async" class="loader-container" >
       <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
       <mat-spinner  style="top: 25%; left: 46%;"></mat-spinner>
     </div>

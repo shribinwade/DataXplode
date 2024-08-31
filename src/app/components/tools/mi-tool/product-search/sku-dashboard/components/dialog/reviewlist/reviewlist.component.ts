@@ -9,6 +9,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { LoadingService } from '../../../../../../../../Services/loading.service';
 import { SkuService } from '../../../../../../../../Services/sku.service';
+import { fadeInOutAnimation } from '../../../../../../../../shared/animations';
 
 
 export interface Review {
@@ -24,7 +25,8 @@ export interface Review {
 @Component({
   selector: 'app-reviewlist',
   templateUrl: './reviewlist.component.html',
-  styleUrls: ['./reviewlist.component.scss']
+  styleUrls: ['./reviewlist.component.scss'],
+  animations: [fadeInOutAnimation]
 })
 export class ReviewlistComponent implements OnInit, AfterViewInit {
   

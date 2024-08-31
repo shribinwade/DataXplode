@@ -1,14 +1,4 @@
-<!-- <div class="header">
-  <span
-    ><button class="btn btn-sm text-center">
-      <span><i class="fa fa-arrow-left fa-1x"></i></span>
-    </button>
-    <h1 style="text-align: center; margin-top: -10px">
-       {{ productSiteName }} -->
-      <!-- <img src="{{ siteImgSrc }}" width="150px" alt="logo" class="img-fluid" />
-    </h1>
-  </span>
-</div>  -->
+
 
 
 <div class="text-center mt-0 m-2">
@@ -108,8 +98,8 @@
 
     <div class="search_content">
       <!-- class="example-container mat-elevation-z8" -->
-      <div *ngIf="productData && productData.length > 0; else noReviews">
-        <div *ngIf="loadingService.isLoading | async" class="loader-container">
+      <div @fadeInOut *ngIf="productData && productData.length > 0; else noReviews">
+        <div @fadeInOut *ngIf="loadingService.isLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner></mat-spinner>
@@ -118,6 +108,7 @@
                <p style="margin: 2px; color: azure;">Loading... Please wait!</p>
           </div>
         </div>
+        
         <div class="row m-0" style="border: 1px solid rgb(228, 228, 228); box-shadow: 20px">
           <div class="col justify-content-start">
             <p class="search_title">
@@ -364,7 +355,7 @@
         </mat-paginator>
       </div>
       <ng-template  #noReviews>
-        <div *ngIf="loadingService.isLoading | async" class="loader-container">
+        <div @fadeInOut *ngIf="loadingService.isLoading | async" class="loader-container">
           <div>
             <!-- <mat-progress-bar mode="determinate"></mat-progress-bar> -->
             <mat-spinner ></mat-spinner>

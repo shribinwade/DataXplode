@@ -137,3 +137,49 @@
 //     font-family: 'Ubuntu',sans-serif;
 // }
 
+
+.mat-mdc-dialog-content {
+    display: block;
+    flex-grow: 1;
+    box-sizing: border-box;
+    margin: 0;
+    overflow: auto;
+    max-height: 90vh !important;
+}
+
+.mat-mdc-header-row{
+    text-align: center;     
+    background-color: #00575b;
+    color: white;
+    font-weight: bold;
+    word-spacing: 2px;
+    z-index: 0 !important;
+    font-weight: bold;
+    
+   }
+   .mat-mdc-row:nth-child(even) {
+    background-color: #f1f1f1; /* Set the background color for even rows */
+  }
+  
+  .mat-mdc-row:nth-child(odd) {
+    background-color: #ffffff; /* Set the background color for odd rows */
+  } 
+  .mat-mdc-row:hover .mat-mdc-cell {
+    background-color: #f1f1f1;
+  } 
+  .mat-column-Product {
+    border-right: 1px solid #ddd;
+  } 
+
+  .mat-column-Strength {
+    border-right: 1px solid #ddd;
+  } 
+  .mat-column-Weakness {
+    border-right: 1px solid #ddd;
+  } 
+  .mat-column-Opportunity {
+    border-right: 1px solid #ddd;
+  } 
+  .mat-column-Threat {
+    border-right: 1px solid #ddd;
+  } 

@@ -33,6 +33,6 @@ export class PatentService {
     // return this.httpClient.post<any>(this.url+'/get_data_IP',formData); 
 
     //aws url
-    return this.httpClient.post<any>(this.awsUrl+'/get_data_IP',formData); 
+       return this.httpClient.post<any>(this.awsUrl+'/get_data_IP',formData); 
   }
 }
