@@ -83,7 +83,7 @@ export class ReviewlistComponent implements OnInit, AfterViewInit {
       
       this.data = res.Amazon_review_info;
       this.loadingService.setChildState(false);
-      console.log(this.data);
+   
 
       if (Array.isArray(this.data)) {
         this.show_spinner = !this.show_spinner;
@@ -110,7 +110,7 @@ export class ReviewlistComponent implements OnInit, AfterViewInit {
       };
 
       this.dataSource.filter = filterValue.toString();
-      console.log('Filtered data:', this.dataSource.filteredData);
+      
       this.cdRef.detectChanges(); // Manually trigger change detection
     }
   }

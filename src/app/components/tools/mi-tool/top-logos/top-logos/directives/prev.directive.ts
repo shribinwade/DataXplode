@@ -14,9 +14,7 @@ export class PrevDirective {
     var item = elm.getElementsByClassName("item");
     elm.prepend(item[item.length-1]);
    
-    console.log(elm);
-    console.log(item);
-    // console.log(prev);
+ 
     
    }
 

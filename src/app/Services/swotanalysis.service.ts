@@ -30,10 +30,9 @@ export class SwotanalysisService {
       formData.append('query1',data[0]);
       formData.append('query2',data[1]);
 
-      console.log(data[0]);
-      console.log(data[1]);
-      // return this.httpClient.post<any>(`${this.url}/get_swot_analyzer`, formData);
-      return this.httpClient.post<any>(`${this.awsUrl}/get_swot_analyzer`,formData);
+     
+      return this.httpClient.post<any>(`${this.url}/get_swot_analyzer`, formData);
+      // return this.httpClient.post<any>(`${this.awsUrl}/get_swot_analyzer`,formData);
       
       // return new Observable;
     

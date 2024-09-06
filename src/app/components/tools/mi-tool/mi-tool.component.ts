@@ -65,9 +65,7 @@ export class MiToolComponent  {
     private dialog:MatDialog,
     private router:Router,
     private route: ActivatedRoute,
-   )
-    
-    {
+   ){
     this.ecommarcebrands=ecommarcesites.eCommerceSites
     };
 
@@ -126,7 +124,7 @@ export class MiToolComponent  {
 
   filteredSites: Array<{ id: number; name: string; src: string }> = [];
   filterSites() {
-    debugger
+   
     if(this.selectedCountry){
      const selectedCountrySites=  this.ecommarcebrands.find((site:any)=>site.country === this.selectedCountry);
      this.filteredSites = selectedCountrySites ? selectedCountrySites.sites : [];

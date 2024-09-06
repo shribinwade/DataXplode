@@ -36,17 +36,6 @@ export class BcgMatrixComponent {
       this.brands = data;
       // The view will automatically update when `searchData` changes
     });
-
-   this.test()
-     
-  }
-
-   test() {
-    if (this.brands && this.brands.Brand_list) {
-      console.log(this.brands.Brand_list);
-    } else {
-      console.error('Brand_list is undefined');
-    }
   }
 
    closepopup(){
@@ -58,7 +47,7 @@ export class BcgMatrixComponent {
       this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
     }
     this.elementRef.nativeElement.remove();
-    console.log("Destroyed");
+   
   }
 
 

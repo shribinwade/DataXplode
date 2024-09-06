@@ -11,10 +11,10 @@ export class BulletpointsComponent {
   bulletPoint: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:{bullet:any},private ref: MatDialogRef<BulletpointsComponent>){
-    console.log(data);
+  
     this.bulletPoint = data.bullet;
     // this.bulletPoint=this.parseBulletString(data.bullet)
-    console.log(this.bulletPoint);
+   
     
     
    

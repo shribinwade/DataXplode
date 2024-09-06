@@ -8,7 +8,7 @@ import {  MatDialogConfig, MatDialogRef , MatDialog,
   MatDialogTitle } from '@angular/material/dialog';
 import { SpecificationComponent } from './components/dialog/specification/specification.component';
 import { BulletpointsComponent } from './components/dialog/bulletpoints/bulletpoints.component';
-import { ReviewAnalysisComponent } from './components/dialog/review-analysis/review-analysis.component';
+
 import { ReviewlistComponent } from './components/dialog/reviewlist/reviewlist.component';
 import { LoadingService } from '../../../../../Services/loading.service';
 import { SkuService } from '../../../../../Services/sku.service';
@@ -125,7 +125,7 @@ export class SkuDashboardComponent implements OnInit {
       this.reviewreceivedData = data;
       this.showdata = false;
     }
-    console.log(this.reviewreceivedData);
+  
     }
  //handling recevied data from child
   handleDataReceived(data: any): void {
@@ -146,9 +146,8 @@ export class SkuDashboardComponent implements OnInit {
     this.ASIN = this.getASIN();
     this.BulletPoints = this.getBulletPoints(); 
     const productData = Object.values(this.receivedData.Amazon_info);
-    console.log(this.BulletPoints);
-    console.log('Data received from child:', this.receivedData);
-    // Process the received data as needed
+ 
+  
   }
  
 
@@ -166,8 +165,8 @@ export class SkuDashboardComponent implements OnInit {
     });
   }
   handleReviewListAction(asinData:string){
-    debugger
-    console.log(asinData);
+   
+   
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
@@ -183,7 +182,7 @@ export class SkuDashboardComponent implements OnInit {
   handleReviewAnalysisAction(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '550px';
-    this.dialog.open(ReviewAnalysisComponent, dialogConfig);
+    // this.dialog.open(ReviewAnalysisComponent, dialogConfig);
   }
   handleBulletPointsAction(): void {
     const dialogConfig = new MatDialogConfig();
@@ -302,7 +301,7 @@ export class SkuDashboardComponent implements OnInit {
 
   getImageUrls(): string[] {
     if (this.receivedData && this.receivedData.Amazon_info) {
-      console.log('Extracting image URLs from:', this.receivedData.Amazon_info);
+     
       return this.receivedData.Amazon_info.map((info: any) => info.Image_url);
     }
     return [];
@@ -328,7 +327,5 @@ export class SkuDashboardComponent implements OnInit {
     return 'null';
   }
 
-  goBack(): void {
-    // this.location.back();
-  }
+
 }

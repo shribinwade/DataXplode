@@ -29,7 +29,7 @@ export class MarketSearchComponent implements OnInit {
   
 
   marketSubmit(){
-    debugger
+  
     const formdata = this.marketsearchform.value;
  
     const value:string =formdata.search;

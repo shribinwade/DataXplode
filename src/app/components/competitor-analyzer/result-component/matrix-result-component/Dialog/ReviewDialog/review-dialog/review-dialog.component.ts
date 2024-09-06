@@ -73,7 +73,7 @@ export class ReviewDialogComponent implements AfterViewInit, OnInit {
   loadReviews(asinkey: string) {
     this.skuservice.Post_get_amazon_info_reviews(asinkey).subscribe(res => {
       this.data = res.Amazon_review_info;
-      console.log(this.data);
+    
 
       if (Array.isArray(this.data)) {
         this.show_spinner = !this.show_spinner;
@@ -100,7 +100,7 @@ export class ReviewDialogComponent implements AfterViewInit, OnInit {
       };
 
       this.dataSource.filter = filterValue.toString();
-      console.log('Filtered data:', this.dataSource.filteredData);
+     
       this.cdRef.detectChanges(); // Manually trigger change detection
     }
   }

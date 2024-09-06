@@ -14,23 +14,16 @@ export class ProductMatrixService {
 
   Post_get_amazon_info_details(data:any):Observable<any>{
     const formData = new FormData();
-    console.log(data.Keyword);
-    console.log(data.Brand);
-    console.log(data.features[0].feature);
-    
-    
-    
-    
-    
+
     formData.append('query1',data.Keyword );
     formData.append('query2',data.Brand );
     formData.append('query3',data.features[0].feature );
-    console.log(formData.get('query1'));
+   
     
-    // return this.httpClient.post<any>(this.url+'/get_CompetitorAnalyzer',formData); 
+    return this.httpClient.post<any>(this.url+'/get_CompetitorAnalyzer',formData); 
 
     //aws url
-    return this.httpClient.post<any>(this.awsUrl+'/get_CompetitorAnalyzer',formData); 
+    // return this.httpClient.post<any>(this.awsUrl+'/get_CompetitorAnalyzer',formData); 
   }
 
   //   url:string= "http://localhost:3000/Search_result";

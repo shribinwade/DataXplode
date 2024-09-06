@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductMatrixService } from '../../../../../Services/product-matrix.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatrixResultService } from '../../../../competitor-analyzer/shared-service/matrix-result.service';
@@ -56,17 +56,23 @@ export class CompetitorAnalysisComponent implements OnInit {
    //now group frombuilder 
    ngOnInit(): void {
       this.checkoutForm = this.formBuilder.group({
-      Keyword:'',
+      Keyword:['',Validators.required],
       ProductName:'',
       Mrp:'',
       Sp:'',
       ProductDescription:'',
-      Brand:'',
-      features:[this.features],
+      Brand:['',Validators.required],
+      features:[this.features,Validators.required],
       Image:''
      });
    
    }
+
+     // Method to check if a form control has the required validator
+  isRequired(controlName: string): boolean {
+    const control: AbstractControl | null = this.checkoutForm.get(controlName);
+    return control?.hasValidator(Validators.required) ?? false;
+  }
 
 
 
@@ -86,24 +92,23 @@ export class CompetitorAnalysisComponent implements OnInit {
     /////////////////////////////////////////////
    
     const formdata = this.checkoutForm.value;
-    console.log(this.checkoutForm.get('features'));
+   
     const formdatajson= JSON.stringify(formdata);
 
     this.shareData.setFormData(formdatajson);
 
-    console.log(formdatajson);
-    console.log(typeof(formdata));
+   
 
     // typeof(formdata);
     // const data: string = formdata.search;
  
     this.productmatrixService.Post_get_amazon_info_details(formdata).subscribe(res =>{
      
-     console.log(res);
+    
      
      this.searchData= res;
     // this.searchData = res;
-     console.log(this.searchData);
+   
 
      this.dataService.setSearchData(this.searchData);
     
@@ -118,9 +123,7 @@ export class CompetitorAnalysisComponent implements OnInit {
 
   }
   ngOnDestroy(): void {
-    
     this.elementRef.nativeElement.remove();
-   
   }
 
   closepopup(){

@@ -16,26 +16,26 @@ export class MarketsearchService {
  
   
   Post_search_brand_details(data:any):Observable<any>{
-    debugger
+  
     const formData = new FormData();
     formData.append('query1',data);
-    console.log(formData);
+   
     
-    // return this.httpClient.post<any>(this.url+'/get_brand_details',formData); 
+     return this.httpClient.post<any>(this.url+'/get_brand_details',formData); 
 
     //aws url
-     return this.httpClient.post<any>(this.awsUrl+'/get_brand_details',formData); 
+    //  return this.httpClient.post<any>(this.awsUrl+'/get_brand_details',formData); 
   }
 
   //Get News from brand search
   Post_search_brand_details_and_news(data:any):Observable<any>{
     const formData = new FormData();
     formData.append('query1',data);
-    console.log(formData.get('query1'));
-    //  return this.httpClient.post<any>(this.url+'/get_search_brand_details',formData);
+   
+     return this.httpClient.post<any>(this.url+'/get_search_brand_details',formData);
 
     //aws url
-    return this.httpClient.post<any>(this.awsUrl+'/get_search_brand_details',formData);
+    // return this.httpClient.post<any>(this.awsUrl+'/get_search_brand_details',formData);
   }
 
   // url:string= "http://localhost:3000/data";

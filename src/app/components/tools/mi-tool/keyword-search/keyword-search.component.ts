@@ -108,7 +108,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
   //handling submit 
   handleKeywordSubmit(){
-    debugger
+   
     const data=this.sharedService.getSearchData();
     if(data!=undefined){
 
@@ -118,13 +118,10 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
           // const data: string = formdata.search;
       
           // const data: string = this.sharedService.getSearchData();
-          console.log(data);
-          
-          console.log('Search Query:', data);
+       
           this.keyService.Post_get_amazon_info_details(data).subscribe(res => {
-            debugger
-            console.log(res);
-            debugger
+          
+        
             this.loadingService.setLoadingState(false);
             this.productData = res.Amazon_keyword_data;
             this.keywordSearchName = data;
@@ -141,7 +138,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
   }
 
   onPageChange(event: PageEvent):void{
-    console.log(event);
+ 
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = Math.min(startIndex + event.pageSize, this.productData.length);
     this.pageSlice = this.productData.slice(startIndex, endIndex);
@@ -163,7 +160,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
   }
 
   changeSortOrder(event: Event): void {
-    debugger
+   
       const selectElement = event.target as HTMLSelectElement;
       const sortOrder = selectElement.value as 'ratingHighToLow' | 'ratingLowToHigh' | 'priceHighToLow' | 'priceLowToHigh';
     
@@ -226,8 +223,8 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
   // }
 
   applyFilter(event: Event) {
-    debugger
-    console.log(this.productSearchName);
+  
+   
     
     const selectElement = event.target as HTMLSelectElement;
     
@@ -236,16 +233,14 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
   
       // Apply the filter predicate
       this.dataSource.filterPredicate = (data:keywordDetails , filter: string) => {
-        console.log('data.rating:', data.pdp_rating_value);
-        console.log('filter:', filter);
+    
         const rating = data.pdp_rating_value; 
         if(filterValue === 4.0 ){
           if(this.productSearchName !== undefined && this.productSearchName !== null){
-            console.log("rating include product searchname");
-            
+          
             return rating >= filterValue && data.pdp_title_value.toLowerCase().includes(this.productSearchName.toLowerCase()) && rating <= 5.0;
           }else{
-            console.log("else value");
+          
             
             return  rating >= filterValue && rating >= 4.0;
           }
@@ -253,11 +248,11 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
         }
         if(filterValue === 3.0){
           if(this.productSearchName !== undefined && this.productSearchName !== null){
-            console.log("rating include product searchname");
+           
             
             return rating >= filterValue && data.pdp_title_value.toLowerCase().includes(this.productSearchName.toLowerCase()) && rating < 4.0;
           }else{
-            console.log("else value");
+           
             
             return  rating >= filterValue && rating < 4.0;
           }
@@ -265,11 +260,11 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
         }
         if(filterValue === 2.0){
           if(this.productSearchName !== undefined && this.productSearchName !== null){
-            console.log("rating include product searchname");
+          
             
             return rating >= filterValue && data.pdp_title_value.toLowerCase().includes(this.productSearchName.toLowerCase()) && rating < 3.0;
           }else{
-            console.log("else value");
+           
             
             return  rating >= filterValue && rating < 3.0;
           }
@@ -277,11 +272,11 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
         }
         if(filterValue === 1.0){
           if(this.productSearchName !== undefined && this.productSearchName !== null){
-            console.log("rating include product searchname");
+           
             
             return rating >= filterValue && data.pdp_title_value.toLowerCase().includes(this.productSearchName.toLowerCase()) && rating < 2.0;
           }else{
-            console.log("else value");
+          
             
             return  rating >= filterValue && rating < 2.0;
           }
@@ -297,14 +292,14 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
       this.dataSource.filter = filterValue.toString();
   
       // Log the filtered data
-      console.log('Filtered data:', this.dataSource.filteredData);
+     
       // this.cdRef.detectChanges();
     }
 
   }
 
   productSearch() {
-    debugger
+  
     const filterValue = this.searchProductForm.get('search')?.value || '';
           this.productSearchName = filterValue;
     // Define the filter predicate dynamically
@@ -318,8 +313,8 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
   openReviewDialog(asinData:string){
-    debugger
-    console.log(asinData);
+ 
+   
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
@@ -331,7 +326,7 @@ export class KeywordSearchComponent implements OnInit,AfterViewInit,OnDestroy {
 
   
   openReviewAnalysisDialog(){
-    debugger
+ 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '70%';
     dialogConfig.height = '90%';

@@ -7,6 +7,27 @@ import { fadeInOutAnimation } from '../../../../shared/animations';
 import { StratergysearchService } from '../../../../Services/stratergysearch.service';
 import { finalize, Subscription } from 'rxjs';
 import { SnackbarService } from '../../../../Services/snackbar.service';
+import { SharedPorterStratergyService } from './porter-strategy-service/shared-service-porter-stratergy.service';
+
+export interface Root {
+  competitor_rivials: CompetitorRivial[]
+  portential_entrant: string[]
+  Buyer_power: BuyerPower[]
+}
+
+export interface CompetitorRivial {
+  Industry_Growth?: string
+  definition: string
+  Fixed_Cost?: string
+  Exit_Barriers?: string[]
+}
+
+export interface BuyerPower {
+  switch_Cost?: string
+  definition: string
+  price_sensitivity?: string
+  purchase_size?: string[]
+}
 
 @Component({
   selector: 'app-porter-strategy',
@@ -30,7 +51,8 @@ export class PorterStrategyComponent implements OnInit {
     private elementRef: ElementRef,
     private cdRef: ChangeDetectorRef,
     private globalSnackbar: SnackbarService,
-    private stratergyService:StratergysearchService
+    private stratergyService:StratergysearchService,
+    private sharedPorterService:SharedPorterStratergyService
   ){}
 
 
@@ -47,10 +69,12 @@ export class PorterStrategyComponent implements OnInit {
     //Getting searchFormData using service
     const data=this.sharedService.getSearchData();
 
-    console.log(data);
+  
     
 
     if(data !== undefined){
+
+
       this.loadingService.setChildState(true);
 
       this.stratergyService.post_get_competitive_stratergy_details(data).pipe(
@@ -60,13 +84,17 @@ export class PorterStrategyComponent implements OnInit {
         })
       ).subscribe(res =>{
 
-         this.pageHidden =!this.pageHidden;
+         this.pageHidden =false;
          //showing pop up after result
          const snackBarRef = this.globalSnackbar.showSuccess('Search Successful', 'View Result');
       
          // Check the structure of `res`
-         console.log('API Response:', res);
         
+         this.sharedPorterService.setSearchData(res.Search_result);
+       
+      },error =>{
+        this.globalSnackbar.showError('Something went wrong','Close');
+        this.pageHidden =true;
       })
       
 

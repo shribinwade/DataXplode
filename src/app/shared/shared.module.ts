@@ -6,12 +6,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomSnackBarComponent } from './custom-snack-bar/custom-snack-bar.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatButtonModule} from '@angular/material/button';
+import { ToolTipDirective } from '../directives/tooltip/tool-tip.directive';
+
+
 
 @NgModule({
   declarations: [
     StarRatingComponent,
     ReadMoreDirective,
-    CustomSnackBarComponent
+    CustomSnackBarComponent,
+
+    ToolTipDirective
+  
     
   ],
   imports: [
@@ -25,7 +31,10 @@ import {MatButtonModule} from '@angular/material/button';
   exports:[StarRatingComponent,
            ReadMoreDirective,
            BrowserAnimationsModule,
-           CustomSnackBarComponent
+           CustomSnackBarComponent,
+           ToolTipDirective
+         
+          
   ]
 })
 export class SharedModule { }

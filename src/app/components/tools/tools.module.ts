@@ -20,7 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SpecificationComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/specification/specification.component';
 import { BulletpointsComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/bulletpoints/bulletpoints.component';
 import { ReviewlistComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/reviewlist/reviewlist.component';
-import { ReviewAnalysisComponent } from './mi-tool/product-search/sku-dashboard/components/dialog/review-analysis/review-analysis.component';
+
 
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -73,7 +73,7 @@ import { CompetitorStratergyComponent } from './mi-tool/childComponent/competito
     SpecificationComponent,
     BulletpointsComponent,
     ReviewlistComponent,
-    ReviewAnalysisComponent,
+  
     KeywordSearchComponent,
     ProductSearchComponent,
     MarketSearchComponent,

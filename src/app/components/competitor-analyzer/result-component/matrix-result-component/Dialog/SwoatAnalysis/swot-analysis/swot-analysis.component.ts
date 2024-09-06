@@ -27,7 +27,7 @@ export class SwotAnalysisComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("Inside SwotApiCall oninit");
+  
     
     this.swotAnalysisService.Post_get_swot_analyzer(this.swotData).pipe(
       finalize(() => {
@@ -35,7 +35,7 @@ export class SwotAnalysisComponent implements OnInit {
       })
     ).subscribe(
       res => {
-        console.log(res);
+    
         this.transformData(res); // Transform data for table display
       }, 
       error => {

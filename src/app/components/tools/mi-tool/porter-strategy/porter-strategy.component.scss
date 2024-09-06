@@ -2,6 +2,14 @@
     position: relative;
     text-align: center;
 }
+.heading{
+    background-color: #00575b;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0px !important;
+}
 
 .loader-container{
     position: absolute;
@@ -37,10 +45,8 @@
 }
 
 .active{
-    background-color: #00575b;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    padding: 0.5rem;
+    background-color: #00575b !important;
+    color: white !important;
  }
 a{
     

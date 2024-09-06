@@ -78,11 +78,7 @@ export class CompititorAnalyzerComponent implements OnInit {
   
     const formdata = this.marketSearchForm.value;
     const formdatajson= JSON.stringify(formdata);
-    console.log(formdatajson);
-    
-    console.log(formdata);
-    console.log(typeof(formdata));
-    console.log(formdata);
+
     
       // typeof(formdata);
     
@@ -90,11 +86,11 @@ export class CompititorAnalyzerComponent implements OnInit {
  
     this.productmatrixService.Post_get_amazon_info_details(formdata).subscribe(res =>{
      
-     console.log(res);
+   
      
      this.searchData= res;
     // this.searchData = res;
-     console.log(this.searchData);
+   
      
       // this.searchData=res as ProductMatrix[];
       

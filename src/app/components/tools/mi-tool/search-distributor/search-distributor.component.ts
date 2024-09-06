@@ -88,25 +88,25 @@ export class SearchDistributorComponent implements OnInit, AfterViewInit, OnDest
 
       //Calling api for 
       this.porterService.post_get_porter_supplier_details(data).pipe(
+       
         finalize(() => {
           //Stoping Loading after complete response
           this.loadingService.setChildState(false);
         })
       ).subscribe(res => {
         
-        //showing pop up after result
-        const snackBarRef = this.globalSnackbar.showSuccess('Search Successful', 'View Result');
-      
         // Check the structure of `res`
-        console.log('API Response:', res);
+       
 
         // Ensure `Search_result` exists and is an array
         if (res && Array.isArray(res.Search_result)) {
+            //showing pop up after result
+            const snackBarRef = this.globalSnackbar.showSuccess('Search Successful', 'View Result');
 
           // Flatten Supplier_list arrays from all pages
           this.suppliers = res.Search_result.flatMap((page: any) => page.Supplier_list || []);
 
-          console.log(this.suppliers);
+         
       
           this.updatePageSlice();
 
@@ -168,16 +168,12 @@ export class SearchDistributorComponent implements OnInit, AfterViewInit, OnDest
   this.searchLocationFormControl.get('searchLocation').setValue('');
 
   // Optionally, reset pagination
-
-
- 
-
   }
 
 
 
   onPageChange(event: PageEvent):void{
-    console.log(event);
+    
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = Math.min(startIndex + event.pageSize, this.suppliers.length);
     this.pageSlice = this.suppliers.slice(startIndex, endIndex);

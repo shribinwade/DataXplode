@@ -27,7 +27,7 @@ export class TopLogosComponent {
   ];
 
   onCarouselItemClick(country: string) {
-    console.log(country);
+    
     
    this.eventEmitter.emit(country); 
   }

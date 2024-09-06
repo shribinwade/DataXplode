@@ -13,8 +13,17 @@
 
        <div>
 
+         <div class="heading">
+               <h2 style="margin: 0; padding: 10px;">Competitive Strategy</h2>
+         </div>
+
+   
+
+
+
+
         <div class="porterTabs ">
-             <div style="border: 1px solid #ddd; ">
+             <!-- <div style="border: 1px solid #ddd; ">
                 <a [routerLink]="[{ outlets: { portercontent: ['competitor-rivals'] } }]" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" >Competitor Rivals</a>
              </div>
            
@@ -29,7 +38,17 @@
              </div>
              <div  style="border: 1px solid #ddd; ">
                 <a [routerLink]="[{ outlets: { portercontent: ['threat-of-substitutes'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Threat of Substitutes</a>
-             </div>
+             </div> -->
+
+             <ul class="nav nav-tabs">
+           
+               <li class="nav-item"><a class="nav-link" [routerLink]="[{ outlets: { portercontent: ['competitor-rivals'] } }]" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" >Competitor Rivals</a></li>
+               <li class="nav-item"><a class="nav-link" [routerLink]="[{ outlets: {portercontent: ['new-entrants'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >New Entrants</a></li>
+               <li class="nav-item"><a class="nav-link" [routerLink]="[{ outlets: { portercontent: ['customer-power'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Customer Power</a></li>
+               <li class="nav-item"><a class="nav-link" [routerLink]="[{ outlets: { portercontent: ['supplier-power'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Supplier Power</a></li>
+               <li class="nav-item"> <a class="nav-link" [routerLink]="[{ outlets: { portercontent: ['threat-of-substitutes'] } }]" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" >Threat of Substitutes</a></li>
+
+             </ul>
         </div>
 
         <div class="" style="margin-top: 20px;">

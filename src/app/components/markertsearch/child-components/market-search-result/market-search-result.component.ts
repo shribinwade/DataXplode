@@ -113,7 +113,7 @@ export class MarketSearchResultComponent implements OnInit{
       this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
     }
     this.elementRef.nativeElement.remove();
-    console.log("Destroyed");
+  
   }
 
   
@@ -123,10 +123,10 @@ export class MarketSearchResultComponent implements OnInit{
     this.loadingService.setChildState(true);
 
     const formdata = this.brandSearchForm.value;
-    console.log(formdata);
+   
     
     const data: string = formdata.search;
-    console.log('Search Query:', data);
+  
     
     this.marketService.Post_search_brand_details_and_news(data).pipe(
       finalize(() => {
@@ -134,7 +134,7 @@ export class MarketSearchResultComponent implements OnInit{
       })
     ).subscribe(res => {
       this.newsSearchData = res;
-      console.log(this.newsSearchData);
+   
   
       // Save search data in the shared service
       this.newsDataService.setSearchData(this.newsSearchData);

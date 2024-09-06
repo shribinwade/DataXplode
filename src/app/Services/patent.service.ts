@@ -20,7 +20,7 @@ export class PatentService {
 	// title = query2
 	// search_d=query3
 	// keyword=query4
-  console.log(data);
+ 
   
     const formData = new FormData();
     formData.append('query1',data.summary);
@@ -28,11 +28,11 @@ export class PatentService {
     // formData.append('query3',data);
     formData.append('query4',data.keyword);
 
-    console.log(formData.getAll);
+   
     
-    // return this.httpClient.post<any>(this.url+'/get_data_IP',formData); 
+    return this.httpClient.post<any>(this.url+'/get_data_IP',formData); 
 
     //aws url
-       return this.httpClient.post<any>(this.awsUrl+'/get_data_IP',formData); 
+      //  return this.httpClient.post<any>(this.awsUrl+'/get_data_IP',formData); 
   }
 }

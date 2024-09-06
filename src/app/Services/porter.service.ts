@@ -18,15 +18,15 @@ export class PorterService {
 
     const formData = new FormData();
 
-    console.log(data);
+   
     
     
     formData.append('query1',data);
 
-    // return this.httpClient.post<any>(this.url+'/get_supplier',formData); 
+    return this.httpClient.post<any>(this.url+'/get_supplier',formData); 
 
     //aws url
-       return this.httpClient.post<any>(this.awsUrl+'/get_supplier',formData);
+      //  return this.httpClient.post<any>(this.awsUrl+'/get_supplier',formData);
       
 
   }

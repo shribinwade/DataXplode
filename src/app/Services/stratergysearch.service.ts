@@ -17,14 +17,14 @@ export class StratergysearchService {
 
     const formData = new FormData();
 
-    console.log(data);
+   
     
     
     formData.append('query1',data);
 
-    // return this.httpClient.post<any>(this.url+'/get_porterforces',formData); 
+     return this.httpClient.post<any>(this.url+'/get_porterforces',formData); 
      //aws url
-     return this.httpClient.post<any>(this.awsUrl+'/get_porterforces',formData);
+    //  return this.httpClient.post<any>(this.awsUrl+'/get_porterforces',formData);
 
   }
 }

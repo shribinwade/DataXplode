@@ -50,30 +50,27 @@ export class MatrixResultComponentComponent implements OnInit {
     
 
      for(let data of mappedProductKeys){
-      console.log(data);
+     
       
       this.headers.push(data);
      }
 
      for(let value of productValues){
-      console.log(value);
+    
       this.data.push(value);
      }
   
      const SearchDatajson =JSON.stringify(searchData.Search_result);
-     console.log(SearchDatajson);
+  
      this.swotData.push(formData);
      this.swotData.push(SearchDatajson);
-     console.log(this.swotData);
+   
      
   }
 
     
 
   openSwotAnalysis(){
-   
- 
-
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
@@ -87,9 +84,7 @@ export class MatrixResultComponentComponent implements OnInit {
 
 
   openReviewDialog(asinData:string){
-    debugger
-    console.log(asinData);
-  
+   
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
@@ -101,8 +96,6 @@ export class MatrixResultComponentComponent implements OnInit {
   }
 
   openReviewAnalysisDialog(){
-    debugger
-    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '70%';
     dialogConfig.height = '90%';

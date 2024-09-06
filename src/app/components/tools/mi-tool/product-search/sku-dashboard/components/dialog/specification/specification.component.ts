@@ -35,7 +35,7 @@ export class SpecificationComponent  {
       productFeatures: any;
 
       constructor(@Inject(MAT_DIALOG_DATA) public data:{product_features:any},private ref: MatDialogRef<SpecificationComponent>){
-            console.log(data);
+          
             this.productFeatures = this.data.product_features.map((feature:any) => this.removeUnderscores(feature));
            
        }

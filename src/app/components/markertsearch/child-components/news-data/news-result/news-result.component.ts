@@ -20,7 +20,7 @@ export class NewsResultComponent implements OnInit{
     private newsDataService: NewsDataService,
   ){
      this.resultData = newsDataService.getSearchData();
-     console.log(this.resultData);
+   
 
   }
   ngOnInit(): void {

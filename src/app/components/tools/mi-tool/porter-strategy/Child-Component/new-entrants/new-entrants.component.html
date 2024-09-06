@@ -1,1 +1,77 @@
-<p>new-entrants works!</p>
+<!-- <div>
+    <div class="row">
+        <div class="col-lg-6" style="border: 2px solid #ddd;">
+                 <div class="boxContainer">
+                    <div class="boxheader">
+                        <p style="font-weight: 500; font-size: 1.5rem; padding: 10px; margin: 0;">Challenges</p>
+                    </div>
+                    <div *ngFor="let challenge of Challenges">
+                         <div >
+                            <p style="font-weight: bold; margin: 0; padding: 0;">Point:</p>
+                            <p style="display: flex; justify-content: start;">{{challenge.point}}</p>   
+                         </div>
+                    <div>
+                        <p style="font-weight: bold; margin: 0; padding: 0;">Details:</p>
+                        <div *ngFor="let data of challenge.details">
+                            <p style="display: flex; justify-content: start;">{{data}} <br></p>    
+                        </div>
+                   </div>  
+                   </div>                  
+                 </div>
+        </div>
+        <div class="col-lg-6" style="border: 2px solid #ddd;">
+            <div class="boxContainer">
+                <div class="boxheader">
+                    <p style="font-weight: 500; font-size: 1.5rem; padding: 10px; margin: 0;">Opportunity</p>
+                </div>
+                <div *ngFor="let opportunity of Opportunity">
+                     <div >
+                        <p style="font-weight: bold; margin: 0; padding: 0;">Point:</p>
+                        <p style="display: flex; justify-content: start;">{{opportunity.point}}</p>   
+                     </div>
+                <div>
+                    <p style="font-weight: bold; margin: 0; padding: 0;">Details:</p>
+                    <div *ngFor="let data of opportunity.details">
+                        <p style="display: flex; justify-content: start;">{{data}} <br></p>    
+                    </div>
+               </div>  
+               </div>                  
+             </div>
+        </div>
+      </div>
+</div> -->
+
+<div>
+
+
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="font-size: large; background-color: #ff6f61 !important; color: white;">Challenges</th>
+            <th style="font-size: large; background-color: #009688; color: white;" >Opportunities</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let challenge of Challenges; let i = index">
+            <td>
+              <strong>{{ challenge.point }}</strong>
+              <ul>
+                <li *ngFor="let detail of challenge.details">{{ detail }}</li>
+              </ul>
+            </td>
+            <td>
+              <ng-container *ngIf="Opportunity[i]">
+                <strong>{{ Opportunity[i].point }}</strong>
+                <ul>
+                  <li *ngFor="let detail of Opportunity[i].details">{{ detail }}</li>
+                </ul>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+</div>

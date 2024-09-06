@@ -29,11 +29,11 @@ export class CompetitorStratergyComponent implements OnInit {
 
   StratergySubmit(){
     const data2 = this.StratergySearchFormControl.get('search')?.value;
-    console.log(data2);
+  
     
     const value= this.StratergySearchFormControl.value;
     const data =value.search;
-    console.log(data);
+   
      
 
 

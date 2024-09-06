@@ -4,8 +4,8 @@
   </div>
 
   <div class="w-100">
-    <div class="row">
-      <div class="col-lg-4"[@hideAnimation]="maxView ? 'max' : 'normal'">
+    <div class="row" >
+      <div class="col-lg-4  p-0" style=" padding-right: 0px !important;"   [@hideAnimation]="maxView ? 'max' : 'normal'">
         <div class="card m-3 mr-0 p-0" style="height: max-content;">
           <div class="left-header m-3 p-3">
             Select the options below:
@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <div class="col-lg-8" [@toggleAnimation]="maxView ? 'max' : 'normal'">
+      <div class="col-lg-8 p-0"  [@toggleAnimation]="maxView ? 'max' : 'normal'">
         <div class="card m-3 p-0" style="min-height: 100vh; height: max-content;">
           <div class="d-flex justify-content-end p-3">
             <button class="btn btn-primary" *ngIf="!maxView" (click)="toggleView()" > <i class="fa fa-expand"></i> Expand</button>

@@ -71,7 +71,7 @@ export class InnovationComponent implements OnInit{
     this.loadingService.setChildState(true);
 
     const formdata = this.patentSearchForm.value;
-    console.log(formdata);
+    
 
     this.patenservice.Post_get_patent_info_details(formdata).pipe(
       finalize(() => {
@@ -97,7 +97,7 @@ export class InnovationComponent implements OnInit{
       
         this.dataSource = new MatTableDataSource<value>(this.patentData.data.result[keydata])
        
-        console.log(this.patentData.data.result[keydata]);
+      
         
       },
       error => {

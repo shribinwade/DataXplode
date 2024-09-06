@@ -7,9 +7,9 @@ import { SidenavComponent } from './components/layout/sidebar/sidenav/sidenav.co
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
-import { SignupComponent } from './components/signup/signup.component';
+
 import { BodyComponent } from './components/layout/sidebar/body/body.component';
-import { LoginComponent } from './components/login/login.component';
+
 
 import { SublevelMenuComponent } from './components/layout/sidebar/sidenav/sublevel-menu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -87,8 +87,6 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     DashboardComponent,
     ProductsComponent,
     StatisticsComponent,
-    LoginComponent,
-    SignupComponent,
     SublevelMenuComponent,
     HomeComponent,
     ReviewListComponent,
@@ -122,7 +120,6 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    
     HttpClientModule,
     // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToolsModule,

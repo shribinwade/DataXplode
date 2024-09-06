@@ -48,7 +48,7 @@ export class CustomSnackBarComponent {
 
   cleanProgressBarInterval() {
     clearInterval(this.currentIntervalId);
-    console.log("progress bar interval(...) cleaned!");
+  
   }
 
 }

@@ -72,7 +72,7 @@ export class MarketLeaderComponent {
 
     if (this.searchData && this.searchData.Brand_list.length > 0) {
       const brands = this.transformData(this.searchData.Brand_list);
-      console.log(brands);
+    
       
       this.dataSource = new MatTableDataSource<Brand>(brands);
       this.hiddendata = false; // Show the table if data is available
@@ -84,7 +84,7 @@ export class MarketLeaderComponent {
       this.subscription.unsubscribe(); // Clean up subscription to avoid memory leaks
     }
     this.elementRef.nativeElement.remove();
-    console.log("Destroyed");
+
   }
 
   private transformData(brandList: brandData[]): Brand[] {
@@ -95,7 +95,7 @@ export class MarketLeaderComponent {
       const marketShare = Brand.market_share;
       const MarketGrouthRate = Brand.Market_Growth_Rate;
       const bcgValue = Brand.bcg_value;
-      console.log(Brand.Company); 
+    
       
 
       const cleanName = brand.replace(/^\d+\.\s*/, ''); // Remove leading number and period

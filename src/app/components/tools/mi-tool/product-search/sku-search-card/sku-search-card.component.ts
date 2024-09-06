@@ -56,8 +56,7 @@ export class SkuSearchCardComponent implements OnInit {
   
 
   handleskuSubmit(): void {
-    debugger
-    
+     
 
     const data=this.sharedService.getSearchData();
 
@@ -71,13 +70,13 @@ export class SkuSearchCardComponent implements OnInit {
          const formData = this.SearchProductForm.value;
          // const data: String = formData.search;
        
-         console.log('Search Query:', data);
+        
        
          this.skuservice.Post_get_amazon_info_details(data).pipe(
           catchError((error:any) => {
             // this.ngxService.stop();
             this.loadingService.setParentState(false);
-            console.log('Error:', error);
+           
             if (error.error.message) {
              this.loadingService.setParentState(false);
               this.responseMessage = error.error.message;
@@ -90,7 +89,7 @@ export class SkuSearchCardComponent implements OnInit {
              // Handle details response
              this.ReceviedData = detailsResponse;
              this.dataReceived.emit(this.ReceviedData);
-             console.log('Details Response:', detailsResponse);
+           
        
              // Return the next observable for reviews response
            
@@ -98,7 +97,7 @@ export class SkuSearchCardComponent implements OnInit {
            (error) => {
             // This block will only execute if catchError is used
             this.loadingService.setParentState(false);
-            console.error('Error handler:', error);
+          
           }
           )
        
@@ -112,7 +111,7 @@ export class SkuSearchCardComponent implements OnInit {
     ngOnDestroy() { 
       this.subscription.unsubscribe();
       this.elementRef.nativeElement.remove();
-      console.log("Destroyed");
+     
     }
   
 }
